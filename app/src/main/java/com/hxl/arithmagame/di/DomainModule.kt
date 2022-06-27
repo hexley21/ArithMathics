@@ -30,4 +30,15 @@ class DomainModule{
     fun provideSaveMode(preferenceRepository: PreferenceRepository): SaveMode {
         return SaveMode(preferenceRepository)
     }
+
+    @Provides
+    fun provideGetLanguage(preferenceRepository: PreferenceRepository): GetLanguage {
+        return GetLanguage(preferenceRepository)
+    }
+
+    @Provides
+    fun provideSaveLanguage(preferenceRepository: PreferenceRepository): SaveLanguage {
+        return SaveLanguage(preferenceRepository)
+    }
+
 }

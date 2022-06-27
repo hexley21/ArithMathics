@@ -1,6 +1,8 @@
 package com.hxl.arithmagame.presentation.activity
 
 import android.content.Context
+import android.content.ContextWrapper
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +12,7 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.fragment.app.Fragment
 import com.hxl.arithmagame.R
 import com.hxl.arithmagame.databinding.ActivityMainBinding
+import com.hxl.arithmagame.presentation.LanguageHelper
 import com.hxl.arithmagame.presentation.fragment.MenuFragment
 import com.hxl.data.repository.PreferenceRepositoryImpl
 import com.hxl.data.storage.sharedprefs.SharedPreferenceStorage
@@ -23,7 +26,9 @@ class MainActivity : AppCompatActivity() {
     override fun attachBaseContext(newBase: Context) {
         val sharedPref = PreferenceRepositoryImpl(SharedPreferenceStorage(newBase))
         AppCompatDelegate.setDefaultNightMode(sharedPref.theme)
-        super.attachBaseContext(newBase)
+        val localeUpdatedContext: ContextWrapper =
+            LanguageHelper(newBase).updateLocale(sharedPref.language)
+        super.attachBaseContext(localeUpdatedContext)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,5 +59,11 @@ class MainActivity : AppCompatActivity() {
 
     fun showDialog(dialog: AppCompatDialogFragment, tag: String){
         dialog.show(supportFragmentManager, tag)
+    }
+
+    fun restartActivity(){
+        startActivity(Intent(this, this::class.java))
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
+        finish()
     }
 }

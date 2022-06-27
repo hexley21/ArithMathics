@@ -10,4 +10,8 @@ interface PreferenceRepository{
 
     fun saveMode(value: Int)
 
+    fun getLanguage(default: String = "en"): String
+
+    fun saveLanguage(value: String)
+
 }

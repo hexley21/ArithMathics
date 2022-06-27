@@ -26,4 +26,11 @@
         <item>მუქი</item>
         <item>სისტემური</item>
     </string-array>
+
+    <!-- Language Dialog -->
+    <string name="select_language">აირჩიე ენა</string>
+    <string-array name="language_choice">
+        <item>ინგლისური</item>
+        <item>ქართული</item>
+    </string-array>
 </resources>
