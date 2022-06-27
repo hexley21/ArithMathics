@@ -16,6 +16,10 @@ class PreferenceRepositoryImpl(private val prefStorage: PreferenceStorage) : Pre
         get() = getLanguage()
         set(value) = saveLanguage(value)
 
+    var welcome: Boolean
+        get() = getWelcome()
+        set(value) = saveWelcome(value)
+
     override fun getTheme(default: Int): Int {
         return prefStorage.get("theme", default)
     }
@@ -38,6 +42,14 @@ class PreferenceRepositoryImpl(private val prefStorage: PreferenceStorage) : Pre
 
     override fun saveLanguage(value: String) {
         prefStorage.save("language", value)
+    }
+
+    override fun getWelcome(default: Boolean): Boolean {
+        return prefStorage.get("welcome", default)
+    }
+
+    override fun saveWelcome(value: Boolean) {
+        prefStorage.save("welcome", value)
     }
 
 }
