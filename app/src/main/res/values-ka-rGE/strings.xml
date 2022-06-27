@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Arithma Game</string>
+
+    <!-- Menu Fragment -->
+    <string name="select_difficulty">აირჩიე სირთულე</string>
+    <string name="easy">ადვილი</string>
+    <string name="medium">საშუალო</string>
+    <string name="hard">რთული</string>
+    <string name="custom">ქასტომური</string>
+    <string name="start">დაწყება</string>
+
+    <!-- Menu -->
+    <string name="menu_theme">ფონი</string>
+    <string name="menu_language">ენა</string>
+    <string name="menu_rate">შეფასება</string>
+</resources>
