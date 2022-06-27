@@ -21,4 +21,13 @@ class DomainModule{
         return SaveTheme(preferenceRepository)
     }
 
+    @Provides
+    fun provideGetMode(preferenceRepository: PreferenceRepository): GetMode {
+        return GetMode(preferenceRepository)
+    }
+
+    @Provides
+    fun provideSaveMode(preferenceRepository: PreferenceRepository): SaveMode {
+        return SaveMode(preferenceRepository)
+    }
 }
