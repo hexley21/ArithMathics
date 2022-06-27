@@ -14,4 +14,16 @@
     <string name="menu_theme">ფონი</string>
     <string name="menu_language">ენა</string>
     <string name="menu_rate">შეფასება</string>
+
+    <!-- Dialogs -->
+    <string name="ok">ოქეი</string>
+    <string name="cancel">გაუქმება</string>
+
+    <!-- Theme Dialog -->
+    <string name="select_theme">აირჩიე ფონი</string>
+    <string-array name="theme_choice">
+        <item>ღია</item>
+        <item>მუქი</item>
+        <item>სისტემური</item>
+    </string-array>
 </resources>
