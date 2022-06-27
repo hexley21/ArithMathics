@@ -14,6 +14,7 @@ import com.hxl.arithmagame.R
 import com.hxl.arithmagame.databinding.ActivityMainBinding
 import com.hxl.arithmagame.presentation.LanguageHelper
 import com.hxl.arithmagame.presentation.fragment.menu.MenuFragment
+import com.hxl.arithmagame.presentation.fragment.welcome.WelcomeFragment
 import com.hxl.data.repository.PreferenceRepositoryImpl
 import com.hxl.data.storage.sharedprefs.SharedPreferenceStorage
 import dagger.hilt.android.AndroidEntryPoint
@@ -36,8 +37,10 @@ class MainActivity : AppCompatActivity() {
         installSplashScreen().apply { setKeepOnScreenCondition { false } }
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(R.layout.activity_main)
-        val menuFragment = MenuFragment()
-        replaceFragment(menuFragment)
+        when(vm.welcome){
+            false -> replaceFragment(MenuFragment())
+            else -> replaceFragment(WelcomeFragment())
+        }
     }
 
     fun replaceFragment(
