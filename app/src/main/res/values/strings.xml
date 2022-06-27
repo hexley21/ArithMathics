@@ -14,4 +14,16 @@
     <string name="menu_theme">Theme</string>
     <string name="menu_language">Language</string>
     <string name="menu_rate">Rate</string>
+
+    <!-- Dialogs -->
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancel</string>
+
+    <!-- Theme Dialog -->
+    <string name="select_theme">Select Theme</string>
+    <string-array name="theme_choice">
+        <item>Light</item>
+        <item>Dark</item>
+        <item>System</item>
+    </string-array>
 </resources>

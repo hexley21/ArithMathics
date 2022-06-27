@@ -32,7 +32,9 @@
         <item name="android:statusBarColor">?attr/android:colorBackground</item>
         <item name="android:windowLightStatusBar" tools:targetApi="m" tools:ignore="NewApi">true</item>
         <item name="fontFamily">@font/contractica_book</item>
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog</item>
     </style>
+
     <style name="ThemeOverlay.MyTheme" parent="ThemeOverlay.AppCompat.Dark">
         <item name="android:backgroundTint">?attr/colorSurface</item>
     </style>

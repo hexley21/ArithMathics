@@ -9,4 +9,16 @@ import dagger.hilt.android.components.ViewModelComponent
 
 @Module
 @InstallIn(ViewModelComponent::class)
-class DomainModule
+class DomainModule{
+
+    @Provides
+    fun provideGetTheme(preferenceRepository: PreferenceRepository): GetTheme {
+        return GetTheme(preferenceRepository)
+    }
+
+    @Provides
+    fun provideSaveTheme(preferenceRepository: PreferenceRepository): SaveTheme {
+        return SaveTheme(preferenceRepository)
+    }
+
+}
