@@ -77,8 +77,7 @@
             <RadioButton
                 android:id="@+id/rb_easy"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:checked="true"
+                android:layout_height="48dp"
                 android:padding="8dp"
                 android:text="@string/easy"
                 android:textSize="20sp" />
@@ -86,7 +85,7 @@
             <RadioButton
                 android:id="@+id/rb_medium"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:padding="8dp"
                 android:text="@string/medium"
                 android:textSize="20sp" />
@@ -94,7 +93,7 @@
             <RadioButton
                 android:id="@+id/rb_hard"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:padding="8dp"
                 android:text="@string/hard"
                 android:textSize="20sp" />
@@ -102,7 +101,7 @@
             <RadioButton
                 android:id="@+id/rb_custom"
                 android:layout_width="315dp"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:padding="8dp"
                 android:text="@string/custom"
                 android:textSize="20sp" />
