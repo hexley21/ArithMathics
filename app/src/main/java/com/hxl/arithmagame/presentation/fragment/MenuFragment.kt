@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import com.hxl.arithmagame.R
 import com.hxl.arithmagame.databinding.FragmentMenuBinding
 import com.hxl.arithmagame.presentation.activity.MainActivity
+import com.hxl.arithmagame.presentation.fragment.dialogs.language.LanguageDialog
 import com.hxl.arithmagame.presentation.fragment.dialogs.theme.ThemeDialog
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -27,6 +28,10 @@ class MenuFragment : Fragment() {
             when (menuItem.itemId) {
                 R.id.theme -> {
                     (requireActivity() as MainActivity).showDialog(themeDialog, "theme_dialog")
+                    true
+                }
+                R.id.language -> {
+                    (requireActivity() as MainActivity).showDialog(LanguageDialog(), "theme_dialog")
                     true
                 }
                 else -> false

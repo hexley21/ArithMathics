@@ -26,4 +26,11 @@
         <item>Dark</item>
         <item>System</item>
     </string-array>
+
+    <!-- Language Dialog -->
+    <string name="select_language">Select language</string>
+    <string-array name="language_choice">
+        <item>English</item>
+        <item>Georgian</item>
+    </string-array>
 </resources>
