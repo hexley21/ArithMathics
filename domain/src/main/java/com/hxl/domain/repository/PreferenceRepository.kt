@@ -14,4 +14,8 @@ interface PreferenceRepository{
 
     fun saveLanguage(value: String)
 
+    fun getWelcome(default: Boolean = true): Boolean
+
+    fun saveWelcome(value: Boolean)
+
 }

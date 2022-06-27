@@ -4,6 +4,6 @@
     android:id="@+id/main_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:name="com.hxl.arithmagame.presentation.fragment.MenuFragment"
+    android:name="com.hxl.arithmagame.presentation.fragment.welcome.WelcomeFragment"
     tools:context="com.hxl.arithmagame.presentation.activity.MainActivity"
     tools:layout="@layout/fragment_menu" />

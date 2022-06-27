@@ -11,6 +11,7 @@ import dagger.hilt.android.components.ViewModelComponent
 @InstallIn(ViewModelComponent::class)
 class DomainModule{
 
+    // region prefs
     @Provides
     fun provideGetTheme(preferenceRepository: PreferenceRepository): GetTheme {
         return GetTheme(preferenceRepository)
@@ -40,5 +41,16 @@ class DomainModule{
     fun provideSaveLanguage(preferenceRepository: PreferenceRepository): SaveLanguage {
         return SaveLanguage(preferenceRepository)
     }
+
+    @Provides
+    fun provideGetWelcome(preferenceRepository: PreferenceRepository): GetWelcome {
+        return GetWelcome(preferenceRepository)
+    }
+
+    @Provides
+    fun provideSaveWelcome(preferenceRepository: PreferenceRepository): SaveWelcome {
+        return SaveWelcome(preferenceRepository)
+    }
+    // endregion
 
 }
