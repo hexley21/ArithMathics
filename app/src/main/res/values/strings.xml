@@ -16,7 +16,7 @@
     <string name="menu_rate">Rate</string>
 
     <!-- Dialogs -->
-    <string name="ok">Ok</string>
+    <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
 
     <!-- Theme Dialog -->
@@ -33,4 +33,11 @@
         <item>English</item>
         <item>Georgian</item>
     </string-array>
+
+    <!-- Welcome -->
+    <string name="english" translatable="false">English</string>
+    <string name="qartuli" translatable="false">ქართული</string>
+    <string name="others_soon">Others soon…</string>
+    <string name="continue_">Continue</string>
+    <string name="language_attention">You can change the language at any time in the menu bar</string>
 </resources>

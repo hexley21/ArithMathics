@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment
 import com.hxl.arithmagame.R
 import com.hxl.arithmagame.databinding.ActivityMainBinding
 import com.hxl.arithmagame.presentation.LanguageHelper
-import com.hxl.arithmagame.presentation.fragment.MenuFragment
+import com.hxl.arithmagame.presentation.fragment.menu.MenuFragment
 import com.hxl.data.repository.PreferenceRepositoryImpl
 import com.hxl.data.storage.sharedprefs.SharedPreferenceStorage
 import dagger.hilt.android.AndroidEntryPoint

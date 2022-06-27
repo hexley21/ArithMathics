@@ -1,4 +1,4 @@
-package com.hxl.arithmagame.presentation.fragment
+package com.hxl.arithmagame.presentation.fragment.menu
 
 import android.os.Bundle
 import android.view.LayoutInflater

@@ -1,4 +1,4 @@
-package com.hxl.arithmagame.presentation.fragment
+package com.hxl.arithmagame.presentation.fragment.menu
 
 import androidx.lifecycle.ViewModel
 import com.hxl.domain.usecase.prefs.GetMode

@@ -33,4 +33,9 @@
         <item>ინგლისური</item>
         <item>ქართული</item>
     </string-array>
+
+    <!-- Welcome -->
+    <string name="others_soon">დანარჩენი მალე…</string>
+    <string name="continue_">გაგრძელება</string>
+    <string name="language_attention">თქვენ შეგიძლიათ შეცვალოთ ენა ნებისმიერ დროს მენიუში</string>
 </resources>
