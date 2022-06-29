@@ -1,10 +1,7 @@
 package com.hxl.arithmagame.presentation.fragment.dialogs.language
 
 import android.content.Context
-import android.os.Build
 import android.os.Bundle
-import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.viewModels
 import com.hxl.arithmagame.R
 import com.hxl.arithmagame.presentation.activity.MainActivity
