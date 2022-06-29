@@ -2,9 +2,11 @@ package com.hxl.arithmagame.di
 
 import android.content.Context
 import com.hxl.data.repository.PreferenceRepositoryImpl
+import com.hxl.data.repository.QuestionRepositoryImpl
 import com.hxl.data.storage.PreferenceStorage
 import com.hxl.data.storage.sharedprefs.SharedPreferenceStorage
 import com.hxl.domain.repository.PreferenceRepository
+import com.hxl.domain.repository.QuestionRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -26,6 +28,12 @@ class DataModule {
     @Singleton
     fun providePreferenceRepository(preferenceStorage: PreferenceStorage): PreferenceRepository {
         return PreferenceRepositoryImpl(preferenceStorage)
+    }
+
+    @Provides
+    @Singleton
+    fun provideQuestionRepository(): QuestionRepository {
+        return QuestionRepositoryImpl()
     }
 
 }

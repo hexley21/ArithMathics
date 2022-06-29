@@ -1,5 +1,8 @@
 package com.hxl.arithmagame.presentation.fragment.menu
 
+import android.content.ActivityNotFoundException
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +14,7 @@ import com.hxl.arithmagame.databinding.FragmentMenuBinding
 import com.hxl.arithmagame.presentation.activity.MainActivity
 import com.hxl.arithmagame.presentation.fragment.dialogs.language.LanguageDialog
 import com.hxl.arithmagame.presentation.fragment.dialogs.theme.ThemeDialog
+import com.hxl.arithmagame.presentation.fragment.game.GameFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -34,6 +38,24 @@ class MenuFragment : Fragment() {
                     (requireActivity() as MainActivity).showDialog(LanguageDialog(), "theme_dialog")
                     true
                 }
+                R.id.rate -> {
+                    try {
+                        startActivity(
+                            Intent(
+                                Intent.ACTION_VIEW,
+                                Uri.parse("market://details?id=${requireActivity().packageName}")
+                            )
+                        )
+                    } catch (e: ActivityNotFoundException) {
+                        startActivity(
+                            Intent(
+                                Intent.ACTION_VIEW,
+                                Uri.parse("http://play.google.com/store/apps/details?id=${requireActivity().packageName}")
+                            )
+                        )
+                    }
+                    true
+                }
                 else -> false
             }
         }
@@ -51,6 +73,10 @@ class MenuFragment : Fragment() {
                 binding.rbCustom.id -> vm.mode = 3
                 else -> vm.mode = 0
             }
+        }
+
+        binding.btnStart.setOnClickListener {
+            (requireActivity() as MainActivity).replaceFragment(GameFragment(), GameFragment.TAG)
         }
         return binding.root
     }
