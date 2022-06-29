@@ -1,7 +1,9 @@
 package com.hxl.arithmagame.di
 
 import com.hxl.domain.repository.PreferenceRepository
+import com.hxl.domain.repository.QuestionRepository
 import com.hxl.domain.usecase.prefs.*
+import com.hxl.domain.usecase.questions.GetQuestion
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -53,4 +55,10 @@ class DomainModule{
     }
     // endregion
 
+    // region questions
+    @Provides
+    fun provideQuestion(questionRepository: QuestionRepository): GetQuestion {
+        return GetQuestion(questionRepository)
+    }
+    // endregion
 }

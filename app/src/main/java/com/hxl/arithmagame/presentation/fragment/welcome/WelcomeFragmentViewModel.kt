@@ -2,7 +2,6 @@ package com.hxl.arithmagame.presentation.fragment.welcome
 
 import androidx.lifecycle.ViewModel
 import com.hxl.domain.usecase.prefs.GetLanguage
-import com.hxl.domain.usecase.prefs.GetWelcome
 import com.hxl.domain.usecase.prefs.SaveLanguage
 import com.hxl.domain.usecase.prefs.SaveWelcome
 import dagger.hilt.android.lifecycle.HiltViewModel
