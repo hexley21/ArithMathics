@@ -40,6 +40,7 @@
     <string name="language_attention">თქვენ შეგიძლიათ შეცვალოთ ენა ნებისმიერ დროს მენიუში</string>
 
     <!-- Custom -->
+    <string name="levels">თამაშები</string>
     <string name="operations">ოპერაციები</string>
     <string name="num_range">რიცხვების დიაპაზონი</string>
 
@@ -47,6 +48,7 @@
     <string name="subtraction">გამოკლება (-)</string>
     <string name="multiplication">გამრავლება (×)</string>
     <string name="division">გაყოფა (÷)</string>
+    <string name="attention_custom">მინიმუმ 1 ოპერატორი უნდა იყოს არჩეული</string>
 
     <!-- Game -->
     <string name="answer">პასუხი</string>
