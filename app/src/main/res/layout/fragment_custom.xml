@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="30dp">
+
+    <TextView
+        android:id="@+id/tv_operations"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/operations"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/sl_operations"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/sl_operations"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:stepSize="1.0"
+        android:valueFrom="1.0"
+        android:valueTo="15.0"
+        app:layout_constraintBottom_toTopOf="@+id/tv_range"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/tv_operations"
+        app:layout_constraintTop_toBottomOf="@+id/tv_operations" />
+
+    <TextView
+        android:id="@+id/tv_range"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/num_range"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/sl_range"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sl_operations" />
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/sl_range"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:stepSize="1.0"
+        android:valueFrom="1.0"
+        android:valueTo="1000.0"
+        app:layout_constraintBottom_toTopOf="@+id/cb_op1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/tv_range"
+        app:layout_constraintTop_toBottomOf="@+id/tv_range" />
+
+    <CheckBox
+        android:id="@+id/cb_op1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/addition"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/cb_op2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <CheckBox
+        android:id="@+id/cb_op2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/subtraction"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/cb_op3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <CheckBox
+        android:id="@+id/cb_op3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/multiplication"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/cb_op4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <CheckBox
+        android:id="@+id/cb_op4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp"
+        android:text="@string/division"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_start_custom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_start_custom"
+        android:layout_width="0dp"
+        android:layout_height="64dp"
+        android:capitalize="sentences"
+        android:text="@string/start"
+        android:textAllCaps="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
