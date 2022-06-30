@@ -17,7 +17,9 @@ import com.hxl.arithmagame.presentation.fragment.menu.MenuFragment
 import com.hxl.arithmagame.presentation.fragment.welcome.WelcomeFragment
 import com.hxl.data.repository.PreferenceRepositoryImpl
 import com.hxl.data.storage.sharedprefs.SharedPreferenceStorage
+import com.hxl.domain.models.Custom
 import dagger.hilt.android.AndroidEntryPoint
+import java.lang.Exception
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -37,6 +39,12 @@ class MainActivity : AppCompatActivity() {
         installSplashScreen().apply { setKeepOnScreenCondition { false } }
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(R.layout.activity_main)
+        try{
+            vm.custom =  vm.custom
+        }
+        catch (e: Exception){
+            vm.custom = Custom(1, 1, 1..100, arrayOf("+", "-", "*", "/"))
+        }
         when(vm.welcome){
             false -> replaceFragment(MenuFragment())
             else -> replaceFragment(WelcomeFragment())
