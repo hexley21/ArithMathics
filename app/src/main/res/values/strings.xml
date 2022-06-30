@@ -40,4 +40,23 @@
     <string name="others_soon">Others soon…</string>
     <string name="continue_">Continue</string>
     <string name="language_attention">You can change the language at any time in the menu bar</string>
+
+    <!-- Custom -->
+    <string name="operations">Operations</string>
+    <string name="num_range">Number range</string>
+
+    <string name="addition">Addition (+)</string>
+    <string name="subtraction">Subtraction (-)</string>
+    <string name="multiplication">Multiplication (×)</string>
+    <string name="division">Division (÷)</string>
+
+    <!--Game -->
+    <string name="answer">Answer</string>
+    <string name="next">Next</string>
+    <string name="finish">finish</string>
+    <string name="end">End</string>
+
+    <!-- Non translatable -->
+    <string name="question" translatable="false">question</string>
+    <string name="position" translatable="false">position</string>
 </resources>
