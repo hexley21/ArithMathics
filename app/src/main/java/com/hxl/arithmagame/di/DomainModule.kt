@@ -1,5 +1,6 @@
 package com.hxl.arithmagame.di
 
+import com.hxl.domain.repository.CustomRepository
 import com.hxl.domain.repository.PreferenceRepository
 import com.hxl.domain.repository.QuestionRepository
 import com.hxl.domain.usecase.prefs.*
@@ -59,6 +60,18 @@ class DomainModule{
     @Provides
     fun provideQuestion(questionRepository: QuestionRepository): GetQuestion {
         return GetQuestion(questionRepository)
+    }
+    // endregion
+
+    // region custom
+    @Provides
+    fun provideGetCustom(customRepository: CustomRepository): GetCustom {
+        return GetCustom(customRepository)
+    }
+
+    @Provides
+    fun provideSaveCustom(customRepository: CustomRepository): SaveCustom {
+        return SaveCustom(customRepository)
     }
     // endregion
 }
