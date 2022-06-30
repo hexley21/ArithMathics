@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.hxl.arithmagame.databinding.FragmentQuestionBinding
 
-class QuestionFragment: Fragment() {
+class QuestionFragment : Fragment() {
     private lateinit var binding: FragmentQuestionBinding
 
     override fun onCreateView(
@@ -21,6 +21,7 @@ class QuestionFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.tvQuestion.text = arguments?.getString("question") ?: "Null"
+        binding.tvQuestion.text =
+            arguments?.getString("question")?.replace("*", "×")?.replace("/", "÷") ?: "Null"
     }
 }
