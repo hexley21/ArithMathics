@@ -38,4 +38,25 @@
     <string name="others_soon">დანარჩენი მალე…</string>
     <string name="continue_">გაგრძელება</string>
     <string name="language_attention">თქვენ შეგიძლიათ შეცვალოთ ენა ნებისმიერ დროს მენიუში</string>
+
+    <!-- Custom -->
+    <string name="levels">თამაშები</string>
+    <string name="operations">ოპერაციები</string>
+    <string name="num_range">რიცხვების დიაპაზონი</string>
+
+    <string name="addition">მიმატება (+)</string>
+    <string name="subtraction">გამოკლება (-)</string>
+    <string name="multiplication">გამრავლება (×)</string>
+    <string name="division">გაყოფა (÷)</string>
+    <string name="attention_custom">მინიმუმ 1 ოპერატორი უნდა იყოს არჩეული</string>
+
+    <!-- Game -->
+    <string name="answer">პასუხი</string>
+    <string name="next">შემდეგი</string>
+    <string name="finish">დასრულება</string>
+    <string name="end">შეწყვეტა</string>
+
+    <!-- Result -->
+    <string name="correct">სწორია</string>
+    <string name="wrong">არასწორია</string>
 </resources>

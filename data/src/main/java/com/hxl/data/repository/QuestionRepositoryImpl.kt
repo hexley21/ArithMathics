@@ -9,15 +9,15 @@ class QuestionRepositoryImpl : QuestionRepository {
 
     override fun generateQuestion(
         operations: Int,
-        numberRange: Int,
+        numberRange: IntRange,
         operators: Array<String>
     ): Question {
         var question = ""
         var expression: Double
         while (true){
-            for (i in 1 until operations){
-                question += "${(0..numberRange).random()}"
-                if (i < operations-1){
+            for (i in 0..operations){
+                question += "${numberRange.random()}"
+                if (i < operations){
                     question += " ${operators[(operators.indices).random()]} "
                 }
             }

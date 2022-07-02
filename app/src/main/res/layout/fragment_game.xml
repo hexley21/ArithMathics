@@ -1,38 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tv_question"
+    <Button
+        android:id="@+id/btn_end"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:text="question"
-        android:textAlignment="center"
-        android:textSize="24sp"
+        android:layout_margin="20dp"
+        android:backgroundTint="?attr/colorError"
+        android:text="@string/end"
+        android:textColor="?attr/colorOnError"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_answer"
+        android:id="@+id/tv_position"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="answer"
-        android:textSize="24sp"
+        android:layout_margin="20dp"
+        android:text="@string/position"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/game_pager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_question" />
+        app:layout_constraintTop_toTopOf="@+id/btn_end" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/game_pager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/tf_answer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_end" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tf_answer"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:hint="@string/answer"
+        app:layout_constraintBottom_toTopOf="@+id/btn_answer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ti_answer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberSigned|numberDecimal" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/btn_generate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
-        android:text="Generate"
+        android:id="@+id/btn_answer"
+        android:text="@string/continue_"
+        android:layout_margin="30dp"
+        style="@style/Default_Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../../layout/custom_preview.xml" value="0.11660671462829736" />
         <entry key="..\:/Users/Hexley21/Documents/Arithma_Game_Kotlin/app/src/main/res/drawable/ic_lambda.xml" value="0.153" />
         <entry key="..\:/Users/Hexley21/Documents/Arithma_Game_Kotlin/app/src/main/res/drawable/ic_splash.xml" value="0.1775" />
         <entry key="..\:/Users/Hexley21/Documents/Arithma_Game_Kotlin/app/src/main/res/layout/activity_main.xml" value="0.28888888888888886" />
@@ -14,6 +15,14 @@
         <entry key="..\:/Users/Hexley21/Documents/Arithma_Game_Kotlin/app/src/main/res/menu/res_sort.xml" value="0.28888888888888886" />
         <entry key="..\:/Users/Hexley21/Documents/Arithma_Game_Kotlin/app/src/main/res/menu/top_menu.xml" value="0.28888888888888886" />
         <entry key="..\:/Users/Hexley21/Documents/Arithma_Game_Kotlin/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.184" />
+        <entry key="app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.1945" />
+        <entry key="app/src/main/res/layout/fragment_custom.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_game.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_menu.xml" value="0.17028985507246377" />
+        <entry key="app/src/main/res/layout/fragment_question.xml" value="0.17028985507246377" />
+        <entry key="app/src/main/res/layout/fragment_result.xml" value="0.19375" />
+        <entry key="app/src/main/res/layout/fragment_welcome.xml" value="0.19375" />
+        <entry key="app/src/main/res/layout/item_result.xml" value="0.25" />
       </map>
     </option>
   </component>

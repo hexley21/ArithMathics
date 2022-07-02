@@ -12,6 +12,7 @@ import androidx.fragment.app.viewModels
 import com.hxl.arithmagame.R
 import com.hxl.arithmagame.databinding.FragmentMenuBinding
 import com.hxl.arithmagame.presentation.activity.MainActivity
+import com.hxl.arithmagame.presentation.fragment.custom.CustomFragment
 import com.hxl.arithmagame.presentation.fragment.dialogs.language.LanguageDialog
 import com.hxl.arithmagame.presentation.fragment.dialogs.theme.ThemeDialog
 import com.hxl.arithmagame.presentation.fragment.game.GameFragment
@@ -76,7 +77,12 @@ class MenuFragment : Fragment() {
         }
 
         binding.btnStart.setOnClickListener {
-            (requireActivity() as MainActivity).replaceFragment(GameFragment(), GameFragment.TAG)
+            if (vm.mode != 3){
+                (requireActivity() as MainActivity).replaceFragment(GameFragment(), GameFragment.TAG)
+            }
+            else {
+                (requireActivity() as MainActivity).replaceFragment(CustomFragment(), CustomFragment.TAG)
+            }
         }
         return binding.root
     }

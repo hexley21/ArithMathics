@@ -17,4 +17,31 @@
     <style name="DialogTextAppearance" parent="TextAppearance.Material3.BodyLarge">
         <item name="android:textSize">18sp</item>
     </style>
+
+    <style name="Default_Button" parent="Widget.Material3.Button">
+        <item name="android:layout_height">64dp</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="textAllCaps">true</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Finish_Button" parent="Default_Button">
+        <item name="android:textColor">?attr/colorOnTertiaryContainer</item>
+        <item name="android:backgroundTint">?attr/colorTertiaryContainer</item>
+
+    </style>
+    <style name="Main_Button" parent="Default_Button">
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+        <item name="android:backgroundTint">?attr/colorPrimary</item>
+    </style>
+
+    <style name="Default_Card_text" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+    <style name="Correct_card_text" parent="Default_Card_text">
+        <item name="android:textColor">?attr/colorOnTertiaryContainer</item>
+    </style>
 </resources>
