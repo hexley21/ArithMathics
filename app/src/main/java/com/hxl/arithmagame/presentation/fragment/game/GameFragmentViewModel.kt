@@ -14,7 +14,8 @@ class GameFragmentViewModel @Inject constructor(
     private val getMode: GetMode,
     private val getCustom: GetCustom,
 ) : ViewModel() {
-    val quantity = when (getMode()) {
+
+    val quantity: Int = when (getMode()) {
         1 -> GetQuestion.medium
         2 -> GetQuestion.hard
         3 -> getCustom().levels
@@ -22,7 +23,7 @@ class GameFragmentViewModel @Inject constructor(
     }
 
     fun generateQuestions(): Array<Question> {
-        return when(getMode()){
+        return when (getMode()) {
             1 -> mediumQuestions()
             2 -> hardQuestions()
             3 -> customQuestion()
@@ -31,21 +32,21 @@ class GameFragmentViewModel @Inject constructor(
     }
 
     private fun easyQuestions(): Array<Question> {
-        return Array(quantity){getQuestion.easy()}
+        return Array(GetQuestion.easy) { getQuestion.easy() }
     }
 
     private fun mediumQuestions(): Array<Question> {
-        return Array(quantity){getQuestion.medium()}
+        return Array(GetQuestion.medium) { getQuestion.medium() }
     }
 
     private fun hardQuestions(): Array<Question> {
-        return Array(quantity){getQuestion.hard()}
+        return Array(GetQuestion.hard) { getQuestion.hard() }
     }
 
     private fun customQuestion(): Array<Question> {
         val operations = getCustom().operations
         val numberRange = getCustom().numberRange
         val operators = getCustom().operators
-        return Array(quantity){getQuestion(operations, numberRange, operators)}
+        return Array(getCustom().levels) { getQuestion(operations, numberRange, operators) }
     }
 }

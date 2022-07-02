@@ -55,4 +55,8 @@
     <string name="next">შემდეგი</string>
     <string name="finish">დასრულება</string>
     <string name="end">შეწყვეტა</string>
+
+    <!-- Result -->
+    <string name="correct">სწორია</string>
+    <string name="wrong">არასწორია</string>
 </resources>
