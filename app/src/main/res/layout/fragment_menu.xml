@@ -27,14 +27,13 @@
 
         </com.google.android.material.appbar.AppBarLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center_horizontal"
         android:padding="30dp">
-
-
 
         <TextView
             android:id="@+id/tv_title"
@@ -107,14 +106,10 @@
                 android:textSize="20sp" />
         </RadioGroup>
 
-
         <Button
             android:id="@+id/btn_start"
-            android:layout_width="0dp"
-            android:layout_height="64dp"
+            style="@style/Default_Button"
             android:text="@string/start"
-            android:textAllCaps="true"
-            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
