@@ -24,16 +24,15 @@ class ResultsRecyclerAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-
+        val context = holder.binding.root.context
         val question = questions[position]
         val answer =
             if (answers[position] == "") "∅" else answers[position]
         holder.binding.tvResQuestion.text = "${question.question} = ${question.answer}"
-        holder.binding.tvResAnswer.text = "${holder.binding.tvResAnswer.text}: $answer"
+        holder.binding.tvResAnswer.text = "${context.resources.getString(R.string.answer)}: $answer"
 
 
         if (corrects[position]) {
-            val context = holder.binding.root.context
             val typedValue = TypedValue()
             holder.binding.tvResult.text = context.resources.getString(R.string.correct)
             context.theme.resolveAttribute(com.google.android.material.R.attr.colorTertiaryContainer, typedValue, true)
