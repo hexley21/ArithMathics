@@ -33,4 +33,8 @@ class GameHistoryRecyclerAdapter(private val gameHistory: Stack<GameResult>) :
     override fun getItemCount(): Int {
         return gameHistory.size
     }
+
+    override fun getItemViewType(position: Int): Int {
+        return position
+    }
 }

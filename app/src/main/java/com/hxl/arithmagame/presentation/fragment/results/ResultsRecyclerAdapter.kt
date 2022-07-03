@@ -47,4 +47,8 @@ class ResultsRecyclerAdapter(
         return questions.size
     }
 
+    override fun getItemViewType(position: Int): Int {
+        return position
+    }
+
 }
