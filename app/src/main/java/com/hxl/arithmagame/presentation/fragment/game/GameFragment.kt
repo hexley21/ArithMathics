@@ -7,13 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.airbnb.paris.extensions.style
 import com.hxl.arithmagame.R
 import com.hxl.arithmagame.databinding.FragmentGameBinding
 import com.hxl.arithmagame.presentation.activity.MainActivity
-import com.hxl.arithmagame.presentation.fragment.question.QuestionFragment
 import com.hxl.arithmagame.presentation.fragment.results.ResultFragmentViewModel
 import com.hxl.arithmagame.presentation.fragment.results.ResultsFragment
 import com.hxl.domain.models.Question
@@ -46,7 +44,7 @@ class GameFragment : Fragment() {
         val gamePage: ViewPager2 = binding.gamePager
         val questionStrings = Array(vm.quantity) { questionArray[it].question }
         binding.btnAnswer.style(R.style.Default_Button)
-        gamePage.adapter = ViewPagerAdapter(this, vm.quantity, questionStrings)
+        gamePage.adapter = GamePagerAdapter(this, vm.quantity, questionStrings)
 
         startTimer()
 
@@ -104,21 +102,4 @@ class GameFragment : Fragment() {
         timerTask.cancel()
     }
 
-}
-
-class ViewPagerAdapter(
-    fragment: Fragment,
-    private val quantity: Int,
-    private val question: Array<String>
-) : FragmentStateAdapter(fragment) {
-
-    override fun getItemCount(): Int = quantity
-
-    override fun createFragment(position: Int): Fragment {
-        val fragment = QuestionFragment()
-        fragment.arguments = Bundle().apply {
-            putString("question", question[position])
-        }
-        return fragment
-    }
 }
