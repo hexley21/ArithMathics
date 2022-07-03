@@ -71,4 +71,11 @@
     <string name="time_spent">Time: </string>
     <string name="difficulty">Difficulty: </string>
     <string name="corrects">Corrects: </string>
+
+    <!-- Difficulties -->
+    <string name="beginner">Beginner</string>
+    <string name="expert">Expert</string>
+    <string name="extreme">Extreme</string>
+    <string name="impossible">Impossible</string>
+    <string name="calculator">Calculator</string>
 </resources>

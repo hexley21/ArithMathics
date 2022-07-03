@@ -13,14 +13,14 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class GameHistoryFragment : Fragment() {
 
-    companion object{
-        const val TAG: String = "game_history"
-    }
-
     private val vm: GameHistoryFragmentViewModel by viewModels()
     lateinit var binding: FragmentGameHistoryBinding
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         binding = FragmentGameHistoryBinding.inflate(layoutInflater, container, false)
         return binding.root
     }

@@ -64,4 +64,11 @@
     <string name="time_spent">დრო: </string>
     <string name="difficulty">სირთულე: </string>
     <string name="corrects">სწორები: </string>
+
+    <!-- Difficulties -->
+    <string name="beginner">დამწყები</string>
+    <string name="expert">ექსპერტი</string>
+    <string name="extreme">ექსტრემალური</string>
+    <string name="impossible">შეუძლებელი</string>
+    <string name="calculator">კალკულატორი</string>
 </resources>
