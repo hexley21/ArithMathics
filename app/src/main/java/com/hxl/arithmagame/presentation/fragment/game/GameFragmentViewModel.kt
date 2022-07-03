@@ -7,6 +7,7 @@ import com.hxl.domain.usecase.prefs.GetMode
 import com.hxl.domain.usecase.questions.GetQuestion
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
+import kotlin.math.roundToInt
 
 @HiltViewModel
 class GameFragmentViewModel @Inject constructor(
@@ -49,4 +50,12 @@ class GameFragmentViewModel @Inject constructor(
         val operators = getCustom().operators
         return Array(getCustom().levels) { getQuestion(operations, numberRange, operators) }
     }
+
+    fun getTimerText(time: Double): String {
+        val rounded = time.roundToInt()
+        val seconds = rounded % 86400 % 3600 % 60
+        val minutes = rounded / 60
+        return String.format("%02d", minutes) + " : " + String.format("%02d", seconds)
+    }
+
 }
