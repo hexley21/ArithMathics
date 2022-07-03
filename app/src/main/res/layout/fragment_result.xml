@@ -22,6 +22,15 @@
                 app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
                 app:titleCentered="true" />
 
+            <TextView
+                android:id="@+id/tv_res_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/android:colorBackground"
+                android:gravity="center"
+                android:paddingBottom="6dp"
+                android:text="@string/time_spent" />
+
         </com.google.android.material.appbar.AppBarLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

@@ -21,13 +21,14 @@ class GameHistoryRecyclerAdapter(private val gameHistory: Stack<GameResult>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val gameResult = gameHistory[position]
         val context = holder.binding.root.context
-        holder.binding.tvHisDifficulty.text = "${context.getString(R.string.difficulty)} ${
-            GameResultFormatter.getDifficultyText(gameResult.difficulty, context.resources)
-        }"
+
+        holder.binding.tvHisDifficulty.text =
+            "${context.getString(R.string.difficulty)} : ${GameResultFormatter.getDifficultyText(gameResult.difficulty, context.resources)}"
         holder.binding.tvHisLevels.text =
-            "${context.getString(R.string.corrects)} ${gameResult.corrects}/${gameResult.levels}"
+            "${context.getString(R.string.corrects)} : ${gameResult.corrects}/${gameResult.levels}"
         holder.binding.tvHisTime.text =
-            "${context.getString(R.string.time_spent)} ${GameResultFormatter.getTimerText(gameResult.time)}"
+            "${context.getString(R.string.time)} - ${GameResultFormatter.getTimerText(gameResult.time)}"
+
         holder.binding.cvHistory.setCardBackgroundColor(GameResultFormatter.getDifficultyColor(gameResult.difficulty, context))
     }
 
