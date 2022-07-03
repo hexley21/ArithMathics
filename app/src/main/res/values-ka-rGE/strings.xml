@@ -59,4 +59,9 @@
     <!-- Result -->
     <string name="correct">სწორია</string>
     <string name="wrong">არასწორია</string>
+
+    <!-- Game History -->
+    <string name="time_spent">დრო: </string>
+    <string name="difficulty">სირთულე: </string>
+    <string name="corrects">სწორები: </string>
 </resources>
