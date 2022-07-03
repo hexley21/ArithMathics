@@ -26,6 +26,7 @@ class GameFragment : Fragment() {
         const val TAG: String = "game_fragment"
     }
 
+    var time = 0.0
     private lateinit var questionArray: Array<Question>
     private lateinit var answerArray: Array<String>
 
@@ -81,7 +82,6 @@ class GameFragment : Fragment() {
     }
 
     private fun startTimer() {
-        var time = 0.0
         val timerTask = object : TimerTask() {
             override fun run() {
                 requireActivity().runOnUiThread {
@@ -97,6 +97,7 @@ class GameFragment : Fragment() {
         val resultVm: ResultFragmentViewModel by activityViewModels()
         resultVm.answers = answerArray
         resultVm.questions = questionArray
+        resultVm.time = time
         (requireActivity() as MainActivity).replaceFragment(ResultsFragment())
     }
 }

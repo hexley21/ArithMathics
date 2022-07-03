@@ -1,6 +1,7 @@
 package com.hxl.arithmagame.presentation.fragment.game
 
 import androidx.lifecycle.ViewModel
+import com.hxl.domain.models.GameResult
 import com.hxl.domain.models.Question
 import com.hxl.domain.usecase.prefs.GetCustom
 import com.hxl.domain.usecase.prefs.GetMode
@@ -52,10 +53,7 @@ class GameFragmentViewModel @Inject constructor(
     }
 
     fun getTimerText(time: Double): String {
-        val rounded = time.roundToInt()
-        val seconds = rounded % 86400 % 3600 % 60
-        val minutes = rounded / 60
-        return String.format("%02d", minutes) + " : " + String.format("%02d", seconds)
+        return GameResult.getTimerText(time)
     }
 
 }

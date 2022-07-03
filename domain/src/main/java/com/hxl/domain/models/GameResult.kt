@@ -1,6 +1,8 @@
 package com.hxl.domain.models
 
-class GameResult(val difficulty: Int, val levels: Int, val corrects: Int){
+import kotlin.math.roundToInt
+
+class GameResult(val difficulty: Int, val levels: Int, val corrects: Int, val time: Double){
     companion object{
         fun getDifficulty(difficulty: Int): String{
             return when(difficulty){
@@ -13,6 +15,12 @@ class GameResult(val difficulty: Int, val levels: Int, val corrects: Int){
                 in 200..252 -> "Impossible"
                 else -> "Calculator"
             }
+        }
+        fun getTimerText(time: Double): String {
+            val rounded = time.roundToInt()
+            val seconds = rounded % 86400 % 3600 % 60
+            val minutes = rounded / 60
+            return String.format("%02d", minutes) + " : " + String.format("%02d", seconds)
         }
     }
 }
