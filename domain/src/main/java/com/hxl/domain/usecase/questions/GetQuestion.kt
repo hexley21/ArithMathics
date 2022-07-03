@@ -6,9 +6,20 @@ import com.hxl.domain.repository.QuestionRepository
 class GetQuestion(private val questionRepository: QuestionRepository) {
 
     companion object{
-        const val easy = 5
-        const val medium = 7
-        const val hard = 10
+        const val easyLevels = 5
+        const val easyRange = 10
+        const val easyOperations = 3
+        const val easyOperators = 2
+
+        const val mediumLevels = 5
+        const val mediumRange = 30
+        const val mediumOperations = 5
+        const val mediumOperators = 3
+
+        const val hardLevels = 5
+        const val hardRange = 100
+        const val hardOperations = 5
+        const val hardOperators = 4
     }
     operator fun invoke(
         operations: Int,

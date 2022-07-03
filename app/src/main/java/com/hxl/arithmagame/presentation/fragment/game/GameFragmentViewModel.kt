@@ -16,10 +16,10 @@ class GameFragmentViewModel @Inject constructor(
 ) : ViewModel() {
 
     val quantity: Int = when (getMode()) {
-        1 -> GetQuestion.medium
-        2 -> GetQuestion.hard
+        1 -> GetQuestion.mediumLevels
+        2 -> GetQuestion.hardLevels
         3 -> getCustom().levels
-        else -> GetQuestion.easy
+        else -> GetQuestion.easyLevels
     }
 
     fun generateQuestions(): Array<Question> {
@@ -32,15 +32,15 @@ class GameFragmentViewModel @Inject constructor(
     }
 
     private fun easyQuestions(): Array<Question> {
-        return Array(GetQuestion.easy) { getQuestion.easy() }
+        return Array(GetQuestion.easyLevels) { getQuestion.easy() }
     }
 
     private fun mediumQuestions(): Array<Question> {
-        return Array(GetQuestion.medium) { getQuestion.medium() }
+        return Array(GetQuestion.mediumLevels) { getQuestion.medium() }
     }
 
     private fun hardQuestions(): Array<Question> {
-        return Array(GetQuestion.hard) { getQuestion.hard() }
+        return Array(GetQuestion.hardLevels) { getQuestion.hard() }
     }
 
     private fun customQuestion(): Array<Question> {
