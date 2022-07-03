@@ -22,11 +22,9 @@ import java.util.*
 
 @AndroidEntryPoint
 class GameFragment : Fragment() {
-    companion object {
-        const val TAG: String = "game_fragment"
-    }
 
-    var time = 0.0
+    private var time = 0.0
+    private lateinit var timerTask: TimerTask
     private lateinit var questionArray: Array<Question>
     private lateinit var answerArray: Array<String>
 
@@ -82,7 +80,7 @@ class GameFragment : Fragment() {
     }
 
     private fun startTimer() {
-        val timerTask = object : TimerTask() {
+        timerTask = object : TimerTask() {
             override fun run() {
                 requireActivity().runOnUiThread {
                     time++
@@ -100,6 +98,12 @@ class GameFragment : Fragment() {
         resultVm.time = time
         (requireActivity() as MainActivity).replaceFragment(ResultsFragment())
     }
+
+    override fun onStop() {
+        super.onStop()
+        timerTask.cancel()
+    }
+
 }
 
 class ViewPagerAdapter(
