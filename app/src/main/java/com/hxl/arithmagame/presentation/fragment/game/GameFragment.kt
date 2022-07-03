@@ -62,7 +62,6 @@ class GameFragment : Fragment() {
                     binding.btnAnswer.style(R.style.Finish_Button)
                 } else {
                     binding.btnAnswer.text = resources.getString(R.string.continue_)
-                    binding.btnAnswer.style(R.style.Default_Button)
                 }
             }
         })

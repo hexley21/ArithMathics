@@ -1,8 +1,11 @@
 package com.hxl.arithmagame.di
 
 import com.hxl.domain.repository.CustomRepository
+import com.hxl.domain.repository.GameHistoryRepository
 import com.hxl.domain.repository.PreferenceRepository
 import com.hxl.domain.repository.QuestionRepository
+import com.hxl.domain.usecase.game_history.GetGameHistory
+import com.hxl.domain.usecase.game_history.SaveGameHistory
 import com.hxl.domain.usecase.prefs.*
 import com.hxl.domain.usecase.questions.GetQuestion
 import dagger.Module
@@ -72,6 +75,18 @@ class DomainModule{
     @Provides
     fun provideSaveCustom(customRepository: CustomRepository): SaveCustom {
         return SaveCustom(customRepository)
+    }
+    // endregion
+
+    // region game history
+    @Provides
+    fun provideGameHistory(gameHistoryRepository: GameHistoryRepository): GetGameHistory{
+        return GetGameHistory(gameHistoryRepository)
+    }
+
+    @Provides
+    fun provideSaveGameHistory(gameHistoryRepository: GameHistoryRepository): SaveGameHistory {
+        return SaveGameHistory(gameHistoryRepository)
     }
     // endregion
 }

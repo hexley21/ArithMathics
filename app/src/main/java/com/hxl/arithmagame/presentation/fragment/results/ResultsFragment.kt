@@ -34,8 +34,4 @@ class ResultsFragment : Fragment() {
         binding.topResultsBar.title = "${vm.corrects}/${vm.answers.size}"
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        requireActivity().viewModelStore.clear()
-    }
 }

@@ -65,4 +65,9 @@
     <!-- Result -->
     <string name="correct">Correct</string>
     <string name="wrong">Wrong</string>
+
+    <!-- Game History -->
+    <string name="time_spent">Time: </string>
+    <string name="difficulty">Difficulty: </string>
+    <string name="corrects">Corrects: </string>
 </resources>

@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.ContextWrapper
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -19,7 +20,7 @@ import com.hxl.data.repository.PreferenceRepositoryImpl
 import com.hxl.data.storage.sharedprefs.SharedPreferenceStorage
 import com.hxl.domain.models.Custom
 import dagger.hilt.android.AndroidEntryPoint
-import java.lang.Exception
+import java.util.*
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -39,13 +40,17 @@ class MainActivity : AppCompatActivity() {
         installSplashScreen().apply { setKeepOnScreenCondition { false } }
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(R.layout.activity_main)
-        try{
-            vm.custom =  vm.custom
-        }
-        catch (e: Exception){
+        try {
+            Log.e("DATA_TEST", vm.custom.levels.toString())
+        } catch (e: Exception) {
             vm.custom = Custom(1, 1, 1..100, arrayOf("+", "-", "*", "/"))
         }
-        when(vm.welcome){
+        try {
+            Log.e("DATA_TEST", vm.gameHistory.size.toString())
+        } catch (e: Exception) {
+            vm.gameHistory = Stack()
+        }
+        when (vm.welcome) {
             false -> replaceFragment(MenuFragment())
             else -> replaceFragment(WelcomeFragment())
         }
@@ -68,11 +73,28 @@ class MainActivity : AppCompatActivity() {
         transaction.commit()
     }
 
-    fun showDialog(dialog: AppCompatDialogFragment, tag: String){
+    fun replaceFragmentReverse(
+        fragment: Fragment?,
+        backStackTag: String? = null,
+        container: Int = R.id.main_container
+    ) {
+        val transaction = supportFragmentManager.beginTransaction().setCustomAnimations(
+            R.anim.enter_from_left,
+            R.anim.exit_to_right,
+            R.anim.enter_from_right,
+            R.anim.exit_to_left
+        ).replace(container, fragment!!)
+        if (backStackTag != null) {
+            transaction.addToBackStack(backStackTag)
+        }
+        transaction.commit()
+    }
+
+    fun showDialog(dialog: AppCompatDialogFragment, tag: String) {
         dialog.show(supportFragmentManager, tag)
     }
 
-    fun restartActivity(){
+    fun restartActivity() {
         startActivity(Intent(this, this::class.java))
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
         finish()

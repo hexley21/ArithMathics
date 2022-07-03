@@ -16,6 +16,7 @@ import com.hxl.arithmagame.presentation.fragment.custom.CustomFragment
 import com.hxl.arithmagame.presentation.fragment.dialogs.language.LanguageDialog
 import com.hxl.arithmagame.presentation.fragment.dialogs.theme.ThemeDialog
 import com.hxl.arithmagame.presentation.fragment.game.GameFragment
+import com.hxl.arithmagame.presentation.fragment.game_history.GameHistoryFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -29,6 +30,7 @@ class MenuFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentMenuBinding.inflate(layoutInflater, container, false)
+
         binding.topAppBar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.theme -> {
@@ -60,7 +62,12 @@ class MenuFragment : Fragment() {
                 else -> false
             }
         }
-        when(vm.mode){
+
+        binding.topAppBar.setNavigationOnClickListener {
+            (requireActivity() as MainActivity).replaceFragmentReverse(GameHistoryFragment(), GameHistoryFragment.TAG)
+        }
+
+        when (vm.mode) {
             1 -> binding.rbMedium.isChecked = true
             2 -> binding.rbHard.isChecked = true
             3 -> binding.rbCustom.isChecked = true
@@ -68,7 +75,7 @@ class MenuFragment : Fragment() {
         }
 
         binding.radioGroup.setOnCheckedChangeListener { _, i ->
-            when(i){
+            when (i) {
                 binding.rbMedium.id -> vm.mode = 1
                 binding.rbHard.id -> vm.mode = 2
                 binding.rbCustom.id -> vm.mode = 3
@@ -77,19 +84,25 @@ class MenuFragment : Fragment() {
         }
 
         binding.btnStart.setOnClickListener {
-            if (vm.mode != 3){
-                (requireActivity() as MainActivity).replaceFragment(GameFragment(), GameFragment.TAG)
-            }
-            else {
-                (requireActivity() as MainActivity).replaceFragment(CustomFragment(), CustomFragment.TAG)
+            if (vm.mode != 3) {
+                (requireActivity() as MainActivity).replaceFragment(
+                    GameFragment(),
+                    GameFragment.TAG
+                )
+            } else {
+                (requireActivity() as MainActivity).replaceFragment(
+                    CustomFragment(),
+                    CustomFragment.TAG
+                )
             }
         }
+
         return binding.root
     }
 
     override fun onStop() {
         super.onStop()
-        if (themeDialog.isStateSaved || themeDialog.isAdded || themeDialog.isVisible){
+        if (themeDialog.isStateSaved || themeDialog.isAdded || themeDialog.isVisible) {
             themeDialog.dismissAllowingStateLoss()
         }
     }
