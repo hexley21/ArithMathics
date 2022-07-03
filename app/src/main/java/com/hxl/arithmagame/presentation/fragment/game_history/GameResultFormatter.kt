@@ -1,12 +1,24 @@
 package com.hxl.arithmagame.presentation.fragment.game_history
 
+import android.content.Context
 import android.content.res.Resources
+import android.util.TypedValue
 import com.hxl.arithmagame.R
 import kotlin.math.roundToInt
 
 class GameResultFormatter {
     companion object {
-        fun getDifficulty(difficulty: Int, resources: Resources): String {
+        fun getDifficultyColor(difficulty: Int, context: Context): Int {
+            val typedValue = TypedValue()
+            when (difficulty) {
+                in 23..149 -> context.theme.resolveAttribute(com.google.android.material.R.attr.colorPrimaryContainer, typedValue, true)
+                in 150..254 -> context.theme.resolveAttribute(com.google.android.material.R.attr.colorErrorContainer, typedValue, true)
+                else -> context.theme.resolveAttribute(com.google.android.material.R.attr.colorTertiaryContainer, typedValue, true)
+            }
+            return typedValue.data
+        }
+
+        fun getDifficultyText(difficulty: Int, resources: Resources): String {
             return when (difficulty) {
                 in 0..2 -> resources.getString(R.string.beginner)
                 in 3..11 -> resources.getString(R.string.easy)
