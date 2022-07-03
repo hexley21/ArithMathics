@@ -64,7 +64,7 @@ class MenuFragment : Fragment() {
         }
 
         binding.topAppBar.setNavigationOnClickListener {
-            (requireActivity() as MainActivity).replaceFragmentReverse(GameHistoryFragment(), GameHistoryFragment.TAG)
+            (requireActivity() as MainActivity).replaceFragment(GameHistoryFragment(), true)
         }
 
         when (vm.mode) {
@@ -85,15 +85,9 @@ class MenuFragment : Fragment() {
 
         binding.btnStart.setOnClickListener {
             if (vm.mode != 3) {
-                (requireActivity() as MainActivity).replaceFragment(
-                    GameFragment(),
-                    GameFragment.TAG
-                )
+                (requireActivity() as MainActivity).replaceFragment(GameFragment(), true)
             } else {
-                (requireActivity() as MainActivity).replaceFragment(
-                    CustomFragment(),
-                    CustomFragment.TAG
-                )
+                (requireActivity() as MainActivity).replaceFragment(CustomFragment(), true)
             }
         }
 

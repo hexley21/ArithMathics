@@ -7,6 +7,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hxl.arithmagame.databinding.FragmentResultBinding
+import com.hxl.arithmagame.presentation.activity.MainActivity
+import com.hxl.arithmagame.presentation.fragment.game.GameFragment
+import com.hxl.arithmagame.presentation.fragment.menu.MenuFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -26,7 +29,7 @@ class ResultsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.topResultsBar.setNavigationOnClickListener {
-            parentFragmentManager.popBackStack()
+            (requireActivity() as MainActivity).replaceFragment(MenuFragment())
         }
         val rvResults = binding.rvResults
         rvResults.layoutManager = LinearLayoutManager(requireContext())

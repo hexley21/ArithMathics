@@ -61,6 +61,7 @@
     <!-- Non translatable -->
     <string name="question" translatable="false">question</string>
     <string name="position" translatable="false">position</string>
+    <string name="timer" translatable="false">00:00</string>
 
     <!-- Result -->
     <string name="correct">Correct</string>

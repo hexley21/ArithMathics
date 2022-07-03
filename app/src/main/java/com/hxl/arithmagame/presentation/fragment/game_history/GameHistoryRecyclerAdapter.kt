@@ -23,7 +23,7 @@ class GameHistoryRecyclerAdapter(private val gameHistory: Stack<GameResult>) :
         val context = holder.binding.root.context
         holder.binding.tvHisDifficulty.text = "${context.getString(R.string.difficulty)} ${GameResult.getDifficulty(gameResult.difficulty)}"
         holder.binding.tvHisLevels.text = "${context.getString(R.string.corrects)} ${gameResult.corrects}/${gameResult.levels}"
-        holder.binding.tvHisTime.text = "${context.getString(R.string.time_spent)} ${gameResult.difficulty}"
+        holder.binding.tvHisTime.text = "${context.getString(R.string.time_spent)} ${GameResult.getTimerText(gameResult.time)}"
     }
 
     override fun getItemCount(): Int {

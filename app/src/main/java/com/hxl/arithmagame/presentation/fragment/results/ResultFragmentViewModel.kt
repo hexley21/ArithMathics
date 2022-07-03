@@ -23,6 +23,7 @@ class ResultFragmentViewModel @Inject constructor(
     lateinit var questions: Array<Question>
     lateinit var answers: Array<String>
     var corrects: Int = 0
+    var time: Double = 0.0
 
     fun compareAnswers(): Array<Boolean> {
         val correctArray = Array(questions.size) { questions[it].answer == answers[it] }
@@ -52,7 +53,7 @@ class ResultFragmentViewModel @Inject constructor(
         }
         val stack = getGameHistory()
         val difficulty = floor(log(questions.size.toFloat(), 100f) * log(range.toFloat(), 2f) * (operators * operations) / 2).toInt()
-        stack.push(GameResult(difficulty, questions.size, corrects))
+        stack.push(GameResult(difficulty, questions.size, corrects, time))
         saveGameHistory(stack)
     }
 }

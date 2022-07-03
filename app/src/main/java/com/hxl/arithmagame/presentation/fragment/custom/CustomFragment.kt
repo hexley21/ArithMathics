@@ -88,10 +88,8 @@ class CustomFragment : Fragment() {
             }
             if (operators.isNotEmpty()) {
                 vm.custom = Custom(levels, operations, rangeFrom..rangeTo, operators.toTypedArray())
-                (requireActivity() as MainActivity).replaceFragment(
-                    GameFragment(),
-                    GameFragment.TAG
-                )
+
+                (requireActivity() as MainActivity).replaceFragment(GameFragment(), true)
             } else {
                 Toast.makeText(
                     requireContext(),

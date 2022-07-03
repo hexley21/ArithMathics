@@ -1,12 +1,14 @@
 package com.hxl.arithmagame.presentation.fragment.game
 
 import androidx.lifecycle.ViewModel
+import com.hxl.domain.models.GameResult
 import com.hxl.domain.models.Question
 import com.hxl.domain.usecase.prefs.GetCustom
 import com.hxl.domain.usecase.prefs.GetMode
 import com.hxl.domain.usecase.questions.GetQuestion
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
+import kotlin.math.roundToInt
 
 @HiltViewModel
 class GameFragmentViewModel @Inject constructor(
@@ -49,4 +51,9 @@ class GameFragmentViewModel @Inject constructor(
         val operators = getCustom().operators
         return Array(getCustom().levels) { getQuestion(operations, numberRange, operators) }
     }
+
+    fun getTimerText(time: Double): String {
+        return GameResult.getTimerText(time)
+    }
+
 }

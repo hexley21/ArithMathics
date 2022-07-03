@@ -18,13 +18,13 @@ import com.hxl.arithmagame.presentation.fragment.results.ResultFragmentViewModel
 import com.hxl.arithmagame.presentation.fragment.results.ResultsFragment
 import com.hxl.domain.models.Question
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.*
 
 @AndroidEntryPoint
 class GameFragment : Fragment() {
-    companion object {
-        const val TAG: String = "game_fragment"
-    }
 
+    private var time = 0.0
+    private lateinit var timerTask: TimerTask
     private lateinit var questionArray: Array<Question>
     private lateinit var answerArray: Array<String>
 
@@ -48,6 +48,8 @@ class GameFragment : Fragment() {
         binding.btnAnswer.style(R.style.Default_Button)
         gamePage.adapter = ViewPagerAdapter(this, vm.quantity, questionStrings)
 
+        startTimer()
+
         gamePage.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageScrolled(
                 position: Int,
@@ -57,7 +59,7 @@ class GameFragment : Fragment() {
                 super.onPageScrolled(position, positionOffset, positionOffsetPixels)
                 binding.tvPosition.text = "${gamePage.currentItem + 1}/${vm.quantity}"
                 binding.tiAnswer.setText(answerArray[position])
-                if (gamePage.currentItem == answerArray.size-1) {
+                if (gamePage.currentItem == answerArray.size - 1) {
                     binding.btnAnswer.text = resources.getString(R.string.finish)
                     binding.btnAnswer.style(R.style.Finish_Button)
                 } else {
@@ -68,19 +70,40 @@ class GameFragment : Fragment() {
 
         binding.btnAnswer.setOnClickListener {
             answerArray[gamePage.currentItem] = binding.tiAnswer.text.toString()
-            if (gamePage.currentItem == answerArray.size-1) { endGame() }
+            if (gamePage.currentItem == answerArray.size - 1) {
+                endGame()
+            }
             gamePage.setCurrentItem(gamePage.currentItem + 1, true)
         }
 
         binding.btnEnd.setOnClickListener { endGame() }
     }
 
+    private fun startTimer() {
+        timerTask = object : TimerTask() {
+            override fun run() {
+                requireActivity().runOnUiThread {
+                    time++
+                    binding.tvTimer.text = vm.getTimerText(time)
+                }
+            }
+        }
+        Timer().scheduleAtFixedRate(timerTask, 0, 1000)
+    }
+
     private fun endGame() {
         val resultVm: ResultFragmentViewModel by activityViewModels()
         resultVm.answers = answerArray
         resultVm.questions = questionArray
+        resultVm.time = time
         (requireActivity() as MainActivity).replaceFragment(ResultsFragment())
     }
+
+    override fun onStop() {
+        super.onStop()
+        timerTask.cancel()
+    }
+
 }
 
 class ViewPagerAdapter(

@@ -11,6 +11,8 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.app.AppCompatDialogFragment
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import com.hxl.arithmagame.R
 import com.hxl.arithmagame.databinding.ActivityMainBinding
 import com.hxl.arithmagame.presentation.LanguageHelper
@@ -21,6 +23,7 @@ import com.hxl.data.storage.sharedprefs.SharedPreferenceStorage
 import com.hxl.domain.models.Custom
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
+
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -56,38 +59,20 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun replaceFragment(
-        fragment: Fragment?,
-        backStackTag: String? = null,
-        container: Int = R.id.main_container
-    ) {
-        val transaction = supportFragmentManager.beginTransaction().setCustomAnimations(
-            R.anim.enter_from_right,
-            R.anim.exit_to_left,
-            R.anim.enter_from_left,
-            R.anim.exit_to_right
-        ).replace(container, fragment!!)
-        if (backStackTag != null) {
-            transaction.addToBackStack(backStackTag)
+    fun replaceFragment(fragment: Fragment, backStack: Boolean = false) {
+        val backStateName = fragment.javaClass.name
+        val manager: FragmentManager = supportFragmentManager
+        val fragmentPopped: Boolean = manager.popBackStackImmediate(backStateName, 0)
+        if (!fragmentPopped && manager.findFragmentByTag(backStateName) == null) { //fragment not in back stack, create it.
+            val ft: FragmentTransaction = manager.beginTransaction()
+            ft.replace(R.id.main_container, fragment)
+            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+            if (!backStack) {
+                manager.popBackStack()
+            }
+            ft.addToBackStack(backStateName)
+            ft.commit()
         }
-        transaction.commit()
-    }
-
-    fun replaceFragmentReverse(
-        fragment: Fragment?,
-        backStackTag: String? = null,
-        container: Int = R.id.main_container
-    ) {
-        val transaction = supportFragmentManager.beginTransaction().setCustomAnimations(
-            R.anim.enter_from_left,
-            R.anim.exit_to_right,
-            R.anim.enter_from_right,
-            R.anim.exit_to_left
-        ).replace(container, fragment!!)
-        if (backStackTag != null) {
-            transaction.addToBackStack(backStackTag)
-        }
-        transaction.commit()
     }
 
     fun showDialog(dialog: AppCompatDialogFragment, tag: String) {
@@ -98,5 +83,13 @@ class MainActivity : AppCompatActivity() {
         startActivity(Intent(this, this::class.java))
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
         finish()
+    }
+
+    override fun onBackPressed() {
+        if (supportFragmentManager.backStackEntryCount == 1) {
+            finish()
+        } else {
+            super.onBackPressed()
+        }
     }
 }
