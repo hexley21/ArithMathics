@@ -22,6 +22,7 @@
                 style="@style/Default_Card_text"
                 android:text="@string/corrects"
                 android:textColor="?attr/colorOnErrorContainer"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -31,6 +32,7 @@
                 android:layout_marginTop="20dp"
                 android:text="@string/answer"
                 android:textColor="?attr/colorOnErrorContainer"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_res_question" />
 
@@ -39,6 +41,7 @@
                 style="@style/Default_Card_text"
                 android:text="@string/wrong"
                 android:textColor="?attr/colorOnErrorContainer"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/tv_res_answer" />
         </androidx.constraintlayout.widget.ConstraintLayout>
