@@ -2,6 +2,7 @@ package com.hxl.arithmagame.di
 
 import android.content.Context
 import com.hxl.data.repository.CustomRepositoryImpl
+import com.hxl.data.repository.GameHistoryRepositoryImpl
 import com.hxl.data.repository.PreferenceRepositoryImpl
 import com.hxl.data.repository.QuestionRepositoryImpl
 import com.hxl.data.storage.InternalStorage
@@ -9,6 +10,7 @@ import com.hxl.data.storage.PreferenceStorage
 import com.hxl.data.storage.internal.FileStorage
 import com.hxl.data.storage.sharedprefs.SharedPreferenceStorage
 import com.hxl.domain.repository.CustomRepository
+import com.hxl.domain.repository.GameHistoryRepository
 import com.hxl.domain.repository.PreferenceRepository
 import com.hxl.domain.repository.QuestionRepository
 import dagger.Module
@@ -52,4 +54,9 @@ class DataModule {
         return CustomRepositoryImpl(internalStorage)
     }
 
+    @Provides
+    @Singleton
+    fun provideGameHistoryRepository(internalStorage: InternalStorage): GameHistoryRepository {
+        return GameHistoryRepositoryImpl(internalStorage)
+    }
 }
