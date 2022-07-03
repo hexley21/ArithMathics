@@ -47,6 +47,7 @@ class GameFragment : Fragment() {
         gamePage.adapter = GamePagerAdapter(this, vm.quantity, questionStrings)
 
         startTimer()
+        time = 0.0
 
         gamePage.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageScrolled(
@@ -97,8 +98,8 @@ class GameFragment : Fragment() {
         (requireActivity() as MainActivity).replaceFragment(ResultsFragment())
     }
 
-    override fun onStop() {
-        super.onStop()
+    override fun onDestroy() {
+        super.onDestroy()
         timerTask.cancel()
     }
 
