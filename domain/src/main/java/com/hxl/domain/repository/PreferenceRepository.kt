@@ -18,4 +18,8 @@ interface PreferenceRepository{
 
     fun saveWelcome(value: Boolean)
 
+    fun getTimer(default: Boolean = false): Boolean
+
+    fun saveTimer(value: Boolean)
+
 }
