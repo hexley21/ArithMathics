@@ -79,11 +79,27 @@ class GameFragment : Fragment() {
     }
 
     private fun startTimer() {
-        timerTask = object : TimerTask() {
-            override fun run() {
-                requireActivity().runOnUiThread {
-                    time++
-                    binding.tvTimer.text = vm.getTimerText(time)
+        if (vm.getTimer()) {
+            timerTask = object : TimerTask() {
+                override fun run() {
+                    requireActivity().runOnUiThread {
+                        time++
+                        val timer = vm.time - time
+                        binding.tvTimer.text = vm.getTimerText(timer)
+                        if (time == vm.time) {
+                            endGame()
+                        }
+                    }
+                }
+            }
+        } else {
+            timerTask = object : TimerTask() {
+                override fun run() {
+                    requireActivity().runOnUiThread {
+                        time++
+                        binding.tvTimer.text = vm.getTimerText(time)
+
+                    }
                 }
             }
         }
