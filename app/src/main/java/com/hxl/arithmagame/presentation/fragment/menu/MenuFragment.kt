@@ -100,10 +100,19 @@ class MenuFragment : Fragment() {
             binding.spTimerMode.adapter = adapter
         }
 
-        binding.spTimerMode.setSelection(0, false)
+        when (vm.timer) {
+            true -> binding.spTimerMode.setSelection(1, false)
+            else -> binding.spTimerMode.setSelection(0, false)
+        }
+
         binding.spTimerMode.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {}
+                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                    when (p2) {
+                        1 -> vm.timer = true
+                        else -> vm.timer = false
+                    }
+                }
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {}
             }
