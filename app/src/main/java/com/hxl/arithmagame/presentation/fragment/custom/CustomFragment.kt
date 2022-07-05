@@ -56,7 +56,6 @@ class CustomFragment : Fragment() {
             binding.tvRange.text =
                 "$txtRange: ${slider.values[0].toInt()} - ${slider.values[1].toInt()}"
         }
-
         val txtTimer = binding.tvSlTimer.text
         timerSlider.addOnChangeListener { slider, _, _ ->
             binding.tvSlTimer.text =
@@ -65,14 +64,15 @@ class CustomFragment : Fragment() {
 
         levelsSlider.value = custom.levels.toFloat()
         operationsSlider.value = custom.operations.toFloat()
+        rangeSlider.setValues(
+            custom.numberRange.first.toFloat(),
+            custom.numberRange.last.toFloat()
+        )
+        timerSlider.value = custom.time.toFloat()
+
         timerSlider.setLabelFormatter { value: Float ->
             GameResultFormatter.getTimerText(value.toInt())
         }
-
-        val start = custom.numberRange.first.toFloat()
-        val end = custom.numberRange.last.toFloat()
-        rangeSlider.setValues(start, end)
-
 
         binding.cbOp1.isChecked = "+" in custom.operators
         binding.cbOp2.isChecked = "-" in custom.operators
@@ -80,26 +80,22 @@ class CustomFragment : Fragment() {
         binding.cbOp4.isChecked = "/" in custom.operators
 
         binding.btnStartCustom.setOnClickListener {
-            val levels = levelsSlider.value.toInt()
-            val operations = operationsSlider.value.toInt()
-            val rangeFrom = rangeSlider.values[0].toInt()
-            val rangeTo = rangeSlider.values[1].toInt()
             val operators: MutableList<String> = mutableListOf()
-            if (binding.cbOp1.isChecked) {
-                operators.add("+")
-            }
-            if (binding.cbOp2.isChecked) {
-                operators.add("-")
-            }
-            if (binding.cbOp3.isChecked) {
-                operators.add("*")
-            }
-            if (binding.cbOp4.isChecked) {
-                operators.add("/")
-            }
-            if (operators.isNotEmpty()) {
-                vm.custom = Custom(levels, operations, rangeFrom..rangeTo, operators.toTypedArray())
 
+            if (binding.cbOp1.isChecked) { operators.add("+") }
+            if (binding.cbOp2.isChecked) { operators.add("-") }
+            if (binding.cbOp3.isChecked) { operators.add("*") }
+            if (binding.cbOp4.isChecked) { operators.add("/") }
+
+            if (operators.isNotEmpty()) {
+                vm.custom =
+                    Custom(
+                        levelsSlider.value.toInt(),
+                        operationsSlider.value.toInt(),
+                        rangeSlider.values[0].toInt()..rangeSlider.values[1].toInt(),
+                        operators.toTypedArray(),
+                        timerSlider.value.toInt()
+                    )
                 (requireActivity() as MainActivity).replaceFragment(GameFragment(), true)
             } else {
                 Toast.makeText(
