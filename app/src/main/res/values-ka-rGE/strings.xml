@@ -15,6 +15,13 @@
     <string name="menu_language">ენა</string>
     <string name="menu_rate">შეფასება</string>
 
+    <!-- Time mode -->
+    <string name="timer_mode">დროის რეჟიმი:</string>
+    <string-array name="timer_array">
+        <item>ტაიმერის გარეშე</item>
+        <item>ტაიმერით</item>
+    </string-array>
+
     <!-- Dialogs -->
     <string name="ok">ოქეი</string>
     <string name="cancel">გაუქმება</string>

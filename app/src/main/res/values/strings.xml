@@ -16,6 +16,13 @@
     <string name="menu_language">Language</string>
     <string name="menu_rate">Rate</string>
 
+    <!-- Time mode -->
+    <string name="timer_mode">Time mode:</string>
+    <string-array name="timer_array">
+        <item>Without timer</item>
+        <item>With timer</item>
+    </string-array>
+
     <!-- Dialogs -->
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
