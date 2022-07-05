@@ -11,6 +11,7 @@ import com.hxl.arithmagame.R
 import com.hxl.arithmagame.databinding.FragmentCustomBinding
 import com.hxl.arithmagame.presentation.activity.MainActivity
 import com.hxl.arithmagame.presentation.fragment.game.GameFragment
+import com.hxl.arithmagame.presentation.fragment.game_history.GameResultFormatter
 import com.hxl.domain.models.Custom
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -40,6 +41,7 @@ class CustomFragment : Fragment() {
         val levelsSlider = binding.slLevels
         val operationsSlider = binding.slOperations
         val rangeSlider = binding.slRange
+        val timerSlider = binding.slTimer
 
         val txtLevels = binding.tvLevels.text
         levelsSlider.addOnChangeListener { _, value, _ ->
@@ -55,8 +57,17 @@ class CustomFragment : Fragment() {
                 "$txtRange: ${slider.values[0].toInt()} - ${slider.values[1].toInt()}"
         }
 
+        val txtTimer = binding.tvSlTimer.text
+        timerSlider.addOnChangeListener { slider, _, _ ->
+            binding.tvSlTimer.text =
+                "$txtTimer - ${GameResultFormatter.getTimerText(slider.value.toInt())}"
+        }
+
         levelsSlider.value = custom.levels.toFloat()
         operationsSlider.value = custom.operations.toFloat()
+        timerSlider.setLabelFormatter { value: Float ->
+            GameResultFormatter.getTimerText(value.toInt())
+        }
 
         val start = custom.numberRange.first.toFloat()
         val end = custom.numberRange.last.toFloat()
