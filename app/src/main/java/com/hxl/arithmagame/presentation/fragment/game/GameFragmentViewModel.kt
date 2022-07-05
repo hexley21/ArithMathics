@@ -5,6 +5,7 @@ import com.hxl.arithmagame.presentation.fragment.game_history.GameResultFormatte
 import com.hxl.domain.models.Question
 import com.hxl.domain.usecase.prefs.GetCustom
 import com.hxl.domain.usecase.prefs.GetMode
+import com.hxl.domain.usecase.prefs.GetTimer
 import com.hxl.domain.usecase.questions.GetQuestion
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -14,6 +15,7 @@ class GameFragmentViewModel @Inject constructor(
     private val getQuestion: GetQuestion,
     private val getMode: GetMode,
     private val getCustom: GetCustom,
+    val getTimer: GetTimer
 ) : ViewModel() {
 
     val quantity: Int = when (getMode()) {
@@ -21,6 +23,13 @@ class GameFragmentViewModel @Inject constructor(
         2 -> GetQuestion.hardLevels
         3 -> getCustom().levels
         else -> GetQuestion.easyLevels
+    }
+
+    val time: Int = when (getMode()) {
+        1 -> GetQuestion.mediumTime
+        2 -> GetQuestion.hardTime
+        3 -> getCustom().time
+        else -> GetQuestion.easyTime
     }
 
     fun generateQuestions(): Array<Question> {
@@ -51,7 +60,7 @@ class GameFragmentViewModel @Inject constructor(
         return Array(getCustom().levels) { getQuestion(operations, numberRange, operators) }
     }
 
-    fun getTimerText(time: Double): String {
+    fun getTimerText(time: Int): String {
         return GameResultFormatter.getTimerText(time)
     }
 

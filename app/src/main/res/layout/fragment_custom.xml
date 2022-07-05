@@ -72,6 +72,29 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_range"
         app:layout_constraintVertical_chainStyle="packed" />
 
+    <TextView
+        android:id="@+id/tv_sl_timer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/timer"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/sl_range"
+        app:layout_constraintStart_toStartOf="@+id/sl_range"
+        app:layout_constraintTop_toBottomOf="@+id/sl_range" />
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/sl_timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:stepSize="1.0"
+        android:valueFrom="1.0"
+        android:valueTo="10800.0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_sl_timer"
+        app:layout_constraintVertical_chainStyle="packed" />
+
     <CheckBox
         android:id="@+id/cb_op1"
         android:layout_width="0dp"
@@ -82,7 +105,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sl_range"
+        app:layout_constraintTop_toBottomOf="@+id/sl_timer"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <CheckBox

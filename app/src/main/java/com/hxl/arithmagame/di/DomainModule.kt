@@ -57,6 +57,16 @@ class DomainModule{
     fun provideSaveWelcome(preferenceRepository: PreferenceRepository): SaveWelcome {
         return SaveWelcome(preferenceRepository)
     }
+
+    @Provides
+    fun provideGetTimer(preferenceRepository: PreferenceRepository): GetTimer {
+        return GetTimer(preferenceRepository)
+    }
+
+    @Provides
+    fun provideSaveTimer(preferenceRepository: PreferenceRepository): SaveTimer {
+        return SaveTimer(preferenceRepository)
+    }
     // endregion
 
     // region questions

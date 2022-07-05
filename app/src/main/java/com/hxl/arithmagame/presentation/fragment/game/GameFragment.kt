@@ -21,7 +21,7 @@ import java.util.*
 @AndroidEntryPoint
 class GameFragment : Fragment() {
 
-    private var time = 0.0
+    private var time = 0
     private lateinit var timerTask: TimerTask
     private lateinit var questionArray: Array<Question>
     private lateinit var answerArray: Array<String>
@@ -47,7 +47,7 @@ class GameFragment : Fragment() {
         gamePage.adapter = GamePagerAdapter(this, vm.quantity, questionStrings)
 
         startTimer()
-        time = 0.0
+        time = 0
 
         gamePage.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageScrolled(
@@ -79,11 +79,27 @@ class GameFragment : Fragment() {
     }
 
     private fun startTimer() {
-        timerTask = object : TimerTask() {
-            override fun run() {
-                requireActivity().runOnUiThread {
-                    time++
-                    binding.tvTimer.text = vm.getTimerText(time)
+        if (vm.getTimer()) {
+            timerTask = object : TimerTask() {
+                override fun run() {
+                    requireActivity().runOnUiThread {
+                        time++
+                        val timer = vm.time - time
+                        binding.tvTimer.text = vm.getTimerText(timer)
+                        if (time == vm.time) {
+                            endGame()
+                        }
+                    }
+                }
+            }
+        } else {
+            timerTask = object : TimerTask() {
+                override fun run() {
+                    requireActivity().runOnUiThread {
+                        time++
+                        binding.tvTimer.text = vm.getTimerText(time)
+
+                    }
                 }
             }
         }

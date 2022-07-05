@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
         try {
             Log.e("DATA_TEST", vm.custom.levels.toString())
         } catch (e: Exception) {
-            vm.custom = Custom(1, 1, 1..100, arrayOf("+", "-", "*", "/"))
+            vm.custom = Custom(5, 5, 1..100, arrayOf("+", "-", "*", "/"), 300)
         }
         try {
             Log.e("DATA_TEST", vm.gameHistory.size.toString())

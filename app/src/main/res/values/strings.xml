@@ -16,6 +16,13 @@
     <string name="menu_language">Language</string>
     <string name="menu_rate">Rate</string>
 
+    <!-- Time mode -->
+    <string name="timer_mode">Time mode:</string>
+    <string-array name="timer_array">
+        <item>Without timer</item>
+        <item>With timer</item>
+    </string-array>
+
     <!-- Dialogs -->
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
@@ -46,7 +53,7 @@
     <string name="levels">Levels</string>
     <string name="operations">Operations</string>
     <string name="num_range">Number range</string>
-
+    <string name="timer">Timer</string>
     <string name="addition">Addition (+)</string>
     <string name="subtraction">Subtraction (-)</string>
     <string name="multiplication">Multiplication (×)</string>
@@ -62,7 +69,7 @@
     <!-- Non translatable -->
     <string name="question" translatable="false">question</string>
     <string name="position" translatable="false">position</string>
-    <string name="timer" translatable="false">00:00</string>
+    <string name="time_clock" translatable="false">00:00</string>
 
     <!-- Result -->
     <string name="correct">Correct</string>

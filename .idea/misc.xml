@@ -19,7 +19,7 @@
         <entry key="app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.1945" />
         <entry key="app/src/main/res/drawable/ic_baseline_history_24.xml" value="0.1945" />
         <entry key="app/src/main/res/drawable/ic_lambda.xml" value="0.1945" />
-        <entry key="app/src/main/res/layout/fragment_custom.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_custom.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_game.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_game_history.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_menu.xml" value="0.18" />

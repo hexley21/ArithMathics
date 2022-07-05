@@ -7,6 +7,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.hxl.arithmagame.R
@@ -90,6 +92,30 @@ class MenuFragment : Fragment() {
                 (requireActivity() as MainActivity).replaceFragment(CustomFragment(), true)
             }
         }
+
+        ArrayAdapter.createFromResource(
+            requireContext(), R.array.timer_array, android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            binding.spTimerMode.adapter = adapter
+        }
+
+        when (vm.timer) {
+            true -> binding.spTimerMode.setSelection(1, false)
+            else -> binding.spTimerMode.setSelection(0, false)
+        }
+
+        binding.spTimerMode.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                    when (p2) {
+                        1 -> vm.timer = true
+                        else -> vm.timer = false
+                    }
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {}
+            }
 
         return binding.root
     }

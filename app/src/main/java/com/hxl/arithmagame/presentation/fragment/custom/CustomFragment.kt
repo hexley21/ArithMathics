@@ -11,6 +11,7 @@ import com.hxl.arithmagame.R
 import com.hxl.arithmagame.databinding.FragmentCustomBinding
 import com.hxl.arithmagame.presentation.activity.MainActivity
 import com.hxl.arithmagame.presentation.fragment.game.GameFragment
+import com.hxl.arithmagame.presentation.fragment.game_history.GameResultFormatter
 import com.hxl.domain.models.Custom
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -40,6 +41,7 @@ class CustomFragment : Fragment() {
         val levelsSlider = binding.slLevels
         val operationsSlider = binding.slOperations
         val rangeSlider = binding.slRange
+        val timerSlider = binding.slTimer
 
         val txtLevels = binding.tvLevels.text
         levelsSlider.addOnChangeListener { _, value, _ ->
@@ -54,14 +56,23 @@ class CustomFragment : Fragment() {
             binding.tvRange.text =
                 "$txtRange: ${slider.values[0].toInt()} - ${slider.values[1].toInt()}"
         }
+        val txtTimer = binding.tvSlTimer.text
+        timerSlider.addOnChangeListener { slider, _, _ ->
+            binding.tvSlTimer.text =
+                "$txtTimer - ${GameResultFormatter.getTimerText(slider.value.toInt())}"
+        }
 
         levelsSlider.value = custom.levels.toFloat()
         operationsSlider.value = custom.operations.toFloat()
+        rangeSlider.setValues(
+            custom.numberRange.first.toFloat(),
+            custom.numberRange.last.toFloat()
+        )
+        timerSlider.value = custom.time.toFloat()
 
-        val start = custom.numberRange.first.toFloat()
-        val end = custom.numberRange.last.toFloat()
-        rangeSlider.setValues(start, end)
-
+        timerSlider.setLabelFormatter { value: Float ->
+            GameResultFormatter.getTimerText(value.toInt())
+        }
 
         binding.cbOp1.isChecked = "+" in custom.operators
         binding.cbOp2.isChecked = "-" in custom.operators
@@ -69,26 +80,22 @@ class CustomFragment : Fragment() {
         binding.cbOp4.isChecked = "/" in custom.operators
 
         binding.btnStartCustom.setOnClickListener {
-            val levels = levelsSlider.value.toInt()
-            val operations = operationsSlider.value.toInt()
-            val rangeFrom = rangeSlider.values[0].toInt()
-            val rangeTo = rangeSlider.values[1].toInt()
             val operators: MutableList<String> = mutableListOf()
-            if (binding.cbOp1.isChecked) {
-                operators.add("+")
-            }
-            if (binding.cbOp2.isChecked) {
-                operators.add("-")
-            }
-            if (binding.cbOp3.isChecked) {
-                operators.add("*")
-            }
-            if (binding.cbOp4.isChecked) {
-                operators.add("/")
-            }
-            if (operators.isNotEmpty()) {
-                vm.custom = Custom(levels, operations, rangeFrom..rangeTo, operators.toTypedArray())
 
+            if (binding.cbOp1.isChecked) { operators.add("+") }
+            if (binding.cbOp2.isChecked) { operators.add("-") }
+            if (binding.cbOp3.isChecked) { operators.add("*") }
+            if (binding.cbOp4.isChecked) { operators.add("/") }
+
+            if (operators.isNotEmpty()) {
+                vm.custom =
+                    Custom(
+                        levelsSlider.value.toInt(),
+                        operationsSlider.value.toInt(),
+                        rangeSlider.values[0].toInt()..rangeSlider.values[1].toInt(),
+                        operators.toTypedArray(),
+                        timerSlider.value.toInt()
+                    )
                 (requireActivity() as MainActivity).replaceFragment(GameFragment(), true)
             } else {
                 Toast.makeText(
