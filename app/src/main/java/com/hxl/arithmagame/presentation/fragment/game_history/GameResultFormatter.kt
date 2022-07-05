@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.res.Resources
 import android.util.TypedValue
 import com.hxl.arithmagame.R
-import kotlin.math.roundToInt
 
 class GameResultFormatter {
     companion object {
@@ -31,10 +30,9 @@ class GameResultFormatter {
             }
         }
 
-        fun getTimerText(time: Double): String {
-            val rounded = time.roundToInt()
-            val seconds = rounded % 86400 % 3600 % 60
-            val minutes = rounded / 60
+        fun getTimerText(time: Int): String {
+            val seconds = time % 86400 % 3600 % 60
+            val minutes = time / 60
             return String.format("%02d", minutes) + " : " + String.format("%02d", seconds)
         }
     }

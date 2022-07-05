@@ -23,7 +23,7 @@ class ResultFragmentViewModel @Inject constructor(
     lateinit var questions: Array<Question>
     lateinit var answers: Array<String>
     var corrects: Int = 0
-    var time: Double = 0.0
+    var time: Int = 0
 
     fun compareAnswers(): Array<Boolean> {
         val correctArray = Array(questions.size) { questions[it].answer == answers[it] }

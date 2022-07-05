@@ -51,7 +51,7 @@ class GameFragmentViewModel @Inject constructor(
         return Array(getCustom().levels) { getQuestion(operations, numberRange, operators) }
     }
 
-    fun getTimerText(time: Double): String {
+    fun getTimerText(time: Int): String {
         return GameResultFormatter.getTimerText(time)
     }
 
