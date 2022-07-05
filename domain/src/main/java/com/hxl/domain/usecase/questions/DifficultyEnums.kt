@@ -4,18 +4,10 @@ import com.hxl.domain.models.QuestionDifficulty
 
 
 enum class DifficultyEnums(
-    val levels: Int,
-    val operations: Int,
-    val range: IntRange,
-    val operators: Array<String>,
-    val time: Int
+    val questionDifficulty: QuestionDifficulty
 ) {
-    EASY(5, 3, 1..10, arrayOf("+", "-"), 120),
-    MEDIUM(5, 5, 1..30, arrayOf("+", "-", "*"), 480),
-    HARD(5, 5, 1..100, arrayOf("+", "-", "*", "/"), 900),
-    CUSTOM(5, 5, 1..100, arrayOf("+", "-", "*", "/"), 900);
-
-    fun toDifficulty(): QuestionDifficulty {
-        return QuestionDifficulty(levels, operations, range, operators, time)
-    }
+    EASY(QuestionDifficulty(5, 3, 1..10, arrayOf("+", "-"), 120)),
+    MEDIUM(QuestionDifficulty(5, 5, 1..30, arrayOf("+", "-", "*"), 480)),
+    HARD(QuestionDifficulty(5, 5, 1..100, arrayOf("+", "-", "*", "/"), 900)),
+    CUSTOM(QuestionDifficulty(1, 1, 1..1, arrayOf("+", "-", "*", "/"), 60));
 }

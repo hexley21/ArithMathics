@@ -34,9 +34,9 @@ class ResultFragmentViewModel @Inject constructor(
 
     private fun saveGame() {
         val questionEnum = when (getMode()) {
-            0 -> DifficultyEnums.EASY.toDifficulty()
-            1 -> DifficultyEnums.MEDIUM.toDifficulty()
-            2 -> DifficultyEnums.HARD.toDifficulty()
+            0 -> DifficultyEnums.EASY.questionDifficulty
+            1 -> DifficultyEnums.MEDIUM.questionDifficulty
+            2 -> DifficultyEnums.HARD.questionDifficulty
             else -> getCustom()
         }
         val levels = questionEnum.levels.toFloat()
