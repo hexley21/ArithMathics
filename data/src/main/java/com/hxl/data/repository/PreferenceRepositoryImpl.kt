@@ -20,6 +20,10 @@ class PreferenceRepositoryImpl(private val prefStorage: PreferenceStorage) : Pre
         get() = getWelcome()
         set(value) = saveWelcome(value)
 
+    var timer: Boolean
+        get() = getTimer()
+        set(value) = saveTimer(value)
+
     override fun getTheme(default: Int): Int {
         return prefStorage.get("theme", default)
     }
@@ -50,6 +54,14 @@ class PreferenceRepositoryImpl(private val prefStorage: PreferenceStorage) : Pre
 
     override fun saveWelcome(value: Boolean) {
         prefStorage.save("welcome", value)
+    }
+
+    override fun getTimer(default: Boolean): Boolean {
+        return prefStorage.get("timer", default)
+    }
+
+    override fun saveTimer(value: Boolean) {
+        prefStorage.save("timer", value)
     }
 
 }
