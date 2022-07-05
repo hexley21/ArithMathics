@@ -20,31 +20,17 @@ class GameFragmentViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val questionEnum = when (getMode()) {
-        1 -> QuestionDifficulties.MEDIUM
-        2 -> QuestionDifficulties.HARD
-        else -> QuestionDifficulties.EASY
+        0 -> QuestionDifficulties.EASY.toDifficulty()
+        1 -> QuestionDifficulties.MEDIUM.toDifficulty()
+        2 -> QuestionDifficulties.HARD.toDifficulty()
+        else -> getCustom()
     }
 
-    val levels = when (getMode()) {
-        3 -> getCustom().levels
-        else -> questionEnum.levels
-    }
-    private val operations = when (getMode()) {
-        3 -> getCustom().operations
-        else -> questionEnum.operations
-    }
-    private val range = when (getMode()) {
-        3 -> getCustom().numberRange
-        else -> questionEnum.range
-    }
-    private val operators = when (getMode()) {
-        3 -> getCustom().operators
-        else -> questionEnum.operators
-    }
-    val time = when (getMode()) {
-        3 -> getCustom().time
-        else -> questionEnum.time
-    }
+    val levels = questionEnum.levels
+    private val operations = questionEnum.operations
+    private val range = questionEnum.numberRange
+    private val operators = questionEnum.operators
+    val time = questionEnum.time
 
     fun generateQuestions(): Array<Question> {
         return Array(levels) { getQuestion(operations, range, operators) }

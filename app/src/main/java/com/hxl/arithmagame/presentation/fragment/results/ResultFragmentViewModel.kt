@@ -34,27 +34,17 @@ class ResultFragmentViewModel @Inject constructor(
 
     private fun saveGame() {
         val questionEnum = when (getMode()) {
-            1 -> QuestionDifficulties.MEDIUM
-            2 -> QuestionDifficulties.HARD
-            else -> QuestionDifficulties.EASY
+            0 -> QuestionDifficulties.EASY.toDifficulty()
+            1 -> QuestionDifficulties.MEDIUM.toDifficulty()
+            2 -> QuestionDifficulties.HARD.toDifficulty()
+            else -> getCustom()
         }
-        val levels = when (getMode()) {
-            3 -> getCustom().levels.toFloat()
-            else -> questionEnum.levels.toFloat()
-        }
-        val operations = when (getMode()) {
-            3 -> getCustom().operations
-            else -> questionEnum.operations
-        }
-        val range = when (getMode()) {
-            3 -> getCustom().numberRange
-            else -> questionEnum.range
-        }
-        val operators = when (getMode()) {
-            3 -> getCustom().operators.size
-            else -> questionEnum.operators.size
-        }
+        val levels = questionEnum.levels.toFloat()
+        val operations = questionEnum.operations
+        val range = questionEnum.numberRange
+        val operators = questionEnum.operators.size
         val stack = getGameHistory()
+
         val difficulty = floor(log(levels, 100f) * log((range.last - range.first).toFloat(), 2f) * (operators * operations) / 2).toInt()
         stack.push(GameResult(difficulty, questions.size, corrects, time))
         saveGameHistory(stack)
