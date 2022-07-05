@@ -1,9 +1,9 @@
 package com.hxl.domain.repository
 
-import com.hxl.domain.models.Custom
+import com.hxl.domain.models.QuestionDifficulty
 
 interface CustomRepository {
-    fun getCustom(): Custom
+    fun getCustom(): QuestionDifficulty
 
-    fun saveCustom(custom: Custom)
+    fun saveCustom(questionDifficulty: QuestionDifficulty)
 }

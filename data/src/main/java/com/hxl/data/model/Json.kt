@@ -2,14 +2,14 @@ package com.hxl.data.model
 
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.hxl.domain.models.Custom
+import com.hxl.domain.models.QuestionDifficulty
 import com.hxl.domain.models.GameResult
 import java.util.*
 
 class Json {
     companion object {
-        fun toCustom(string: String?): Custom {
-            val type = object : TypeToken<Custom>() {}.type
+        fun toCustom(string: String?): QuestionDifficulty {
+            val type = object : TypeToken<QuestionDifficulty>() {}.type
             return Gson().fromJson(string, type)
         }
 

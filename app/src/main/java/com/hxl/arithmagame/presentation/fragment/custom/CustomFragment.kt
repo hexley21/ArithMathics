@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.hxl.arithmagame.R
@@ -12,23 +11,15 @@ import com.hxl.arithmagame.databinding.FragmentCustomBinding
 import com.hxl.arithmagame.presentation.activity.MainActivity
 import com.hxl.arithmagame.presentation.fragment.game.GameFragment
 import com.hxl.arithmagame.presentation.fragment.game_history.GameResultFormatter
-import com.hxl.domain.models.Custom
+import com.hxl.domain.models.QuestionDifficulty
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class CustomFragment : Fragment() {
-    companion object {
-        const val TAG = "custom_fragment"
-    }
-
     private val vm: CustomFragmentViewModel by viewModels()
     private lateinit var binding: FragmentCustomBinding
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentCustomBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
@@ -89,7 +80,7 @@ class CustomFragment : Fragment() {
 
             if (operators.isNotEmpty()) {
                 vm.custom =
-                    Custom(
+                    QuestionDifficulty(
                         levelsSlider.value.toInt(),
                         operationsSlider.value.toInt(),
                         rangeSlider.values[0].toInt()..rangeSlider.values[1].toInt(),
@@ -98,11 +89,7 @@ class CustomFragment : Fragment() {
                     )
                 (requireActivity() as MainActivity).replaceFragment(GameFragment(), true)
             } else {
-                Toast.makeText(
-                    requireContext(),
-                    resources.getString(R.string.attention_custom),
-                    Toast.LENGTH_SHORT
-                ).show()
+                (requireActivity() as MainActivity).toast(resources.getString(R.string.attention_custom))
             }
         }
 

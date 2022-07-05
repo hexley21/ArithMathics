@@ -20,7 +20,6 @@ import java.util.*
 
 @AndroidEntryPoint
 class GameFragment : Fragment() {
-
     private var time = 0
     private lateinit var timerTask: TimerTask
     private lateinit var questionArray: Array<Question>
@@ -28,35 +27,27 @@ class GameFragment : Fragment() {
 
     private val vm: GameFragmentViewModel by viewModels()
     private lateinit var binding: FragmentGameBinding
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentGameBinding.inflate(layoutInflater, container, false)
         questionArray = vm.generateQuestions()
-        answerArray = Array(vm.quantity) { "" }
+        answerArray = Array(vm.levels) { "" }
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val gamePage: ViewPager2 = binding.gamePager
-        val questionStrings = Array(vm.quantity) { questionArray[it].question }
+        val questionStrings = Array(vm.levels) { questionArray[it].question }
         binding.btnAnswer.style(R.style.Default_Button)
-        gamePage.adapter = GamePagerAdapter(this, vm.quantity, questionStrings)
+        gamePage.adapter = GamePagerAdapter(this, vm.levels, questionStrings)
 
         startTimer()
         time = 0
 
         gamePage.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-            override fun onPageScrolled(
-                position: Int,
-                positionOffset: Float,
-                positionOffsetPixels: Int
-            ) {
+            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
                 super.onPageScrolled(position, positionOffset, positionOffsetPixels)
-                binding.tvPosition.text = "${gamePage.currentItem + 1}/${vm.quantity}"
+                binding.tvPosition.text = "${gamePage.currentItem + 1}/${vm.levels}"
                 binding.tiAnswer.setText(answerArray[position])
                 if (gamePage.currentItem == answerArray.size - 1) {
                     binding.btnAnswer.text = resources.getString(R.string.finish)
@@ -79,26 +70,23 @@ class GameFragment : Fragment() {
     }
 
     private fun startTimer() {
+        val functions: MutableList<() -> Unit> = mutableListOf({ time++ })
         if (vm.getTimer()) {
-            timerTask = object : TimerTask() {
-                override fun run() {
-                    requireActivity().runOnUiThread {
-                        time++
-                        val timer = vm.time - time
-                        binding.tvTimer.text = vm.getTimerText(timer)
-                        if (time == vm.time) {
-                            endGame()
-                        }
-                    }
+            functions.add {
+                binding.tvTimer.text = vm.getTimerText(vm.time - time)
+                if (time == vm.time) {
+                    endGame()
                 }
             }
         } else {
-            timerTask = object : TimerTask() {
-                override fun run() {
-                    requireActivity().runOnUiThread {
-                        time++
-                        binding.tvTimer.text = vm.getTimerText(time)
+            functions.add { binding.tvTimer.text = vm.getTimerText(time) }
+        }
 
+        timerTask = object : TimerTask() {
+            override fun run() {
+                requireActivity().runOnUiThread {
+                    for (i in functions) {
+                        i()
                     }
                 }
             }
@@ -118,5 +106,4 @@ class GameFragment : Fragment() {
         super.onDestroy()
         timerTask.cancel()
     }
-
 }

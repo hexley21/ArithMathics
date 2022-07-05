@@ -5,6 +5,7 @@ import android.content.ContextWrapper
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -20,7 +21,7 @@ import com.hxl.arithmagame.presentation.fragment.menu.MenuFragment
 import com.hxl.arithmagame.presentation.fragment.welcome.WelcomeFragment
 import com.hxl.data.repository.PreferenceRepositoryImpl
 import com.hxl.data.storage.sharedprefs.SharedPreferenceStorage
-import com.hxl.domain.models.Custom
+import com.hxl.domain.usecase.questions.DifficultyEnums
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
@@ -43,16 +44,12 @@ class MainActivity : AppCompatActivity() {
         installSplashScreen().apply { setKeepOnScreenCondition { false } }
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(R.layout.activity_main)
-        try {
-            Log.e("DATA_TEST", vm.custom.levels.toString())
-        } catch (e: Exception) {
-            vm.custom = Custom(5, 5, 1..100, arrayOf("+", "-", "*", "/"), 300)
-        }
-        try {
-            Log.e("DATA_TEST", vm.gameHistory.size.toString())
-        } catch (e: Exception) {
-            vm.gameHistory = Stack()
-        }
+
+        try { Log.e("DATA_TEST", vm.custom.levels.toString()) }
+        catch (e: Exception) { vm.custom = DifficultyEnums.CUSTOM.questionDifficulty }
+        try { Log.e("DATA_TEST", vm.gameHistory.size.toString()) }
+        catch (e: Exception) { vm.gameHistory = Stack() }
+
         when (vm.welcome) {
             false -> replaceFragment(MenuFragment())
             else -> replaceFragment(WelcomeFragment())
@@ -77,6 +74,10 @@ class MainActivity : AppCompatActivity() {
 
     fun showDialog(dialog: AppCompatDialogFragment, tag: String) {
         dialog.show(supportFragmentManager, tag)
+    }
+
+    fun toast(text: String) {
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
     }
 
     fun restartActivity() {

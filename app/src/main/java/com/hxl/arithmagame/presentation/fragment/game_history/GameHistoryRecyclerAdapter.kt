@@ -8,10 +8,8 @@ import com.hxl.arithmagame.databinding.ItemHistoryBinding
 import com.hxl.domain.models.GameResult
 import java.util.*
 
-class GameHistoryRecyclerAdapter(private val gameHistory: Stack<GameResult>) :
-    RecyclerView.Adapter<GameHistoryRecyclerAdapter.ViewHolder>() {
-    class ViewHolder(internal val binding: ItemHistoryBinding) :
-        RecyclerView.ViewHolder(binding.root)
+class GameHistoryRecyclerAdapter(private val gameHistory: Stack<GameResult>) : RecyclerView.Adapter<GameHistoryRecyclerAdapter.ViewHolder>() {
+    class ViewHolder(internal val binding: ItemHistoryBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemHistoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
