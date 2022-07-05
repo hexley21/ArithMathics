@@ -3,7 +3,7 @@ package com.hxl.domain.usecase.questions
 import com.hxl.domain.models.QuestionDifficulty
 
 
-enum class QuestionDifficulties(
+enum class DifficultyEnums(
     val levels: Int,
     val operations: Int,
     val range: IntRange,

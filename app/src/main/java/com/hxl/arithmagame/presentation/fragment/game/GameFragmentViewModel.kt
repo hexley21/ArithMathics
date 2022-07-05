@@ -7,7 +7,7 @@ import com.hxl.domain.usecase.prefs.GetCustom
 import com.hxl.domain.usecase.prefs.GetMode
 import com.hxl.domain.usecase.prefs.GetTimer
 import com.hxl.domain.usecase.questions.GetQuestion
-import com.hxl.domain.usecase.questions.QuestionDifficulties
+import com.hxl.domain.usecase.questions.DifficultyEnums
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -20,9 +20,9 @@ class GameFragmentViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val questionEnum = when (getMode()) {
-        0 -> QuestionDifficulties.EASY.toDifficulty()
-        1 -> QuestionDifficulties.MEDIUM.toDifficulty()
-        2 -> QuestionDifficulties.HARD.toDifficulty()
+        0 -> DifficultyEnums.EASY.toDifficulty()
+        1 -> DifficultyEnums.MEDIUM.toDifficulty()
+        2 -> DifficultyEnums.HARD.toDifficulty()
         else -> getCustom()
     }
 

@@ -7,7 +7,7 @@ import com.hxl.domain.usecase.game_history.GetGameHistory
 import com.hxl.domain.usecase.game_history.SaveGameHistory
 import com.hxl.domain.usecase.prefs.GetCustom
 import com.hxl.domain.usecase.prefs.GetMode
-import com.hxl.domain.usecase.questions.QuestionDifficulties
+import com.hxl.domain.usecase.questions.DifficultyEnums
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlin.math.floor
@@ -34,9 +34,9 @@ class ResultFragmentViewModel @Inject constructor(
 
     private fun saveGame() {
         val questionEnum = when (getMode()) {
-            0 -> QuestionDifficulties.EASY.toDifficulty()
-            1 -> QuestionDifficulties.MEDIUM.toDifficulty()
-            2 -> QuestionDifficulties.HARD.toDifficulty()
+            0 -> DifficultyEnums.EASY.toDifficulty()
+            1 -> DifficultyEnums.MEDIUM.toDifficulty()
+            2 -> DifficultyEnums.HARD.toDifficulty()
             else -> getCustom()
         }
         val levels = questionEnum.levels.toFloat()
