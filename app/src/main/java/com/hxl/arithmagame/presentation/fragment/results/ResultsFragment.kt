@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.hxl.arithmagame.R
 import com.hxl.arithmagame.databinding.FragmentResultBinding
 import com.hxl.arithmagame.presentation.activity.MainActivity
-import com.hxl.arithmagame.presentation.fragment.game.GameFragment
 import com.hxl.arithmagame.presentation.fragment.game_history.GameResultFormatter
 import com.hxl.arithmagame.presentation.fragment.menu.MenuFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,11 +19,7 @@ class ResultsFragment : Fragment() {
     private val vm: ResultFragmentViewModel by activityViewModels()
     private lateinit var binding: FragmentResultBinding
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentResultBinding.inflate(layoutInflater, container, false)
         return binding.root
     }

@@ -10,13 +10,8 @@ import com.hxl.arithmagame.databinding.ItemResultBinding
 import com.hxl.domain.models.Question
 
 
-class ResultsRecyclerAdapter(
-    private val questions: Array<Question>,
-    private val answers: Array<String>,
-    private val corrects: Array<Boolean>
-) : RecyclerView.Adapter<ResultsRecyclerAdapter.ViewHolder>() {
-    class ViewHolder(internal val binding: ItemResultBinding) :
-        RecyclerView.ViewHolder(binding.root)
+class ResultsRecyclerAdapter(private val questions: Array<Question>, private val answers: Array<String>, private val corrects: Array<Boolean>) : RecyclerView.Adapter<ResultsRecyclerAdapter.ViewHolder>() {
+    class ViewHolder(internal val binding: ItemResultBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemResultBinding.inflate(LayoutInflater.from(parent.context), parent, false)

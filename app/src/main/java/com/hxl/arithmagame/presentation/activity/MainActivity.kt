@@ -5,6 +5,7 @@ import android.content.ContextWrapper
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -73,6 +74,10 @@ class MainActivity : AppCompatActivity() {
 
     fun showDialog(dialog: AppCompatDialogFragment, tag: String) {
         dialog.show(supportFragmentManager, tag)
+    }
+
+    fun toast(text: String) {
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
     }
 
     fun restartActivity() {

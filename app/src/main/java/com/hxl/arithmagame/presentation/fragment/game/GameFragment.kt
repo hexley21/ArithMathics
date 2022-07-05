@@ -27,11 +27,7 @@ class GameFragment : Fragment() {
 
     private val vm: GameFragmentViewModel by viewModels()
     private lateinit var binding: FragmentGameBinding
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentGameBinding.inflate(layoutInflater, container, false)
         questionArray = vm.generateQuestions()
         answerArray = Array(vm.levels) { "" }
@@ -49,11 +45,7 @@ class GameFragment : Fragment() {
         time = 0
 
         gamePage.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-            override fun onPageScrolled(
-                position: Int,
-                positionOffset: Float,
-                positionOffsetPixels: Int
-            ) {
+            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
                 super.onPageScrolled(position, positionOffset, positionOffsetPixels)
                 binding.tvPosition.text = "${gamePage.currentItem + 1}/${vm.levels}"
                 binding.tiAnswer.setText(answerArray[position])
@@ -114,5 +106,4 @@ class GameFragment : Fragment() {
         super.onDestroy()
         timerTask.cancel()
     }
-
 }

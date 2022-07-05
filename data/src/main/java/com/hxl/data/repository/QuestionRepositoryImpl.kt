@@ -7,11 +7,7 @@ import kotlin.math.roundToInt
 
 class QuestionRepositoryImpl : QuestionRepository {
 
-    override fun generateQuestion(
-        operations: Int,
-        numberRange: IntRange,
-        operators: Array<String>
-    ): Question {
+    override fun generateQuestion(operations: Int, numberRange: IntRange, operators: Array<String>): Question {
         var question = ""
         var expression: Double
         while (true){

@@ -16,11 +16,7 @@ class WelcomeFragment : Fragment() {
     private val vm: WelcomeFragmentViewModel by viewModels()
     private lateinit var binding: FragmentWelcomeBinding
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentWelcomeBinding.inflate(layoutInflater, container, false)
 
         when(vm.language){
