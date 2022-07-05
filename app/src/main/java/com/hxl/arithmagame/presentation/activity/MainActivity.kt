@@ -20,7 +20,7 @@ import com.hxl.arithmagame.presentation.fragment.menu.MenuFragment
 import com.hxl.arithmagame.presentation.fragment.welcome.WelcomeFragment
 import com.hxl.data.repository.PreferenceRepositoryImpl
 import com.hxl.data.storage.sharedprefs.SharedPreferenceStorage
-import com.hxl.domain.models.Custom
+import com.hxl.domain.usecase.questions.QuestionDifficulties
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
         try {
             Log.e("DATA_TEST", vm.custom.levels.toString())
         } catch (e: Exception) {
-            vm.custom = Custom(5, 5, 1..100, arrayOf("+", "-", "*", "/"), 300)
+            vm.custom = QuestionDifficulties.CUSTOM.toCustom()
         }
         try {
             Log.e("DATA_TEST", vm.gameHistory.size.toString())
