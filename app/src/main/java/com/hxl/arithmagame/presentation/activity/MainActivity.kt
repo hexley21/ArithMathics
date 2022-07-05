@@ -43,16 +43,12 @@ class MainActivity : AppCompatActivity() {
         installSplashScreen().apply { setKeepOnScreenCondition { false } }
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(R.layout.activity_main)
-        try {
-            Log.e("DATA_TEST", vm.custom.levels.toString())
-        } catch (e: Exception) {
-            vm.custom = DifficultyEnums.CUSTOM.questionDifficulty
-        }
-        try {
-            Log.e("DATA_TEST", vm.gameHistory.size.toString())
-        } catch (e: Exception) {
-            vm.gameHistory = Stack()
-        }
+
+        try { Log.e("DATA_TEST", vm.custom.levels.toString()) }
+        catch (e: Exception) { vm.custom = DifficultyEnums.CUSTOM.questionDifficulty }
+        try { Log.e("DATA_TEST", vm.gameHistory.size.toString()) }
+        catch (e: Exception) { vm.gameHistory = Stack() }
+
         when (vm.welcome) {
             false -> replaceFragment(MenuFragment())
             else -> replaceFragment(WelcomeFragment())

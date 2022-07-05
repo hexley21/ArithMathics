@@ -17,18 +17,10 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class CustomFragment : Fragment() {
-    companion object {
-        const val TAG = "custom_fragment"
-    }
-
     private val vm: CustomFragmentViewModel by viewModels()
     private lateinit var binding: FragmentCustomBinding
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentCustomBinding.inflate(layoutInflater, container, false)
         return binding.root
     }

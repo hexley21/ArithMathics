@@ -20,7 +20,6 @@ import java.util.*
 
 @AndroidEntryPoint
 class GameFragment : Fragment() {
-
     private var time = 0
     private lateinit var timerTask: TimerTask
     private lateinit var questionArray: Array<Question>
@@ -79,26 +78,23 @@ class GameFragment : Fragment() {
     }
 
     private fun startTimer() {
+        val functions: MutableList<() -> Unit> = mutableListOf({ time++ })
         if (vm.getTimer()) {
-            timerTask = object : TimerTask() {
-                override fun run() {
-                    requireActivity().runOnUiThread {
-                        time++
-                        val timer = vm.time - time
-                        binding.tvTimer.text = vm.getTimerText(timer)
-                        if (time == vm.time) {
-                            endGame()
-                        }
-                    }
+            functions.add {
+                binding.tvTimer.text = vm.getTimerText(vm.time - time)
+                if (time == vm.time) {
+                    endGame()
                 }
             }
         } else {
-            timerTask = object : TimerTask() {
-                override fun run() {
-                    requireActivity().runOnUiThread {
-                        time++
-                        binding.tvTimer.text = vm.getTimerText(time)
+            functions.add { binding.tvTimer.text = vm.getTimerText(time) }
+        }
 
+        timerTask = object : TimerTask() {
+            override fun run() {
+                requireActivity().runOnUiThread {
+                    for (i in functions) {
+                        i()
                     }
                 }
             }
