@@ -7,7 +7,7 @@ import com.hxl.domain.usecase.game_history.GetGameHistory
 import com.hxl.domain.usecase.game_history.SaveGameHistory
 import com.hxl.domain.usecase.prefs.GetCustom
 import com.hxl.domain.usecase.prefs.GetMode
-import com.hxl.domain.usecase.questions.GetQuestion
+import com.hxl.domain.usecase.questions.QuestionDifficulties
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlin.math.floor
@@ -33,26 +33,29 @@ class ResultFragmentViewModel @Inject constructor(
     }
 
     private fun saveGame() {
-        val operators = when(getMode()){
-            0 -> GetQuestion.easyOperators
-            1 -> GetQuestion.mediumOperators
-            2 -> GetQuestion.hardOperators
-            else -> getCustom().operators.size
+        val questionEnum = when (getMode()) {
+            1 -> QuestionDifficulties.MEDIUM
+            2 -> QuestionDifficulties.HARD
+            else -> QuestionDifficulties.EASY
         }
-        val operations = when(getMode()){
-            0 -> GetQuestion.easyOperations
-            1 -> GetQuestion.mediumOperations
-            2 -> GetQuestion.hardOperations
-            else -> getCustom().operations
+        val levels = when (getMode()) {
+            3 -> getCustom().levels.toFloat()
+            else -> questionEnum.levels.toFloat()
         }
-        val range = when(getMode()){
-            0 -> GetQuestion.easyRange
-            1 -> GetQuestion.mediumRange
-            2 -> GetQuestion.hardRange
-            else -> getCustom().numberRange.last - getCustom().numberRange.first
+        val operations = when (getMode()) {
+            3 -> getCustom().operations
+            else -> questionEnum.operations
+        }
+        val range = when (getMode()) {
+            3 -> getCustom().numberRange
+            else -> questionEnum.range
+        }
+        val operators = when (getMode()) {
+            3 -> getCustom().operators.size
+            else -> questionEnum.operators.size
         }
         val stack = getGameHistory()
-        val difficulty = floor(log(questions.size.toFloat(), 100f) * log(range.toFloat(), 2f) * (operators * operations) / 2).toInt()
+        val difficulty = floor(log(levels, 100f) * log((range.last - range.first).toFloat(), 2f) * (operators * operations) / 2).toInt()
         stack.push(GameResult(difficulty, questions.size, corrects, time))
         saveGameHistory(stack)
     }

@@ -7,57 +7,47 @@ import com.hxl.domain.usecase.prefs.GetCustom
 import com.hxl.domain.usecase.prefs.GetMode
 import com.hxl.domain.usecase.prefs.GetTimer
 import com.hxl.domain.usecase.questions.GetQuestion
+import com.hxl.domain.usecase.questions.QuestionDifficulties
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
 class GameFragmentViewModel @Inject constructor(
     private val getQuestion: GetQuestion,
-    private val getMode: GetMode,
-    private val getCustom: GetCustom,
+    getMode: GetMode,
+    getCustom: GetCustom,
     val getTimer: GetTimer
 ) : ViewModel() {
 
-    val quantity: Int = when (getMode()) {
-        1 -> GetQuestion.mediumLevels
-        2 -> GetQuestion.hardLevels
-        3 -> getCustom().levels
-        else -> GetQuestion.easyLevels
+    private val questionEnum = when (getMode()) {
+        1 -> QuestionDifficulties.MEDIUM
+        2 -> QuestionDifficulties.HARD
+        else -> QuestionDifficulties.EASY
     }
 
-    val time: Int = when (getMode()) {
-        1 -> GetQuestion.mediumTime
-        2 -> GetQuestion.hardTime
+    val levels = when (getMode()) {
+        3 -> getCustom().levels
+        else -> questionEnum.levels
+    }
+    private val operations = when (getMode()) {
+        3 -> getCustom().operations
+        else -> questionEnum.operations
+    }
+    private val range = when (getMode()) {
+        3 -> getCustom().numberRange
+        else -> questionEnum.range
+    }
+    private val operators = when (getMode()) {
+        3 -> getCustom().operators
+        else -> questionEnum.operators
+    }
+    val time = when (getMode()) {
         3 -> getCustom().time
-        else -> GetQuestion.easyTime
+        else -> questionEnum.time
     }
 
     fun generateQuestions(): Array<Question> {
-        return when (getMode()) {
-            1 -> mediumQuestions()
-            2 -> hardQuestions()
-            3 -> customQuestion()
-            else -> easyQuestions()
-        }
-    }
-
-    private fun easyQuestions(): Array<Question> {
-        return Array(GetQuestion.easyLevels) { getQuestion.easy() }
-    }
-
-    private fun mediumQuestions(): Array<Question> {
-        return Array(GetQuestion.mediumLevels) { getQuestion.medium() }
-    }
-
-    private fun hardQuestions(): Array<Question> {
-        return Array(GetQuestion.hardLevels) { getQuestion.hard() }
-    }
-
-    private fun customQuestion(): Array<Question> {
-        val operations = getCustom().operations
-        val numberRange = getCustom().numberRange
-        val operators = getCustom().operators
-        return Array(getCustom().levels) { getQuestion(operations, numberRange, operators) }
+        return Array(levels) { getQuestion(operations, range, operators) }
     }
 
     fun getTimerText(time: Int): String {

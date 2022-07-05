@@ -35,16 +35,16 @@ class GameFragment : Fragment() {
     ): View {
         binding = FragmentGameBinding.inflate(layoutInflater, container, false)
         questionArray = vm.generateQuestions()
-        answerArray = Array(vm.quantity) { "" }
+        answerArray = Array(vm.levels) { "" }
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val gamePage: ViewPager2 = binding.gamePager
-        val questionStrings = Array(vm.quantity) { questionArray[it].question }
+        val questionStrings = Array(vm.levels) { questionArray[it].question }
         binding.btnAnswer.style(R.style.Default_Button)
-        gamePage.adapter = GamePagerAdapter(this, vm.quantity, questionStrings)
+        gamePage.adapter = GamePagerAdapter(this, vm.levels, questionStrings)
 
         startTimer()
         time = 0
@@ -56,7 +56,7 @@ class GameFragment : Fragment() {
                 positionOffsetPixels: Int
             ) {
                 super.onPageScrolled(position, positionOffset, positionOffsetPixels)
-                binding.tvPosition.text = "${gamePage.currentItem + 1}/${vm.quantity}"
+                binding.tvPosition.text = "${gamePage.currentItem + 1}/${vm.levels}"
                 binding.tiAnswer.setText(answerArray[position])
                 if (gamePage.currentItem == answerArray.size - 1) {
                     binding.btnAnswer.text = resources.getString(R.string.finish)
