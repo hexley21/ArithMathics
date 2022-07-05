@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
         try {
             Log.e("DATA_TEST", vm.custom.levels.toString())
         } catch (e: Exception) {
-            vm.custom = QuestionDifficulties.CUSTOM.toCustom()
+            vm.custom = QuestionDifficulties.CUSTOM.toDifficulty()
         }
         try {
             Log.e("DATA_TEST", vm.gameHistory.size.toString())

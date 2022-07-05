@@ -1,6 +1,6 @@
 package com.hxl.domain.usecase.questions
 
-import com.hxl.domain.models.Custom
+import com.hxl.domain.models.QuestionDifficulty
 
 
 enum class QuestionDifficulties(
@@ -15,7 +15,7 @@ enum class QuestionDifficulties(
     HARD(5, 5, 1..100, arrayOf("+", "-", "*", "/"), 900),
     CUSTOM(5, 5, 1..100, arrayOf("+", "-", "*", "/"), 900);
 
-    fun toCustom(): Custom {
-        return Custom(levels, operations, range, operators, time)
+    fun toDifficulty(): QuestionDifficulty {
+        return QuestionDifficulty(levels, operations, range, operators, time)
     }
 }

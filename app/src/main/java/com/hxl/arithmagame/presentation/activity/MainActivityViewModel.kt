@@ -1,7 +1,7 @@
 package com.hxl.arithmagame.presentation.activity
 
 import androidx.lifecycle.ViewModel
-import com.hxl.domain.models.Custom
+import com.hxl.domain.models.QuestionDifficulty
 import com.hxl.domain.models.GameResult
 import com.hxl.domain.usecase.game_history.GetGameHistory
 import com.hxl.domain.usecase.game_history.SaveGameHistory
@@ -26,7 +26,7 @@ class MainActivityViewModel @Inject constructor(
         get() = getWelcome()
         set(value) = saveWelcome(value)
 
-    var custom: Custom
+    var custom: QuestionDifficulty
         get() = getCustom()
         set(value) = saveCustom(value)
 

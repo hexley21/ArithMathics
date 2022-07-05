@@ -12,7 +12,7 @@ import com.hxl.arithmagame.databinding.FragmentCustomBinding
 import com.hxl.arithmagame.presentation.activity.MainActivity
 import com.hxl.arithmagame.presentation.fragment.game.GameFragment
 import com.hxl.arithmagame.presentation.fragment.game_history.GameResultFormatter
-import com.hxl.domain.models.Custom
+import com.hxl.domain.models.QuestionDifficulty
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -89,7 +89,7 @@ class CustomFragment : Fragment() {
 
             if (operators.isNotEmpty()) {
                 vm.custom =
-                    Custom(
+                    QuestionDifficulty(
                         levelsSlider.value.toInt(),
                         operationsSlider.value.toInt(),
                         rangeSlider.values[0].toInt()..rangeSlider.values[1].toInt(),
