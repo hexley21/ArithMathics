@@ -34,6 +34,8 @@ class CustomFragment : Fragment() {
         val rangeSlider = binding.slRange
         val timerSlider = binding.slTimer
 
+        if (vm.getTimer()){ binding.tvTimerAttention.visibility = View.GONE }
+
         val txtLevels = binding.tvLevels.text
         levelsSlider.addOnChangeListener { _, value, _ ->
             binding.tvLevels.text = "$txtLevels: ${value.toInt()}"
