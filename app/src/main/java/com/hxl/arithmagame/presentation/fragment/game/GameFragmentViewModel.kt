@@ -7,7 +7,7 @@ import com.hxl.domain.usecase.prefs.GetCustom
 import com.hxl.domain.usecase.prefs.GetMode
 import com.hxl.domain.usecase.prefs.GetTimer
 import com.hxl.domain.usecase.questions.GetQuestion
-import com.hxl.domain.usecase.questions.DifficultyEnums
+import com.hxl.data.model.DifficultyEnums
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

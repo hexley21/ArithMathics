@@ -21,7 +21,7 @@ import com.hxl.arithmagame.presentation.fragment.menu.MenuFragment
 import com.hxl.arithmagame.presentation.fragment.welcome.WelcomeFragment
 import com.hxl.data.repository.PreferenceRepositoryImpl
 import com.hxl.data.storage.sharedprefs.SharedPreferenceStorage
-import com.hxl.domain.usecase.questions.DifficultyEnums
+import com.hxl.data.model.DifficultyEnums
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 

@@ -52,7 +52,7 @@
     <string name="num_range">რიცხვების დიაპაზონი</string>
     <string name="timer">ტაიმერი</string>
     <string name="timer_attention">*ტაიმერი გათიშულია</string>
-    <string name="decimal_attention">არა მთელი პასუხები დამრგვალდება 1 ათწილადამდე</string>
+    <string name="decimal_attention">წილადიანი პასუხები დამრგვალდება 1 ათწილადამდე</string>
     <string name="addition">მიმატება (+)</string>
     <string name="subtraction">გამოკლება (-)</string>
     <string name="multiplication">გამრავლება (×)</string>

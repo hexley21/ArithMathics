@@ -1,4 +1,4 @@
-package com.hxl.domain.usecase.questions
+package com.hxl.data.model
 
 import com.hxl.domain.models.QuestionDifficulty
 
