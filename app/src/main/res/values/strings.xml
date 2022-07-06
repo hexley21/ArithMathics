@@ -55,6 +55,7 @@
     <string name="num_range">Number range</string>
     <string name="timer">Timer</string>
     <string name="timer_attention">*Timer is disabled</string>
+    <string name="decimal_attention">Floating point answers will be rounded to 1 decimal</string>
     <string name="addition">Addition (+)</string>
     <string name="subtraction">Subtraction (-)</string>
     <string name="multiplication">Multiplication (×)</string>

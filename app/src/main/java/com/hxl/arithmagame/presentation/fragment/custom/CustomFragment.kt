@@ -72,6 +72,14 @@ class CustomFragment : Fragment() {
         binding.cbOp3.isChecked = "*" in custom.operators
         binding.cbOp4.isChecked = "/" in custom.operators
 
+        binding.cbOp4.setOnCheckedChangeListener { _, isChecked ->
+            val visibility = when(isChecked){
+                true -> View.VISIBLE
+                else -> View.GONE
+            }
+            binding.tvDecimalAttention.visibility = visibility
+        }
+
         binding.btnStartCustom.setOnClickListener {
             val operators: MutableList<String> = mutableListOf()
 

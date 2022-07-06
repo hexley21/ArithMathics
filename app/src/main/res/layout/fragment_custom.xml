@@ -152,6 +152,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cb_op3" />
 
+    <TextView
+        android:id="@+id/tv_decimal_attention"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/decimal_attention"
+        app:layout_constraintStart_toStartOf="@+id/cb_op4"
+        app:layout_constraintTop_toBottomOf="@+id/cb_op4" />
+
     <Button
         android:id="@+id/btn_start_custom"
         style="@style/Default_Button"
