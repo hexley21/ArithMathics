@@ -114,7 +114,7 @@
             android:layout_width="wrap_content"
             android:layout_height="22dp"
             android:text="@string/timer_mode"
-            android:textSize="17sp"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/sp_timer_mode"
             app:layout_constraintStart_toStartOf="@+id/radioGroup"
             app:layout_constraintTop_toTopOf="@+id/sp_timer_mode" />
