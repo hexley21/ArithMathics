@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
@@ -20,13 +21,15 @@ import java.util.*
 
 @AndroidEntryPoint
 class GameFragment : Fragment() {
+    private val vm: GameFragmentViewModel by viewModels()
+    private lateinit var binding: FragmentGameBinding
+
     private var time = 0
     private lateinit var timerTask: TimerTask
     private lateinit var questionArray: Array<Question>
     private lateinit var answerArray: Array<String>
+    private lateinit var gamePage: ViewPager2
 
-    private val vm: GameFragmentViewModel by viewModels()
-    private lateinit var binding: FragmentGameBinding
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentGameBinding.inflate(layoutInflater, container, false)
         questionArray = vm.generateQuestions()
@@ -36,10 +39,11 @@ class GameFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val gamePage: ViewPager2 = binding.gamePager
-        val questionStrings = Array(vm.levels) { questionArray[it].question }
+
+        gamePage = binding.gamePager
         binding.btnAnswer.style(R.style.Default_Button)
-        gamePage.adapter = GamePagerAdapter(this, vm.levels, questionStrings)
+        gamePage.adapter =
+            GamePagerAdapter(this, vm.levels, Array(vm.levels) { questionArray[it].question })
 
         startTimer()
         time = 0
@@ -47,8 +51,10 @@ class GameFragment : Fragment() {
         gamePage.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
                 super.onPageScrolled(position, positionOffset, positionOffsetPixels)
-                binding.tvPosition.text = "${gamePage.currentItem + 1}/${vm.levels}"
+
                 binding.tiAnswer.setText(answerArray[position])
+                binding.tvPosition.text = "${gamePage.currentItem + 1}/${vm.levels}"
+
                 if (gamePage.currentItem == answerArray.size - 1) {
                     binding.btnAnswer.text = resources.getString(R.string.finish)
                     binding.btnAnswer.style(R.style.Finish_Button)
@@ -58,15 +64,24 @@ class GameFragment : Fragment() {
             }
         })
 
-        binding.btnAnswer.setOnClickListener {
-            answerArray[gamePage.currentItem] = binding.tiAnswer.text.toString()
-            if (gamePage.currentItem == answerArray.size - 1) {
-                endGame()
+        binding.tiAnswer.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                nextQuestion()
+                true
             }
-            gamePage.setCurrentItem(gamePage.currentItem + 1, true)
+            else { false }
         }
 
+        binding.btnAnswer.setOnClickListener { nextQuestion() }
         binding.btnEnd.setOnClickListener { endGame() }
+    }
+
+    private fun nextQuestion() {
+        answerArray[gamePage.currentItem] = binding.tiAnswer.text.toString()
+        if (gamePage.currentItem == answerArray.size - 1) {
+            endGame()
+        }
+        gamePage.setCurrentItem(gamePage.currentItem + 1, true)
     }
 
     private fun startTimer() {
@@ -85,9 +100,7 @@ class GameFragment : Fragment() {
         timerTask = object : TimerTask() {
             override fun run() {
                 requireActivity().runOnUiThread {
-                    for (i in functions) {
-                        i()
-                    }
+                    for (i in functions) { i() }
                 }
             }
         }
@@ -99,6 +112,9 @@ class GameFragment : Fragment() {
         resultVm.answers = answerArray
         resultVm.questions = questionArray
         resultVm.time = time
+        if (binding.tiAnswer.text.toString() != "") {
+            answerArray[gamePage.currentItem] = binding.tiAnswer.text.toString()
+        }
         (requireActivity() as MainActivity).replaceFragment(ResultsFragment())
     }
 
