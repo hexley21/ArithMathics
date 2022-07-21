@@ -89,4 +89,7 @@
     <string name="extreme">Extreme</string>
     <string name="impossible">Impossible</string>
     <string name="calculator">Calculator</string>
+
+    <!-- Content Description -->
+    <string name="app_logo">Application logo</string>
 </resources>

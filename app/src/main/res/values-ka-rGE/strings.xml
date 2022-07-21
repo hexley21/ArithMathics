@@ -81,4 +81,7 @@
     <string name="extreme">ექსტრემალური</string>
     <string name="impossible">შეუძლებელი</string>
     <string name="calculator">კალკულატორი</string>
+
+    <!-- Content Description -->
+    <string name="app_logo">აპლიკაციის ლოგო</string>
 </resources>
