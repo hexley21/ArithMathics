@@ -18,7 +18,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed"
-        app:srcCompat="@drawable/ic_lambda" />
+        app:srcCompat="@drawable/ic_arithmatics"
+        android:contentDescription="@string/app_logo" />
 
     <TextView
         android:id="@+id/tv_welcome_title"
