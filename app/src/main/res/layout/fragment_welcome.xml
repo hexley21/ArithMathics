@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.hxl.arithmagame.presentation.fragment.welcome.WelcomeFragment">
+    tools:context="com.hxl.arithmathics.presentation.fragment.welcome.WelcomeFragment">
 
     <ImageView
         android:id="@+id/iv_logo"

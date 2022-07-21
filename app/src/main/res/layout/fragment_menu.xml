@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.hxl.arithmagame.presentation.fragment.menu.MenuFragment">
+    tools:context="com.hxl.arithmathics.presentation.fragment.menu.MenuFragment">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/toolbar"

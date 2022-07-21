@@ -9,7 +9,7 @@ android {
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.hxl.arithmagame"
+        applicationId "com.hxl.arithmathics"
         minSdk 21
         targetSdk 32
         versionCode 1
@@ -42,7 +42,7 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.9.0-alpha05'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1'
     implementation 'androidx.appcompat:appcompat:1.6.0-alpha05'
-    implementation 'com.google.android.material:material:1.7.0-alpha02'
+    implementation 'com.google.android.material:material:1.7.0-alpha03'
     implementation 'androidx.constraintlayout:constraintlayout:2.2.0-alpha03'
     implementation 'androidx.core:core-splashscreen:1.0.0-rc01'
 

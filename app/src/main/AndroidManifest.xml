@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.hxl.arithmagame">
+    package="com.hxl.arithmathics">
 
     <application
-        android:name=".app.App"
+        android:name="com.hxl.arithmathics.app.App"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -15,7 +15,7 @@
         android:theme="@style/Theme.App.Starting"
         tools:targetApi="31">
         <activity
-            android:name=".presentation.activity.MainActivity"
+            android:name="com.hxl.arithmathics.presentation.activity.MainActivity"
             android:screenOrientation="nosensor"
             android:exported="true">
             <intent-filter>
