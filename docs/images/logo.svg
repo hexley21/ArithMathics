@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   version="1.1"
+   id="svg9"
+   width="320"
+   height="320"
+   viewBox="0 0 320 320"
+   sodipodi:docname="arithmatics.svg"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs13" />
+  <sodipodi:namedview
+     id="namedview11"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:snap-others="false"
+     inkscape:object-nodes="false"
+     inkscape:snap-nodes="false"
+     inkscape:snap-global="false"
+     inkscape:zoom="1.546875"
+     inkscape:cx="135.11111"
+     inkscape:cy="123.15152"
+     inkscape:window-width="1366"
+     inkscape:window-height="704"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g15" />
+  <g
+     inkscape:groupmode="layer"
+     inkscape:label="Image"
+     id="g15"
+     style="display:inline">
+    <path
+       style="display:inline;fill:#f7bd49;stroke:none;stroke-width:0.32"
+       d="m 118.72,82.24 c -4.29895,55.6941 -16.63104,155.32704 -16.63104,155.32704 L 143.04,238.08 l 5.12,-45.44 25.59396,0.50635 4.1846,44.83191 39.944,-0.67712 L 200.64,82.24 h -81.92 m 45.76,46.08 1.6,18.24 h -12.8 c 0.61824,-6.00808 1.26392,-11.9887 2.43296,-17.91104 z"
+       id="path5040"
+       sodipodi:nodetypes="cccccccccccccc" />
+    <path
+       id="path8444"
+       style="display:inline;fill:#f7bd49;fill-opacity:1;stroke-width:1.51788"
+       d="M 160,0 A 160,160 0 0 0 0,160 160,160 0 0 0 160,320 160,160 0 0 0 320,160 160,160 0 0 0 160,0 Z m 0,31.652344 A 128.54803,128.34804 0 0 1 288.54883,160 128.54803,128.34804 0 0 1 160,288.34766 128.54803,128.34804 0 0 1 31.451172,160 128.54803,128.34804 0 0 1 160,31.652344 Z" />
+  </g>
+</svg>
