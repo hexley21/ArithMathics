@@ -94,8 +94,7 @@ https://github.com/hexley21/ArithMathics.git
 ### Prerequisites
 
 > - <a href="https://developer.android.com/studio">Android Studio</a>
-> <br>
-> or
+> - or
 > - <a href="https://code.visualstudio.com/">Visual studio Code</a>
 > - <a href="https://git-scm.com/downloads">Git</a>
 
@@ -103,11 +102,11 @@ https://github.com/hexley21/ArithMathics.git
 ### Android studio
 
 at Welcome Page:
-> Get from VCS -> URL. paste repository url. -> Clone
+> Get from VCS -> URL. paste repository url -> Clone
 
 at Workspace:
 
-> File -> New -> Project from Version Control -> URL. paste repository url. -> Clone
+> File -> New -> Project from Version Control -> URL. paste repository url -> Clone
 
 ### Visual studio code
 
