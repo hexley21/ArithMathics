@@ -24,7 +24,7 @@
 <br />
 
 [![Project license](https://img.shields.io/github/license/hexley21/ArithMathics.svg?style=flat-square)](LICENSE)
-[![Pull Requests welcome](https://img.shields.io/badge/PRs-welcome-f7bd49.svg?style=flat-square)](https://github.com/hexley21/ArithMath/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22)
+[![Pull Requests welcome](https://img.shields.io/badge/Pull_Requests-welcome-f7bd49.svg?style=flat-square)](https://github.com/hexley21/ArithMath/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22)
 
 </div>
 
