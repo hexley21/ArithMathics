@@ -4,20 +4,22 @@ When contributing to this repository, please first discuss the change you wish t
 Please note we have a [code of conduct](CODE_OF_CONDUCT.md), please follow it in all your interactions with the project.
 
 ## Development environment setup
+### Android studio
 
-> **[?]**
-> Proceed to describe how to setup local development environment.
-> e.g:
+- At Welcome Page:
+  - Get from VCS -> URL. paste repository url -> Clone
 
-To set up a development environment, please follow these steps:
+- At Workspace:
+  - File -> New -> Project from Version Control -> URL. paste repository url -> Clone
 
-1. Clone the repo
+### Visual studio code
 
-   ```sh
-   git clone https://github.com/hexley21/ArithMathics
-   ```
+- install git
+- open Visual studio Code and select workspace folder
+- open terminal with `ctrl + shift + ~ `
+- type: `git clone https://github.com/hexley21/ArithMathics.git`
 
-2. TODO
+<br>
 
 ## Issues and feature requests
 
