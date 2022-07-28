@@ -24,7 +24,7 @@
 <br />
 
 [![Project license](https://img.shields.io/github/license/hexley21/ArithMathics.svg?style=flat-square)](LICENSE)
-[![Pull Requests welcome](https://img.shields.io/badge/Pull_Requests-welcome-f7bd49.svg?style=flat-square)](https://github.com/hexley21/ArithMath/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22)
+[![Pull Requests welcome](https://img.shields.io/badge/PRs-welcome-f7bd49.svg?style=flat-square)](https://github.com/hexley21/ArithMath/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22)
 
 </div>
 
@@ -33,10 +33,6 @@
 
 - [About](#about)
   - [Built With](#built-with)
-- [Download code](#download-code)
-  - [Prerequisites](#prerequisites)
-  - [Android studio](#android-studio)
-  - [Visual studio code](#visual-studio-code)
 - [Roadmap](#roadmap)
 - [Support](#support)
 - [Project assistance](#project-assistance)
@@ -51,9 +47,9 @@
 
 ## About
 
-> Arithmathics is a quiz game, where you solve
-> randomly generated airthmetic tasks of different difficulty
-> in order to improve your arithmetic skills
+Arithmathics is a quiz game, where you solve
+randomly generated airthmetic tasks of different difficulty
+in order to improve your arithmetic skills
 
 <details>
 <summary>Screenshots</summary>
@@ -76,46 +72,14 @@
 
 ### Built With
 
-> Arithmathics is written in Kotlin language and
-> is build by 
-> <a href="https://medium.com/android-dev-hacks/detailed-guide-on-android-clean-architecture-9eab262a9011">clean architecture</a>,
-> which contains MVVM pattern
+Arithmathics is written in Kotlin language and
+is build by 
+<a href="https://medium.com/android-dev-hacks/detailed-guide-on-android-clean-architecture-9eab262a9011">clean architecture</a>,
+which contains MVVM pattern
 <details>
 <summary>Draw.io diagram</summary>
 <img src="docs/images/Arithmath_diagram.png" title="Diagram" width="100%">
 </details>
-<br>
-
-## Download code
-Repository URL
-```
-https://github.com/hexley21/ArithMathics.git
-```
-### Prerequisites
-
-> - <a href="https://developer.android.com/studio">Android Studio</a>
-> - or
-> - <a href="https://code.visualstudio.com/">Visual studio Code</a>
-> - <a href="https://git-scm.com/downloads">Git</a>
-
-
-### Android studio
-
-at Welcome Page:
-> Get from VCS -> URL. paste repository url -> Clone
-
-at Workspace:
-
-> File -> New -> Project from Version Control -> URL. paste repository url -> Clone
-
-### Visual studio code
-
-> - install git
-> - open Visual studio Code and select workspace folder
-> - open terminal with `ctrl + shift + ~ `
-> - type: `git clone https://github.com/hexley21/ArithMathics.git`
-
-<br>
 
 ## Roadmap
 
@@ -164,11 +128,11 @@ See [LICENSE](LICENSE) for more information.
 ## Acknowledgements
 
 This game would not be able to exist without this dependencies:
-> - <a href="https://github.com/airbnb/paris">Airbnb - Paris</a> - Apply styles to Android views programmatically
-> - <a href="https://github.com/google/dagger">Dagger Hilt</a> - Dependency injector for Android and Java.
-> - <a href="https://github.com/google/gson">Gson</a> - Convert Java Objects into JSON and back
-> - <a href="https://www.objecthunter.net/exp4j/">exp4j</a> - Math parser libray
+- <a href="https://github.com/airbnb/paris">Airbnb - Paris</a> - Apply styles to Android views programmatically
+- <a href="https://github.com/google/dagger">Google - Dagger Hilt</a> - Dependency injector for Android and Java.
+- <a href="https://github.com/google/gson">Google - Gson</a> - Convert Java Objects into JSON and back
+- <a href="https://www.objecthunter.net/exp4j/">Objecthunter - exp4j</a> - Math parser libray
 
 Arithmathics used these sources for design:
-> - Font - <a href="https://www.contractica.ge/">TBC Contractica</a>
-> - Icons - <a href="https://fonts.google.com/icons">Google Material icons</a>
+- Font - <a href="https://www.contractica.ge/">TBC Contractica</a>
+- Icons - <a href="https://fonts.google.com/icons">Google Material icons</a>
