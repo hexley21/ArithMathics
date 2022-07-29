@@ -81,12 +81,12 @@ class CustomFragment : Fragment() {
         }
 
         binding.btnStartCustom.setOnClickListener {
-            val operators: MutableList<String> = mutableListOf()
+            var operators= ""
 
-            if (binding.cbOp1.isChecked) { operators.add("+") }
-            if (binding.cbOp2.isChecked) { operators.add("-") }
-            if (binding.cbOp3.isChecked) { operators.add("*") }
-            if (binding.cbOp4.isChecked) { operators.add("/") }
+            if (binding.cbOp1.isChecked) { operators += "+" }
+            if (binding.cbOp2.isChecked) { operators += "-" }
+            if (binding.cbOp3.isChecked) { operators += "*" }
+            if (binding.cbOp4.isChecked) { operators += "/" }
 
             if (operators.isNotEmpty()) {
                 vm.custom =
@@ -94,7 +94,7 @@ class CustomFragment : Fragment() {
                         levelsSlider.value.toInt(),
                         operationsSlider.value.toInt(),
                         rangeSlider.values[0].toInt()..rangeSlider.values[1].toInt(),
-                        operators.toTypedArray(),
+                        operators,
                         timerSlider.value.toInt()
                     )
                 (requireActivity() as MainActivity).replaceFragment(GameFragment(), true)

@@ -42,7 +42,7 @@ class ResultFragmentViewModel @Inject constructor(
         val levels = questionEnum.levels.toFloat()
         val operations = questionEnum.operations
         val range = questionEnum.numberRange
-        val operators = questionEnum.operators.size
+        val operators = questionEnum.operators.count()
         val stack = getGameHistory()
 
         val difficulty = floor(log(levels, 100f) * log((range.last - range.first).toFloat(), 2f) * (operators * operations) / 2).toInt()
