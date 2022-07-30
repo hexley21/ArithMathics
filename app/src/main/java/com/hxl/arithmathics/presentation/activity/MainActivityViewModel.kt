@@ -7,7 +7,7 @@ import com.hxl.domain.usecase.game_history.GetGameHistory
 import com.hxl.domain.usecase.game_history.SaveGameHistory
 import com.hxl.domain.usecase.prefs.GetCustom
 import com.hxl.domain.usecase.prefs.GetWelcome
-import com.hxl.domain.usecase.prefs.SaveCustom
+import com.hxl.domain.usecase.prefs.InsertCustom
 import com.hxl.domain.usecase.prefs.SaveWelcome
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.util.*
@@ -18,7 +18,7 @@ class MainActivityViewModel @Inject constructor(
     private val getWelcome: GetWelcome,
     private val saveWelcome: SaveWelcome,
     private val getCustom: GetCustom,
-    private val saveCustom: SaveCustom,
+    private val insertCustom: InsertCustom,
     private val getGameHistory: GetGameHistory,
     private val saveGameHistory: SaveGameHistory
 ) : ViewModel(){
@@ -28,7 +28,7 @@ class MainActivityViewModel @Inject constructor(
 
     var custom: QuestionDifficulty
         get() = getCustom()
-        set(value) = saveCustom(value)
+        set(value) = insertCustom(value)
 
     var gameHistory: Stack<GameResult>
         get() = getGameHistory()

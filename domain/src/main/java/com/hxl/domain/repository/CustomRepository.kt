@@ -5,5 +5,5 @@ import com.hxl.domain.models.QuestionDifficulty
 interface CustomRepository {
     fun getCustom(): QuestionDifficulty
 
-    fun saveCustom(questionDifficulty: QuestionDifficulty)
+    fun insertCustom(questionDifficulty: QuestionDifficulty)
 }

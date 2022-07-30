@@ -83,8 +83,8 @@ class DomainModule{
     }
 
     @Provides
-    fun provideSaveCustom(customRepository: CustomRepository): SaveCustom {
-        return SaveCustom(customRepository)
+    fun provideSaveCustom(customRepository: CustomRepository): InsertCustom {
+        return InsertCustom(customRepository)
     }
     // endregion
 

@@ -10,7 +10,7 @@ class CustomRepositoryImpl(private val internalStorage: InternalStorage) : Custo
         return Json.toCustom(internalStorage.read("custom"))
     }
 
-    override fun saveCustom(questionDifficulty: QuestionDifficulty) {
+    override fun insertCustom(questionDifficulty: QuestionDifficulty) {
         internalStorage.write(Json.toJson(questionDifficulty), "custom")
     }
 }
