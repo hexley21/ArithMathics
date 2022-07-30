@@ -28,12 +28,17 @@ android {
         jvmTarget = '1.8'
     }
 }
-
+apply plugin: 'kotlin-kapt'
 dependencies {
 
     implementation 'androidx.core:core-ktx:1.9.0-alpha05'
     implementation 'androidx.appcompat:appcompat:1.4.2'
     implementation 'com.google.android.material:material:1.6.1'
+
+    // Room
+    implementation 'androidx.room:room-runtime:2.4.3'
+    implementation "androidx.room:room-ktx:2.4.3"
+    kapt "androidx.room:room-compiler:2.4.3"
 
     implementation project(path: ':domain')
     implementation 'net.objecthunter:exp4j:0.4.8'
