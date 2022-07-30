@@ -1,7 +1,7 @@
 package com.hxl.arithmathics.presentation.activity
 
 import androidx.lifecycle.ViewModel
-import com.hxl.domain.models.QuestionDifficulty
+import com.hxl.domain.models.Difficulty
 import com.hxl.domain.models.GameResult
 import com.hxl.domain.usecase.database.game_history.ReadGameHistory
 import com.hxl.domain.usecase.database.game_history.InsertGameHistory
@@ -26,7 +26,7 @@ class MainActivityViewModel @Inject constructor(
         get() = getWelcome()
         set(value) = saveWelcome(value)
 
-    var difficulty: QuestionDifficulty
+    var difficulty: Difficulty
         get() = readDifficulty()
         set(value) = insertDifficulty(value)
 

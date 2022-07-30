@@ -1,13 +1,13 @@
 package com.hxl.data.model
 
-import com.hxl.domain.models.QuestionDifficulty
+import com.hxl.domain.models.Difficulty
 
 
 enum class DifficultyEnums(
-    val questionDifficulty: QuestionDifficulty
+    val difficulty: Difficulty
 ) {
-    EASY(QuestionDifficulty(5, 3, 1..10, "+-", 120)),
-    MEDIUM(QuestionDifficulty(5, 5, 1..30, "++++----**", 480)),
-    HARD(QuestionDifficulty(5, 5, 1..100, "+++---*/", 900)),
-    CUSTOM(QuestionDifficulty(1, 1, 1..1, "+-*/", 60));
+    EASY(Difficulty(5, 3, 1..10, "+-", 120)),
+    MEDIUM(Difficulty(5, 5, 1..30, "++++----**", 480)),
+    HARD(Difficulty(5, 5, 1..100, "+++---*/", 900)),
+    CUSTOM(Difficulty(1, 1, 1..1, "+-*/", 60));
 }

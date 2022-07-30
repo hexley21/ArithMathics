@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         try { Log.e("DATA_TEST", vm.difficulty.levels.toString()) }
-        catch (e: Exception) { vm.difficulty = DifficultyEnums.CUSTOM.questionDifficulty }
+        catch (e: Exception) { vm.difficulty = DifficultyEnums.CUSTOM.difficulty }
         try { Log.e("DATA_TEST", vm.gameHistory.size.toString()) }
         catch (e: Exception) { vm.gameHistory = Stack() }
 

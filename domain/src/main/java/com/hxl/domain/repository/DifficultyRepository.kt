@@ -1,9 +1,9 @@
 package com.hxl.domain.repository
 
-import com.hxl.domain.models.QuestionDifficulty
+import com.hxl.domain.models.Difficulty
 
 interface DifficultyRepository {
-    fun readCustom(): QuestionDifficulty
+    fun readCustom(): Difficulty
 
-    fun insertCustom(questionDifficulty: QuestionDifficulty)
+    fun insertCustom(difficulty: Difficulty)
 }

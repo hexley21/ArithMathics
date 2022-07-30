@@ -20,9 +20,9 @@ class GameFragmentViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val questionEnum = when (getMode()) {
-        0 -> DifficultyEnums.EASY.questionDifficulty
-        1 -> DifficultyEnums.MEDIUM.questionDifficulty
-        2 -> DifficultyEnums.HARD.questionDifficulty
+        0 -> DifficultyEnums.EASY.difficulty
+        1 -> DifficultyEnums.MEDIUM.difficulty
+        2 -> DifficultyEnums.HARD.difficulty
         else -> readDifficulty()
     }
 

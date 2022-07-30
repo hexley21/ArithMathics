@@ -1,6 +1,6 @@
 package com.hxl.domain.models
 
-data class QuestionDifficulty(
+data class Difficulty(
     val levels: Int,
     val operations: Int,
     val numberRange: IntRange,
