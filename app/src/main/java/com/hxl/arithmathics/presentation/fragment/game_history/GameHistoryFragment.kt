@@ -30,8 +30,8 @@ class GameHistoryFragment : Fragment() {
 
         val rvHistory = binding.rvHistory
         rvHistory.layoutManager = LinearLayoutManager(requireContext())
-        rvHistory.adapter = GameHistoryRecyclerAdapter(vm.getGameHistory())
-        rvHistory.scrollToPosition(vm.getGameHistory().size - 1)
+        rvHistory.adapter = GameHistoryRecyclerAdapter(vm.readGameHistory())
+        rvHistory.scrollToPosition(vm.readGameHistory().size - 1)
 
         binding.topHistoryBar.setNavigationOnClickListener {
             parentFragmentManager.popBackStack()

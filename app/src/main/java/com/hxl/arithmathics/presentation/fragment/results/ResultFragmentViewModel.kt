@@ -3,8 +3,8 @@ package com.hxl.arithmathics.presentation.fragment.results
 import androidx.lifecycle.ViewModel
 import com.hxl.domain.models.GameResult
 import com.hxl.domain.models.Question
-import com.hxl.domain.usecase.database.game_history.GetGameHistory
-import com.hxl.domain.usecase.database.game_history.SaveGameHistory
+import com.hxl.domain.usecase.database.game_history.ReadGameHistory
+import com.hxl.domain.usecase.database.game_history.InsertGameHistory
 import com.hxl.domain.usecase.database.difficulty.ReadDifficulty
 import com.hxl.domain.usecase.prefs.GetMode
 import com.hxl.data.model.DifficultyEnums
@@ -15,8 +15,8 @@ import kotlin.math.log
 
 @HiltViewModel
 class ResultFragmentViewModel @Inject constructor(
-    private val getGameHistory: GetGameHistory,
-    private val saveGameHistory: SaveGameHistory,
+    private val readGameHistory: ReadGameHistory,
+    private val insertGameHistory: InsertGameHistory,
     private val getMode: GetMode,
     private val readDifficulty: ReadDifficulty
 ) : ViewModel() {
@@ -43,10 +43,10 @@ class ResultFragmentViewModel @Inject constructor(
         val operations = questionEnum.operations
         val range = questionEnum.numberRange
         val operators = questionEnum.operators.count()
-        val stack = getGameHistory()
+        val stack = readGameHistory()
 
         val difficulty = floor(log(levels, 100f) * log((range.last - range.first).toFloat(), 2f) * (operators * operations) / 2).toInt()
         stack.push(GameResult(difficulty, questions.size, corrects, time))
-        saveGameHistory(stack)
+        insertGameHistory(stack)
     }
 }
