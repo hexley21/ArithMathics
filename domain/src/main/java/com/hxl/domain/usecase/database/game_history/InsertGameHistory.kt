@@ -7,6 +7,6 @@ import java.util.*
 class InsertGameHistory(private val gameHistoryRepository: GameHistoryRepository) {
 
     operator fun invoke(gameHistory: Stack<GameResult>){
-        gameHistoryRepository.saveGameResult(gameHistory)
+        gameHistoryRepository.insertGameResult(gameHistory)
     }
 }

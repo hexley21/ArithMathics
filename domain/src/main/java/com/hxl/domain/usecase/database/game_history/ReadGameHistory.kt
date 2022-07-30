@@ -7,6 +7,6 @@ import java.util.*
 class ReadGameHistory(private val gameHistoryRepository: GameHistoryRepository) {
 
     operator fun invoke(): Stack<GameResult> {
-        return gameHistoryRepository.getGameHistory()
+        return gameHistoryRepository.readGameHistory()
     }
 }

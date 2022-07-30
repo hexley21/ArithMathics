@@ -6,6 +6,6 @@ import com.hxl.domain.repository.DifficultyRepository
 class ReadDifficulty(private val difficultyRepository: DifficultyRepository) {
 
     operator fun invoke(): QuestionDifficulty {
-        return difficultyRepository.getCustom()
+        return difficultyRepository.readCustom()
     }
 }

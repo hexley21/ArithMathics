@@ -7,7 +7,7 @@ import com.hxl.domain.repository.DifficultyRepository
 
 class DifficultyRepositoryImpl(private val internalStorage: InternalStorage) :
     DifficultyRepository {
-    override fun getCustom(): QuestionDifficulty {
+    override fun readCustom(): QuestionDifficulty {
         return Json.toCustom(internalStorage.read("custom"))
     }
 
