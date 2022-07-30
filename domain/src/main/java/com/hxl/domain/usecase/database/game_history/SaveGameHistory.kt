@@ -1,4 +1,4 @@
-package com.hxl.domain.usecase.game_history
+package com.hxl.domain.usecase.database.game_history
 
 import com.hxl.domain.models.GameResult
 import com.hxl.domain.repository.GameHistoryRepository

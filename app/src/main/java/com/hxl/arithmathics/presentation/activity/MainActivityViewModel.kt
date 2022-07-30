@@ -3,11 +3,11 @@ package com.hxl.arithmathics.presentation.activity
 import androidx.lifecycle.ViewModel
 import com.hxl.domain.models.QuestionDifficulty
 import com.hxl.domain.models.GameResult
-import com.hxl.domain.usecase.game_history.GetGameHistory
-import com.hxl.domain.usecase.game_history.SaveGameHistory
-import com.hxl.domain.usecase.prefs.GetCustom
+import com.hxl.domain.usecase.database.game_history.GetGameHistory
+import com.hxl.domain.usecase.database.game_history.SaveGameHistory
+import com.hxl.domain.usecase.database.difficulty.GetCustom
 import com.hxl.domain.usecase.prefs.GetWelcome
-import com.hxl.domain.usecase.prefs.InsertCustom
+import com.hxl.domain.usecase.database.difficulty.InsertCustom
 import com.hxl.domain.usecase.prefs.SaveWelcome
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.util.*

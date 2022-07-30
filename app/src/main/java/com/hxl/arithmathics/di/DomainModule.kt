@@ -4,8 +4,10 @@ import com.hxl.domain.repository.CustomRepository
 import com.hxl.domain.repository.GameHistoryRepository
 import com.hxl.domain.repository.PreferenceRepository
 import com.hxl.domain.repository.QuestionRepository
-import com.hxl.domain.usecase.game_history.GetGameHistory
-import com.hxl.domain.usecase.game_history.SaveGameHistory
+import com.hxl.domain.usecase.database.difficulty.GetCustom
+import com.hxl.domain.usecase.database.difficulty.InsertCustom
+import com.hxl.domain.usecase.database.game_history.GetGameHistory
+import com.hxl.domain.usecase.database.game_history.SaveGameHistory
 import com.hxl.domain.usecase.prefs.*
 import com.hxl.domain.usecase.questions.GetQuestion
 import dagger.Module

@@ -3,7 +3,7 @@ package com.hxl.arithmathics.presentation.fragment.game
 import androidx.lifecycle.ViewModel
 import com.hxl.arithmathics.presentation.fragment.game_history.GameResultFormatter
 import com.hxl.domain.models.Question
-import com.hxl.domain.usecase.prefs.GetCustom
+import com.hxl.domain.usecase.database.difficulty.GetCustom
 import com.hxl.domain.usecase.prefs.GetMode
 import com.hxl.domain.usecase.prefs.GetTimer
 import com.hxl.domain.usecase.questions.GetQuestion

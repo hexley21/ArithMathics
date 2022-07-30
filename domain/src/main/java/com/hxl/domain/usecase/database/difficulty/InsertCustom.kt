@@ -1,4 +1,4 @@
-package com.hxl.domain.usecase.prefs
+package com.hxl.domain.usecase.database.difficulty
 
 import com.hxl.domain.models.QuestionDifficulty
 import com.hxl.domain.repository.CustomRepository

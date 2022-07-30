@@ -3,9 +3,9 @@ package com.hxl.arithmathics.presentation.fragment.results
 import androidx.lifecycle.ViewModel
 import com.hxl.domain.models.GameResult
 import com.hxl.domain.models.Question
-import com.hxl.domain.usecase.game_history.GetGameHistory
-import com.hxl.domain.usecase.game_history.SaveGameHistory
-import com.hxl.domain.usecase.prefs.GetCustom
+import com.hxl.domain.usecase.database.game_history.GetGameHistory
+import com.hxl.domain.usecase.database.game_history.SaveGameHistory
+import com.hxl.domain.usecase.database.difficulty.GetCustom
 import com.hxl.domain.usecase.prefs.GetMode
 import com.hxl.data.model.DifficultyEnums
 import dagger.hilt.android.lifecycle.HiltViewModel
