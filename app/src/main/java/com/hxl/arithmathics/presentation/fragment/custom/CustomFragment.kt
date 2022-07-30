@@ -27,7 +27,7 @@ class CustomFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val custom = vm.custom
+        val custom = vm.difficulty
 
         val levelsSlider = binding.slLevels
         val operationsSlider = binding.slOperations
@@ -89,7 +89,7 @@ class CustomFragment : Fragment() {
             if (binding.cbOp4.isChecked) { operators += "/" }
 
             if (operators.isNotEmpty()) {
-                vm.custom =
+                vm.difficulty =
                     QuestionDifficulty(
                         levelsSlider.value.toInt(),
                         operationsSlider.value.toInt(),

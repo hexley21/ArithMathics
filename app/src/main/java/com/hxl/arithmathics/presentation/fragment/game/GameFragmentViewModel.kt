@@ -3,7 +3,7 @@ package com.hxl.arithmathics.presentation.fragment.game
 import androidx.lifecycle.ViewModel
 import com.hxl.arithmathics.presentation.fragment.game_history.GameResultFormatter
 import com.hxl.domain.models.Question
-import com.hxl.domain.usecase.database.difficulty.GetCustom
+import com.hxl.domain.usecase.database.difficulty.ReadDifficulty
 import com.hxl.domain.usecase.prefs.GetMode
 import com.hxl.domain.usecase.prefs.GetTimer
 import com.hxl.domain.usecase.questions.GetQuestion
@@ -15,7 +15,7 @@ import javax.inject.Inject
 class GameFragmentViewModel @Inject constructor(
     private val getQuestion: GetQuestion,
     getMode: GetMode,
-    getCustom: GetCustom,
+    readDifficulty: ReadDifficulty,
     val getTimer: GetTimer
 ) : ViewModel() {
 
@@ -23,7 +23,7 @@ class GameFragmentViewModel @Inject constructor(
         0 -> DifficultyEnums.EASY.questionDifficulty
         1 -> DifficultyEnums.MEDIUM.questionDifficulty
         2 -> DifficultyEnums.HARD.questionDifficulty
-        else -> getCustom()
+        else -> readDifficulty()
     }
 
     val levels = questionEnum.levels

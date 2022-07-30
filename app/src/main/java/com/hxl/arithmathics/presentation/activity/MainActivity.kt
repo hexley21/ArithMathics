@@ -45,8 +45,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(R.layout.activity_main)
 
-        try { Log.e("DATA_TEST", vm.custom.levels.toString()) }
-        catch (e: Exception) { vm.custom = DifficultyEnums.CUSTOM.questionDifficulty }
+        try { Log.e("DATA_TEST", vm.difficulty.levels.toString()) }
+        catch (e: Exception) { vm.difficulty = DifficultyEnums.CUSTOM.questionDifficulty }
         try { Log.e("DATA_TEST", vm.gameHistory.size.toString()) }
         catch (e: Exception) { vm.gameHistory = Stack() }
 

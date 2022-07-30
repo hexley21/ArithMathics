@@ -3,9 +3,10 @@ package com.hxl.data.repository
 import com.hxl.data.model.Json
 import com.hxl.data.storage.InternalStorage
 import com.hxl.domain.models.QuestionDifficulty
-import com.hxl.domain.repository.CustomRepository
+import com.hxl.domain.repository.DifficultyRepository
 
-class CustomRepositoryImpl(private val internalStorage: InternalStorage) : CustomRepository {
+class DifficultyRepositoryImpl(private val internalStorage: InternalStorage) :
+    DifficultyRepository {
     override fun getCustom(): QuestionDifficulty {
         return Json.toCustom(internalStorage.read("custom"))
     }

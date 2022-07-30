@@ -5,7 +5,7 @@ import com.hxl.domain.models.GameResult
 import com.hxl.domain.models.Question
 import com.hxl.domain.usecase.database.game_history.GetGameHistory
 import com.hxl.domain.usecase.database.game_history.SaveGameHistory
-import com.hxl.domain.usecase.database.difficulty.GetCustom
+import com.hxl.domain.usecase.database.difficulty.ReadDifficulty
 import com.hxl.domain.usecase.prefs.GetMode
 import com.hxl.data.model.DifficultyEnums
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -18,7 +18,7 @@ class ResultFragmentViewModel @Inject constructor(
     private val getGameHistory: GetGameHistory,
     private val saveGameHistory: SaveGameHistory,
     private val getMode: GetMode,
-    private val getCustom: GetCustom
+    private val readDifficulty: ReadDifficulty
 ) : ViewModel() {
     lateinit var questions: Array<Question>
     lateinit var answers: Array<String>
@@ -37,7 +37,7 @@ class ResultFragmentViewModel @Inject constructor(
             0 -> DifficultyEnums.EASY.questionDifficulty
             1 -> DifficultyEnums.MEDIUM.questionDifficulty
             2 -> DifficultyEnums.HARD.questionDifficulty
-            else -> getCustom()
+            else -> readDifficulty()
         }
         val levels = questionEnum.levels.toFloat()
         val operations = questionEnum.operations

@@ -1,11 +1,11 @@
 package com.hxl.arithmathics.di
 
-import com.hxl.domain.repository.CustomRepository
+import com.hxl.domain.repository.DifficultyRepository
 import com.hxl.domain.repository.GameHistoryRepository
 import com.hxl.domain.repository.PreferenceRepository
 import com.hxl.domain.repository.QuestionRepository
-import com.hxl.domain.usecase.database.difficulty.GetCustom
-import com.hxl.domain.usecase.database.difficulty.InsertCustom
+import com.hxl.domain.usecase.database.difficulty.ReadDifficulty
+import com.hxl.domain.usecase.database.difficulty.InsertDifficulty
 import com.hxl.domain.usecase.database.game_history.GetGameHistory
 import com.hxl.domain.usecase.database.game_history.SaveGameHistory
 import com.hxl.domain.usecase.prefs.*
@@ -80,13 +80,13 @@ class DomainModule{
 
     // region custom
     @Provides
-    fun provideGetCustom(customRepository: CustomRepository): GetCustom {
-        return GetCustom(customRepository)
+    fun provideGetDifficulty(difficultyRepository: DifficultyRepository): ReadDifficulty {
+        return ReadDifficulty(difficultyRepository)
     }
 
     @Provides
-    fun provideSaveCustom(customRepository: CustomRepository): InsertCustom {
-        return InsertCustom(customRepository)
+    fun provideSaveDifficulty(difficultyRepository: DifficultyRepository): InsertDifficulty {
+        return InsertDifficulty(difficultyRepository)
     }
     // endregion
 
