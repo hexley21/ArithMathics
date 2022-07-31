@@ -1,17 +1,29 @@
 package com.hxl.data.repository
 
-import com.hxl.data.model.Json
-import com.hxl.data.storage.InternalStorage
+import com.hxl.data.model.DifficultyDto
+import com.hxl.data.storage.room.dao.DifficultyDao
 import com.hxl.domain.models.Difficulty
 import com.hxl.domain.repository.DifficultyRepository
+import io.reactivex.rxjava3.core.Completable
+import io.reactivex.rxjava3.core.Single
 
-class DifficultyRepositoryImpl(private val internalStorage: InternalStorage) :
-    DifficultyRepository {
-    override fun readCustom(): Difficulty {
-        return Json.toCustom(internalStorage.read("custom"))
+class DifficultyRepositoryImpl(private val difficultyDao: DifficultyDao) : DifficultyRepository {
+
+    override fun readDifficulty(): Single<Difficulty> {
+        return difficultyDao.getDifficulty().map { DifficultyDto.toDifficulty(it) }
     }
 
-    override fun insertCustom(difficulty: Difficulty) {
-        internalStorage.write(Json.toJson(difficulty), "custom")
+    override fun insertDifficulty(difficulty: Difficulty): Completable {
+        return difficultyDao.insertDifficulty(
+            DifficultyDto(
+                1,
+                difficulty.levels,
+                difficulty.operations,
+                difficulty.numberRange.first,
+                difficulty.numberRange.last,
+                difficulty.operators,
+                difficulty.time
+            )
+        )
     }
 }
