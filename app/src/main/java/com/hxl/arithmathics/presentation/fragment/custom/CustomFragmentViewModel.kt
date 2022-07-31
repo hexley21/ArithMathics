@@ -10,11 +10,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CustomFragmentViewModel @Inject constructor(
-    private val readDifficulty: ReadDifficulty,
-    private val insertDifficulty: InsertDifficulty,
+    val readDifficulty: ReadDifficulty,
+    val insertDifficulty: InsertDifficulty,
     val getTimer: GetTimer
-) : ViewModel() {
-    var difficulty: Difficulty
-        get() = readDifficulty()
-        set(value) = insertDifficulty(value)
-}
+) : ViewModel()
