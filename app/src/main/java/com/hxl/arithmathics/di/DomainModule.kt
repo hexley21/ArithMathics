@@ -78,14 +78,14 @@ class DomainModule{
     }
     // endregion
 
-    // region custom
+    // region difficulty
     @Provides
-    fun provideGetDifficulty(difficultyRepository: DifficultyRepository): ReadDifficulty {
+    fun provideReadDifficulty(difficultyRepository: DifficultyRepository): ReadDifficulty {
         return ReadDifficulty(difficultyRepository)
     }
 
     @Provides
-    fun provideSaveDifficulty(difficultyRepository: DifficultyRepository): InsertDifficulty {
+    fun provideInsertDifficulty(difficultyRepository: DifficultyRepository): InsertDifficulty {
         return InsertDifficulty(difficultyRepository)
     }
     // endregion

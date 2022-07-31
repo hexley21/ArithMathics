@@ -8,6 +8,7 @@ import com.hxl.data.repository.QuestionRepositoryImpl
 import com.hxl.data.storage.InternalStorage
 import com.hxl.data.storage.PreferenceStorage
 import com.hxl.data.storage.internal.FileStorage
+import com.hxl.data.storage.room.LocalDatabase
 import com.hxl.data.storage.sharedprefs.SharedPreferenceStorage
 import com.hxl.domain.repository.DifficultyRepository
 import com.hxl.domain.repository.GameHistoryRepository
@@ -50,8 +51,14 @@ class DataModule {
 
     @Provides
     @Singleton
-    fun provideDifficultyRepository(internalStorage: InternalStorage): DifficultyRepository {
-        return DifficultyRepositoryImpl(internalStorage)
+    fun provideLocalDatabase(@ApplicationContext context: Context): LocalDatabase {
+        return LocalDatabase.getInstance(context)
+    }
+
+    @Provides
+    @Singleton
+    fun provideDifficultyRepository(database: LocalDatabase): DifficultyRepository {
+        return DifficultyRepositoryImpl(database.difficultyDao())
     }
 
     @Provides
