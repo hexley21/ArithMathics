@@ -10,7 +10,7 @@ import io.reactivex.rxjava3.core.Single
 
 @Dao
 interface GameHistoryDao {
-    @Query("SELECT * FROM game_history ORDER BY date DESC")
+    @Query("SELECT * FROM game_history ORDER BY date ASC")
     fun readGameResult(): Single<List<GameResultDto>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
