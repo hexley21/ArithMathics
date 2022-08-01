@@ -9,6 +9,9 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hxl.arithmathics.databinding.FragmentGameHistoryBinding
 import dagger.hilt.android.AndroidEntryPoint
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.schedulers.Schedulers
 
 @AndroidEntryPoint
 class GameHistoryFragment : Fragment() {
@@ -27,11 +30,18 @@ class GameHistoryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        val disposable = CompositeDisposable()
         val rvHistory = binding.rvHistory
         rvHistory.layoutManager = LinearLayoutManager(requireContext())
-        rvHistory.adapter = GameHistoryRecyclerAdapter(vm.readGameHistory())
-        rvHistory.scrollToPosition(vm.readGameHistory().size - 1)
+        disposable.add(vm.readGameHistory()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe{ history ->
+                rvHistory.adapter = GameHistoryRecyclerAdapter(history)
+                rvHistory.scrollToPosition(history.size - 1)
+                disposable.clear()
+            }
+        )
 
         binding.topHistoryBar.setNavigationOnClickListener {
             parentFragmentManager.popBackStack()
