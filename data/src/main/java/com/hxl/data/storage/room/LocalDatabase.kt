@@ -9,7 +9,7 @@ import com.hxl.data.model.GameResultDto
 import com.hxl.data.storage.room.dao.DifficultyDao
 import com.hxl.data.storage.room.dao.GameHistoryDao
 
-@Database(entities = [DifficultyDto::class, GameResultDto::class], version = 1, exportSchema = false)
+@Database(entities = [DifficultyDto::class, GameResultDto::class], version = 2, exportSchema = false)
 abstract class LocalDatabase : RoomDatabase() {
 
     abstract fun difficultyDao(): DifficultyDao
