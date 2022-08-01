@@ -1,171 +1,286 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="30dp">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="kotlin.ranges.IntRange" />
+        <import type="com.hxl.domain.models.Difficulty" />
+        <import type="android.view.View" />
+        <variable name="difficulty" type="Difficulty" />
+        <variable name="levels" type="int" />
+        <variable name="operations" type="int" />
+        <variable name="range" type="IntRange" />
+        <variable name="time" type="String" />
+        <variable name="timer" type="boolean" />
+        <variable name="add_percent" type="String" />
+        <variable name="sub_percent" type="String" />
+        <variable name="mul_percent" type="String" />
+        <variable name="div_percent" type="String" />
 
-    <TextView
-        android:id="@+id/tv_levels"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/levels"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/sl_levels"
-        app:layout_constraintStart_toStartOf="@+id/sl_levels"
-        app:layout_constraintTop_toTopOf="parent" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingStart="30dp"
+        android:paddingTop="30dp"
+        android:paddingEnd="30dp">
 
-    <com.google.android.material.slider.Slider
-        android:id="@+id/sl_levels"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:stepSize="1.0"
-        android:valueFrom="1.0"
-        android:valueTo="50.0"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_levels" />
+        <TextView
+            android:id="@+id/tv_levels"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text='@{@string/levels + ": " + levels}'
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/sl_levels"
+            app:layout_constraintStart_toStartOf="@+id/sl_levels"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_operations"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/operations"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/sl_operations"
-        app:layout_constraintStart_toStartOf="@+id/sl_operations"
-        app:layout_constraintTop_toBottomOf="@+id/sl_levels" />
+        <com.google.android.material.slider.Slider
+            android:id="@+id/sl_levels"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:stepSize="1.0"
+            android:valueFrom="1.0"
+            android:valueTo="50.0"
+            android:value="@{difficulty.levels > 1 ? difficulty.levels : 1}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_levels" />
 
-    <com.google.android.material.slider.Slider
-        android:id="@+id/sl_operations"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:stepSize="1.0"
-        android:valueFrom="1.0"
-        android:valueTo="15.0"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_operations" />
+        <TextView
+            android:id="@+id/tv_operations"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text='@{@string/operations + ": " + operations}'
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/sl_operations"
+            app:layout_constraintStart_toStartOf="@+id/sl_operations"
+            app:layout_constraintTop_toBottomOf="@+id/sl_levels" />
 
-    <TextView
-        android:id="@+id/tv_range"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/num_range"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/sl_range"
-        app:layout_constraintStart_toStartOf="@+id/sl_range"
-        app:layout_constraintTop_toBottomOf="@+id/sl_operations" />
+        <com.google.android.material.slider.Slider
+            android:id="@+id/sl_operations"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:stepSize="1.0"
+            android:valueFrom="1.0"
+            android:valueTo="15.0"
+            android:value="@{difficulty.operations > 1 ? difficulty.operations : 1}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_operations" />
 
-    <com.google.android.material.slider.RangeSlider
-        android:id="@+id/sl_range"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:stepSize="1.0"
-        android:valueFrom="1.0"
-        android:valueTo="1000.0"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_range"
-        app:layout_constraintVertical_chainStyle="packed" />
+        <TextView
+            android:id="@+id/tv_range"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text='@{@string/num_range + ": " + range.toString()}'
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/sl_range"
+            app:layout_constraintStart_toStartOf="@+id/sl_range"
+            app:layout_constraintTop_toBottomOf="@+id/sl_operations" />
 
-    <TextView
-        android:id="@+id/tv_sl_timer"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/timer"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/sl_range"
-        app:layout_constraintStart_toStartOf="@+id/sl_range"
-        app:layout_constraintTop_toBottomOf="@+id/sl_range" />
+        <com.google.android.material.slider.RangeSlider
+            android:id="@+id/sl_range"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:stepSize="1.0"
+            android:valueFrom="1.0"
+            android:valueTo="1000.0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_range"
+            app:layout_constraintVertical_chainStyle="packed" />
 
-    <com.google.android.material.slider.Slider
-        android:id="@+id/sl_timer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:stepSize="1.0"
-        android:valueFrom="1.0"
-        android:valueTo="10800.0"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_sl_timer"
-        app:layout_constraintVertical_chainStyle="packed" />
+        <TextView
+            android:id="@+id/tv_sl_timer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text='@{@string/timer + " - " + time}'
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/sl_range"
+            app:layout_constraintStart_toStartOf="@+id/sl_range"
+            app:layout_constraintTop_toBottomOf="@+id/sl_range" />
 
-    <TextView
-        android:id="@+id/tv_timer_attention"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/timer_attention"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="@+id/sl_timer"
-        app:layout_constraintTop_toBottomOf="@+id/sl_timer" />
+        <com.google.android.material.slider.Slider
+            android:id="@+id/sl_timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:stepSize="1.0"
+            android:valueFrom="1.0"
+            android:valueTo="10800.0"
+            android:value="@{difficulty.time > 1 ? difficulty.time : 1}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_sl_timer"
+            app:layout_constraintVertical_chainStyle="packed" />
 
-    <CheckBox
-        android:id="@+id/cb_op1"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/addition"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/cb_op2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sl_timer"
-        app:layout_constraintVertical_chainStyle="packed" />
+        <TextView
+            android:id="@+id/tv_timer_attention"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/timer_attention"
+            android:textSize="14sp"
+            android:visibility="@{timer == true ? View.GONE : View.VISIBLE}"
+            app:layout_constraintEnd_toEndOf="@+id/sl_timer"
+            app:layout_constraintTop_toBottomOf="@+id/sl_timer" />
 
-    <CheckBox
-        android:id="@+id/cb_op2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/subtraction"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/cb_op3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cb_op1" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/btn_start_custom"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sl_timer"
+            app:layout_constraintVertical_chainStyle="packed">
+            <Button
+                android:id="@+id/btn_plus_add"
+                style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                app:icon="@drawable/ic_baseline_add_24"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <CheckBox
-        android:id="@+id/cb_op3"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/multiplication"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/cb_op4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cb_op2" />
+            <Button
+                android:id="@+id/btn_minus_add"
+                style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:drawableStart="@drawable/ic_baseline_remove_24"
+                app:icon="@drawable/ic_baseline_remove_24"
+                app:layout_constraintStart_toEndOf="@+id/btn_plus_add"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <CheckBox
-        android:id="@+id/cb_op4"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/division"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_start_custom"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cb_op3" />
+            <TextView
+                android:id="@+id/tv_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text='@{@string/addition + ": " + add_percent}'
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_minus_add"
+                app:layout_constraintStart_toEndOf="@+id/btn_minus_add"
+                app:layout_constraintTop_toTopOf="@+id/btn_minus_add" />
 
-    <TextView
-        android:id="@+id/tv_decimal_attention"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/decimal_attention"
-        app:layout_constraintStart_toStartOf="@+id/cb_op4"
-        app:layout_constraintTop_toBottomOf="@+id/cb_op4" />
+            <Button
+                android:id="@+id/btn_plus_sub"
+                style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                app:icon="@drawable/ic_baseline_add_24"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_plus_add" />
 
-    <Button
-        android:id="@+id/btn_start_custom"
-        style="@style/Default_Button"
-        android:text="@string/start"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+            <Button
+                android:id="@+id/btn_minus_sub"
+                style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:drawableStart="@drawable/ic_baseline_remove_24"
+                app:icon="@drawable/ic_baseline_remove_24"
+                app:layout_constraintStart_toEndOf="@+id/btn_plus_sub"
+                app:layout_constraintTop_toBottomOf="@+id/btn_minus_add" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/tv_sub"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text='@{@string/subtraction + ": " + sub_percent}'
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_minus_sub"
+                app:layout_constraintStart_toEndOf="@+id/btn_minus_sub"
+                app:layout_constraintTop_toTopOf="@+id/btn_minus_sub" />
+
+            <Button
+                android:id="@+id/btn_plus_mult"
+                style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                app:icon="@drawable/ic_baseline_add_24"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_plus_sub" />
+
+            <Button
+                android:id="@+id/btn_minus_mult"
+                style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:drawableStart="@drawable/ic_baseline_remove_24"
+                app:icon="@drawable/ic_baseline_remove_24"
+                app:layout_constraintStart_toEndOf="@+id/btn_plus_mult"
+                app:layout_constraintTop_toBottomOf="@+id/btn_minus_sub" />
+
+            <TextView
+                android:id="@+id/tv_mul"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text='@{@string/multiplication + ": " + mul_percent}'
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_minus_mult"
+                app:layout_constraintStart_toEndOf="@+id/btn_minus_mult"
+                app:layout_constraintTop_toTopOf="@+id/btn_minus_mult" />
+
+            <Button
+                android:id="@+id/btn_plus_div"
+                style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                app:icon="@drawable/ic_baseline_add_24"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_plus_mult" />
+
+            <Button
+                android:id="@+id/btn_minus_div"
+                style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:drawableStart="@drawable/ic_baseline_remove_24"
+                app:icon="@drawable/ic_baseline_remove_24"
+                app:layout_constraintStart_toEndOf="@+id/btn_plus_div"
+                app:layout_constraintTop_toBottomOf="@+id/btn_minus_mult" />
+
+            <TextView
+                android:id="@+id/tv_div"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text='@{@string/division + ": " + div_percent}'
+                app:layout_constraintBottom_toBottomOf="@+id/btn_minus_div"
+                app:layout_constraintStart_toEndOf="@+id/btn_minus_div"
+                app:layout_constraintTop_toTopOf="@+id/btn_minus_div"
+                android:textSize="16sp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Button
+            android:id="@+id/btn_start_custom"
+            style="@style/Default_Button"
+            android:text="@string/start"
+            app:layout_constraintBottom_toTopOf="@+id/tv_decimal_attention"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_decimal_attention"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:text="@string/decimal_attention"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
