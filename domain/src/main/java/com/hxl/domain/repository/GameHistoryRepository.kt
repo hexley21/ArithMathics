@@ -5,8 +5,8 @@ import java.util.*
 
 interface GameHistoryRepository {
 
-    fun getGameHistory(): Stack<GameResult>
+    fun readGameHistory(): Stack<GameResult>
 
-    fun saveGameResult(gameHistory: Stack<GameResult>)
+    fun insertGameResult(gameHistory: Stack<GameResult>)
 
 }

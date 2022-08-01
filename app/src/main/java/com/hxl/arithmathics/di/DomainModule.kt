@@ -1,11 +1,13 @@
 package com.hxl.arithmathics.di
 
-import com.hxl.domain.repository.CustomRepository
+import com.hxl.domain.repository.DifficultyRepository
 import com.hxl.domain.repository.GameHistoryRepository
 import com.hxl.domain.repository.PreferenceRepository
 import com.hxl.domain.repository.QuestionRepository
-import com.hxl.domain.usecase.game_history.GetGameHistory
-import com.hxl.domain.usecase.game_history.SaveGameHistory
+import com.hxl.domain.usecase.database.difficulty.ReadDifficulty
+import com.hxl.domain.usecase.database.difficulty.InsertDifficulty
+import com.hxl.domain.usecase.database.game_history.ReadGameHistory
+import com.hxl.domain.usecase.database.game_history.InsertGameHistory
 import com.hxl.domain.usecase.prefs.*
 import com.hxl.domain.usecase.questions.GetQuestion
 import dagger.Module
@@ -76,27 +78,27 @@ class DomainModule{
     }
     // endregion
 
-    // region custom
+    // region difficulty
     @Provides
-    fun provideGetCustom(customRepository: CustomRepository): GetCustom {
-        return GetCustom(customRepository)
+    fun provideReadDifficulty(difficultyRepository: DifficultyRepository): ReadDifficulty {
+        return ReadDifficulty(difficultyRepository)
     }
 
     @Provides
-    fun provideSaveCustom(customRepository: CustomRepository): SaveCustom {
-        return SaveCustom(customRepository)
+    fun provideInsertDifficulty(difficultyRepository: DifficultyRepository): InsertDifficulty {
+        return InsertDifficulty(difficultyRepository)
     }
     // endregion
 
     // region game history
     @Provides
-    fun provideGameHistory(gameHistoryRepository: GameHistoryRepository): GetGameHistory{
-        return GetGameHistory(gameHistoryRepository)
+    fun provideReadGameHistory(gameHistoryRepository: GameHistoryRepository): ReadGameHistory{
+        return ReadGameHistory(gameHistoryRepository)
     }
 
     @Provides
-    fun provideSaveGameHistory(gameHistoryRepository: GameHistoryRepository): SaveGameHistory {
-        return SaveGameHistory(gameHistoryRepository)
+    fun provideInsertGameHistory(gameHistoryRepository: GameHistoryRepository): InsertGameHistory {
+        return InsertGameHistory(gameHistoryRepository)
     }
     // endregion
 }

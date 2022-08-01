@@ -1,15 +1,16 @@
 package com.hxl.arithmathics.di
 
 import android.content.Context
-import com.hxl.data.repository.CustomRepositoryImpl
+import com.hxl.data.repository.DifficultyRepositoryImpl
 import com.hxl.data.repository.GameHistoryRepositoryImpl
 import com.hxl.data.repository.PreferenceRepositoryImpl
 import com.hxl.data.repository.QuestionRepositoryImpl
 import com.hxl.data.storage.InternalStorage
 import com.hxl.data.storage.PreferenceStorage
 import com.hxl.data.storage.internal.FileStorage
+import com.hxl.data.storage.room.LocalDatabase
 import com.hxl.data.storage.sharedprefs.SharedPreferenceStorage
-import com.hxl.domain.repository.CustomRepository
+import com.hxl.domain.repository.DifficultyRepository
 import com.hxl.domain.repository.GameHistoryRepository
 import com.hxl.domain.repository.PreferenceRepository
 import com.hxl.domain.repository.QuestionRepository
@@ -50,8 +51,14 @@ class DataModule {
 
     @Provides
     @Singleton
-    fun provideCustomRepository(internalStorage: InternalStorage): CustomRepository {
-        return CustomRepositoryImpl(internalStorage)
+    fun provideLocalDatabase(@ApplicationContext context: Context): LocalDatabase {
+        return LocalDatabase.getInstance(context)
+    }
+
+    @Provides
+    @Singleton
+    fun provideDifficultyRepository(database: LocalDatabase): DifficultyRepository {
+        return DifficultyRepositoryImpl(database.difficultyDao())
     }
 
     @Provides

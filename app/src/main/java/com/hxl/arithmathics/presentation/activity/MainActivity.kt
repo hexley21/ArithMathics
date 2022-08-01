@@ -21,7 +21,6 @@ import com.hxl.arithmathics.presentation.fragment.menu.MenuFragment
 import com.hxl.arithmathics.presentation.fragment.welcome.WelcomeFragment
 import com.hxl.data.repository.PreferenceRepositoryImpl
 import com.hxl.data.storage.sharedprefs.SharedPreferenceStorage
-import com.hxl.data.model.DifficultyEnums
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
@@ -45,10 +44,13 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(R.layout.activity_main)
 
-        try { Log.e("DATA_TEST", vm.custom.levels.toString()) }
-        catch (e: Exception) { vm.custom = DifficultyEnums.CUSTOM.questionDifficulty }
-        try { Log.e("DATA_TEST", vm.gameHistory.size.toString()) }
-        catch (e: Exception) { vm.gameHistory = Stack() }
+        vm.checkDifficulty()
+
+        try {
+            Log.e("DATA_TEST", vm.gameHistory.size.toString())
+        } catch (e: Exception) {
+            vm.gameHistory = Stack()
+        }
 
         when (vm.welcome) {
             false -> replaceFragment(MenuFragment())

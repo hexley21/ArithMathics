@@ -7,11 +7,11 @@ import com.hxl.domain.repository.GameHistoryRepository
 import java.util.*
 
 class GameHistoryRepositoryImpl(private val internalStorage: InternalStorage): GameHistoryRepository {
-    override fun getGameHistory(): Stack<GameResult> {
+    override fun readGameHistory(): Stack<GameResult> {
         return Json.toGameHistory(internalStorage.read("game_history"))
     }
 
-    override fun saveGameResult(gameHistory: Stack<GameResult>) {
+    override fun insertGameResult(gameHistory: Stack<GameResult>) {
         internalStorage.write(Json.toJson(gameHistory), "game_history")
     }
 }
