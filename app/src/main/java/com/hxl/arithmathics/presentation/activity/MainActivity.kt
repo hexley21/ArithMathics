@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.ContextWrapper
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -22,7 +21,6 @@ import com.hxl.arithmathics.presentation.fragment.welcome.WelcomeFragment
 import com.hxl.data.repository.PreferenceRepositoryImpl
 import com.hxl.data.storage.sharedprefs.SharedPreferenceStorage
 import dagger.hilt.android.AndroidEntryPoint
-import java.util.*
 
 
 @AndroidEntryPoint
@@ -45,12 +43,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         vm.checkDifficulty()
-
-        try {
-            Log.e("DATA_TEST", vm.gameHistory.size.toString())
-        } catch (e: Exception) {
-            vm.gameHistory = Stack()
-        }
 
         when (vm.welcome) {
             false -> replaceFragment(MenuFragment())

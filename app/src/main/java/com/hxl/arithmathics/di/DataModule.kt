@@ -63,7 +63,7 @@ class DataModule {
 
     @Provides
     @Singleton
-    fun provideGameHistoryRepository(internalStorage: InternalStorage): GameHistoryRepository {
-        return GameHistoryRepositoryImpl(internalStorage)
+    fun provideGameHistoryRepository(database: LocalDatabase): GameHistoryRepository {
+        return GameHistoryRepositoryImpl(database.gameHistoryDao())
     }
 }

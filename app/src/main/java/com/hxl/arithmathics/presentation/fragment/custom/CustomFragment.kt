@@ -114,7 +114,7 @@ class CustomFragment : Fragment() {
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(
                         {
-                            Log.d(LocalDatabase.TAG, "New record inserted")
+                            Log.e(LocalDatabase.TAG, "$it record was inserted")
                             disposable.clear()
                         },
                         {

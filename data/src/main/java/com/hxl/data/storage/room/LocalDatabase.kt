@@ -5,12 +5,16 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.hxl.data.model.DifficultyDto
+import com.hxl.data.model.GameResultDto
 import com.hxl.data.storage.room.dao.DifficultyDao
+import com.hxl.data.storage.room.dao.GameHistoryDao
 
-@Database(entities = [DifficultyDto::class], version = 1, exportSchema = false)
+@Database(entities = [DifficultyDto::class, GameResultDto::class], version = 2, exportSchema = false)
 abstract class LocalDatabase : RoomDatabase() {
 
     abstract fun difficultyDao(): DifficultyDao
+
+    abstract fun gameHistoryDao(): GameHistoryDao
 
     companion object {
 
