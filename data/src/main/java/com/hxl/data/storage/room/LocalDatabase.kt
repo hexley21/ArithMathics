@@ -27,6 +27,6 @@ abstract class LocalDatabase : RoomDatabase() {
                 .fallbackToDestructiveMigration()
                 .build()
 
-        const val TAG = "ROOM_DATABASE"
+        const val TAG = "LOCAL_DATABASE"
     }
 }
