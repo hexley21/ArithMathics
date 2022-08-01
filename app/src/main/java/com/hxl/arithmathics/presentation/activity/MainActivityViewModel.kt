@@ -40,10 +40,9 @@ class MainActivityViewModel @Inject constructor(
     fun checkDifficulty() {
         disposable.add(readDifficulty()
             .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 {
-                    Log.d(LocalDatabase.TAG, "Difficulty was read successfully")
+                    Log.e(LocalDatabase.TAG, "$it was read successfully")
                     disposable.clear()
                 },
                 { createDifficulty() }
@@ -54,10 +53,9 @@ class MainActivityViewModel @Inject constructor(
     private fun createDifficulty() {
         disposable.add(insertDifficulty(DifficultyEnums.CUSTOM.difficulty)
             .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 {
-                    Log.d(LocalDatabase.TAG, "First record created")
+                    Log.e(LocalDatabase.TAG, "First record created")
                     disposable.clear()
                 },
                 { Log.e(LocalDatabase.TAG, "Couldn't create first record", it) }
