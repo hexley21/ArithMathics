@@ -8,6 +8,9 @@ import com.hxl.data.model.DifficultyDto
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Single
 
+/**
+ * Interface for database access on Difficulty related operations.
+ */
 @Dao
 interface DifficultyDao {
 

@@ -7,6 +7,9 @@ import com.hxl.data.model.GameResultDto
 import com.hxl.data.storage.room.dao.DifficultyDao
 import com.hxl.data.storage.room.dao.GameHistoryDao
 
+/**
+ * Main database description.
+ */
 @Database(
     entities = [DifficultyDto::class, GameResultDto::class],
     version = 2,

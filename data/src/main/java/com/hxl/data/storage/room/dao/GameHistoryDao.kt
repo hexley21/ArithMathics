@@ -8,6 +8,9 @@ import com.hxl.data.model.GameResultDto
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Single
 
+/**
+ * Interface for database access for Game-History related operations.
+ */
 @Dao
 interface GameHistoryDao {
     @Query("SELECT * FROM game_history ORDER BY date ASC")

@@ -4,11 +4,13 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.hxl.domain.models.GameResult
-import org.jetbrains.annotations.NotNull
 
+/**
+ * Game-Result Value Object with date as a primary-key.
+ * objects will be sorted and filtered by date in future releases.
+ */
 @Entity(tableName = "game_history")
 data class GameResultDto(
-    @NotNull
     @PrimaryKey
     @ColumnInfo(name = "date") val date: Long,
     @ColumnInfo(name = "difficulty") val difficulty: Int,
