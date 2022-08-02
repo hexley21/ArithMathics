@@ -64,8 +64,14 @@ class GameFragment : Fragment() {
                     }
                     answerArray = Array(difEnum.levels) { "" }
                     questionArray = Array(difEnum.levels) {
-                        vm.getQuestion(difEnum.operations, difEnum.numberRange, difEnum.operators, vm.getPositive())
+                        vm.getQuestion(
+                            difEnum.operations,
+                            difEnum.numberRange,
+                            difEnum.operators,
+                            vm.getPositive()
+                        )
                     }
+                    binding.levels = difEnum.levels
                     gamePage.adapter = GamePagerAdapter(this,
                         difEnum.levels,
                         Array(difEnum.levels) { questionArray[it].question })
@@ -82,8 +88,7 @@ class GameFragment : Fragment() {
                                 super.onPageScrolled(position, positionOffset, positionOffsetPixels)
 
                                 binding.tiAnswer.setText(answerArray[position])
-                                binding.tvPosition.text =
-                                    "${gamePage.currentItem + 1}/${difEnum.levels}"
+                                binding.level = gamePage.currentItem + 1
 
                                 if (gamePage.currentItem == answerArray.size - 1) {
                                     binding.btnAnswer.text = resources.getString(R.string.finish)
@@ -100,7 +105,9 @@ class GameFragment : Fragment() {
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 nextQuestion()
                 true
-            } else { false }
+            } else {
+                false
+            }
         }
 
         binding.btnAnswer.setOnClickListener { nextQuestion() }
@@ -119,13 +126,23 @@ class GameFragment : Fragment() {
         val functions: MutableList<() -> Unit> = mutableListOf({ time++ })
         if (vm.getTimer()) {
             functions.add {
-                binding.tvTimer.text = vm.getTimerText(difEnum.time - time)
-                if (time == difEnum.time) { endGame() }
+                binding.time = vm.getTimerText(difEnum.time - time)
+                if (time == difEnum.time) {
+                    endGame()
+                }
             }
-        } else { functions.add { binding.tvTimer.text = vm.getTimerText(time) } }
+        } else {
+            functions.add { binding.time = vm.getTimerText(time) }
+        }
 
         timerTask = object : TimerTask() {
-            override fun run() { requireActivity().runOnUiThread { for (i in functions) { i() } } }
+            override fun run() {
+                requireActivity().runOnUiThread {
+                    for (i in functions) {
+                        i()
+                    }
+                }
+            }
         }
         Timer().scheduleAtFixedRate(timerTask, 0, 1000)
     }
