@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable name="question" type="String" />
+        <variable name="solution" type="String" />
+        <variable name="answer" type="String" />
+        <variable name="correct" type="boolean" />
+    </data>
+    
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -12,7 +19,7 @@
             android:layout_height="wrap_content"
             app:cardBackgroundColor="?attr/colorErrorContainer"
             app:cardCornerRadius="24dp"
-            app:contentPadding="10dp">
+            app:contentPadding="14dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -21,7 +28,7 @@
                 <TextView
                     android:id="@+id/tv_res_question"
                     style="@style/Default_Card_text"
-                    android:text="@string/corrects"
+                    android:text='@{question + " = " + solution}'
                     android:textColor="?attr/colorOnErrorContainer"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -31,7 +38,7 @@
                     android:id="@+id/tv_res_answer"
                     style="@style/Default_Card_text"
                     android:layout_marginTop="20dp"
-                    android:text="@string/answer"
+                    android:text='@{@string/answer + ": " + answer}'
                     android:textColor="?attr/colorOnErrorContainer"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -40,7 +47,7 @@
                 <TextView
                     android:id="@+id/tv_result"
                     style="@style/Default_Card_text"
-                    android:text="@string/wrong"
+                    android:text='@{correct == true ? @string/correct : @string/wrong}'
                     android:textColor="?attr/colorOnErrorContainer"
                     android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="parent"
