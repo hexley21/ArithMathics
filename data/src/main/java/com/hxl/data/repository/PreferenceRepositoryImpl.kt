@@ -64,4 +64,12 @@ class PreferenceRepositoryImpl(private val prefStorage: PreferenceStorage) : Pre
         prefStorage.save("timer", value)
     }
 
+    override fun getPositive(default: Boolean): Boolean {
+        return prefStorage.get("positive", default)
+    }
+
+    override fun savePositive(value: Boolean) {
+        prefStorage.save("positive", value)
+    }
+
 }

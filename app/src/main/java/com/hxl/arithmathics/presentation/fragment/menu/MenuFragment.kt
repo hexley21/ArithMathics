@@ -117,6 +117,30 @@ class MenuFragment : Fragment() {
                 override fun onNothingSelected(parent: AdapterView<*>?) {}
             }
 
+        ArrayAdapter.createFromResource(
+            requireContext(), R.array.positive_array, android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            binding.spPositiveMode.adapter = adapter
+        }
+
+        when (vm.positive) {
+            true -> binding.spPositiveMode.setSelection(1, false)
+            else -> binding.spPositiveMode.setSelection(0, false)
+        }
+
+        binding.spPositiveMode.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                    when (p2) {
+                        1 -> vm.positive = true
+                        else -> vm.positive = false
+                    }
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {}
+            }
+
         return binding.root
     }
 

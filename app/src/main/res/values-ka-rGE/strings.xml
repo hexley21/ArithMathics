@@ -22,6 +22,13 @@
         <item>ტაიმერით</item>
     </string-array>
 
+    <!-- Positive answers -->
+    <string name="positive_mode">პასუხები</string>
+    <string-array name="positive_array">
+        <item>დადებითები &amp; უარყოფითები</item>
+        <item>მხოლოდ დადებითები</item>
+    </string-array>
+
     <!-- Dialogs -->
     <string name="ok">ოქეი</string>
     <string name="cancel">გაუქმება</string>

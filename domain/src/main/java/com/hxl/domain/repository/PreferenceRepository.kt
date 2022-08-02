@@ -22,4 +22,8 @@ interface PreferenceRepository{
 
     fun saveTimer(value: Boolean)
 
+    fun savePositive(value: Boolean)
+
+    fun getPositive(default: Boolean = false): Boolean
+
 }

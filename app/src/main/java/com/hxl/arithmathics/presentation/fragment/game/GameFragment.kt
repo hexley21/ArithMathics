@@ -64,7 +64,7 @@ class GameFragment : Fragment() {
                     }
                     answerArray = Array(difEnum.levels) { "" }
                     questionArray = Array(difEnum.levels) {
-                        vm.getQuestion(difEnum.operations, difEnum.numberRange, difEnum.operators)
+                        vm.getQuestion(difEnum.operations, difEnum.numberRange, difEnum.operators, vm.getPositive())
                     }
                     gamePage.adapter = GamePagerAdapter(this,
                         difEnum.levels,
