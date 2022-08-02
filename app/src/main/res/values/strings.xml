@@ -23,6 +23,13 @@
         <item>With timer</item>
     </string-array>
 
+    <!-- Positive answers -->
+    <string name="positive_mode">Answers</string>
+    <string-array name="positive_array">
+        <item>Positives &amp; Negatives</item>
+        <item>Only Positives</item>
+    </string-array>
+
     <!-- Dialogs -->
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
