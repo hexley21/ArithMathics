@@ -3,6 +3,7 @@
     <string name="app_name">Arithmathics</string>
     <string name="app_title" translatable="false">Arithmathics</string>
 
+    <string name="licenses">Licenses</string>
     <!-- Menu Fragment -->
     <string name="select_difficulty">Select difficulty</string>
     <string name="easy">Easy</string>
