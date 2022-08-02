@@ -21,7 +21,6 @@ class QuestionFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.tvQuestion.text =
-            arguments?.getString("question")?.replace("*", "×")?.replace("/", "÷") ?: "Null"
+        binding.tvQuestion.text = arguments?.getString("question")
     }
 }

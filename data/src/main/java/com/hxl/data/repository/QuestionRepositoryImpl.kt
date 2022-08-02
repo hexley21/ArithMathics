@@ -44,6 +44,7 @@ class QuestionRepositoryImpl : QuestionRepository {
         if (answer.endsWith(".0")) {
             answer = answer.dropLast(2)
         }
+        question = question.replace("*", "×").replace("/", "÷")
         return Question(question, answer)
     }
 
