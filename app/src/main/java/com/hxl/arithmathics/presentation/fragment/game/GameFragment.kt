@@ -2,6 +2,7 @@ package com.hxl.arithmathics.presentation.fragment.game
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.text.Selection
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -88,6 +89,7 @@ class GameFragment : Fragment() {
                                 super.onPageScrolled(position, positionOffset, positionOffsetPixels)
 
                                 binding.tiAnswer.setText(answerArray[position])
+                                Selection.moveToRightEdge(binding.tiAnswer.text, binding.tiAnswer.layout)
                                 binding.level = gamePage.currentItem + 1
 
                                 if (gamePage.currentItem == answerArray.size - 1) {
