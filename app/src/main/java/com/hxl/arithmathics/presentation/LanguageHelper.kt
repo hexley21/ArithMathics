@@ -8,6 +8,9 @@ import android.os.Build
 import android.os.LocaleList
 import java.util.*
 
+/**
+ * Helper class that updates Language according to preference & wraps in context.
+ */
 class LanguageHelper(private val base: Context) : ContextWrapper(base) {
 
     fun updateLocale(language: String): ContextWrapper {
