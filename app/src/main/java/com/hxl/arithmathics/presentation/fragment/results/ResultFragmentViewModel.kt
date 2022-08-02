@@ -22,8 +22,10 @@ class ResultFragmentViewModel @Inject constructor(
     val getMode: GetMode,
     val readDifficulty: ReadDifficulty
 ) : ViewModel() {
+
     lateinit var questions: Array<Question>
     lateinit var answers: Array<String>
+    private val disposable = CompositeDisposable()
     var corrects: Int = 0
     var time: Int = 0
 
@@ -35,25 +37,32 @@ class ResultFragmentViewModel @Inject constructor(
     }
 
     private fun saveGame(gameMode: Difficulty) {
-        val disposable = CompositeDisposable()
-        val levels = gameMode.levels.toFloat()
-        val operations = gameMode.operations
-        val range = gameMode.numberRange
-        val operators = gameMode.operators.count()
-        val difficulty = floor(log(levels, 100f) * log((range.last - range.first).toFloat(), 2f) * (operators * operations) / 2).toInt()
+        val difficulty = calculateDifficulty(
+            gameMode.levels,
+            gameMode.numberRange,
+            gameMode.operators.count(),
+            gameMode.operations
+        )
         val newRecord = GameResult(difficulty, questions.size, corrects, time)
         disposable.add(insertGameHistory(newRecord)
             .subscribeOn(Schedulers.io())
-            .subscribe (
-                {
-                    Log.e(LocalDatabase.TAG, "$newRecord record was inserted")
-                    disposable.clear()
-                },
-                {
-                    Log.e(LocalDatabase.TAG, "Couldn't insert $newRecord record", it)
-                    disposable.clear()
-                }
+            .subscribe(
+                { Log.e(LocalDatabase.TAG, "$newRecord record was inserted") },
+                { Log.e(LocalDatabase.TAG, "Couldn't insert $newRecord record", it) }
             )
         )
+    }
+
+    private fun calculateDifficulty(levels: Int, range: IntRange, operations: Int, operators: Int): Int {
+        return floor(
+            log(levels.toFloat(), 100f) *
+                    log((range.last - range.first).toFloat(), 2f) *
+                    (operators * operations) / 2
+        ).toInt()
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        disposable.clear()
     }
 }
