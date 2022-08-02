@@ -21,9 +21,10 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 
 @AndroidEntryPoint
 class ResultsFragment : Fragment() {
+
     private val vm: ResultFragmentViewModel by activityViewModels()
-    private val disposable = CompositeDisposable()
     private lateinit var binding: FragmentResultBinding
+    private val disposable = CompositeDisposable()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentResultBinding.inflate(layoutInflater, container, false)
@@ -52,9 +53,13 @@ class ResultsFragment : Fragment() {
                 binding.topResultsBar.title = "${vm.corrects}/${vm.answers.size}"
                 binding.tvResTime.text =
                     "${resources.getString(R.string.time_spent)} ${GameResultFormatter.getTimerText(vm.time)}"
-                disposable.clear()
             }
         )
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        disposable.clear()
     }
 
 }
