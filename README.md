@@ -10,14 +10,14 @@
   <br />
   <strong>Improve your arithmetic skills by practicing</strong>
 
-  <a href="#about"><strong>Explore the screenshots »</strong></a>
+[**Explore the screenshots »**](#about)
   <br />
   <br />
-  <a href="https://github.com/hexley21/ArithMathics/issues/new?assignees=&labels=bug&template=01_BUG_REPORT.md&title=bug%3A+">Report a Bug</a>
+ [Report a Bug](https://github.com/hexley21/ArithMathics/issues/new?assignees=&labels=bug&template=01_BUG_REPORT.md&title=bug%3A+)
   ·
-  <a href="https://github.com/hexley21/ArithMathics/issues/new?assignees=&labels=enhancement&template=02_FEATURE_REQUEST.md&title=feat%3A+">Request a Feature</a>
+[Request a Feature](https://github.com/hexley21/ArithMathics/issues/new?assignees=&labels=enhancement&template=02_FEATURE_REQUEST.md&title=feat%3A+)
   .
-  <a href="https://github.com/hexley21/ArithMathics/issues/new?assignees=&labels=question&template=04_SUPPORT_QUESTION.md&title=support%3A+">Ask a Question</a>
+  [Ask a Question](https://github.com/hexley21/ArithMathics/issues/new?assignees=&labels=question&template=04_SUPPORT_QUESTION.md&title=support%3A+)
 </div>
 
 <div align="center">
@@ -74,7 +74,7 @@ in order to improve your arithmetic skills
 
 Arithmathics is written in Kotlin language and
 is build by 
-<a href="https://medium.com/android-dev-hacks/detailed-guide-on-android-clean-architecture-9eab262a9011">clean architecture</a>,
+[clean architecture](https://medium.com/android-dev-hacks/detailed-guide-on-android-clean-architecture-9eab262a9011)
 which contains MVVM pattern
 <details>
 <summary>Draw.io diagram</summary>
@@ -128,11 +128,13 @@ See [LICENSE](LICENSE) for more information.
 ## Acknowledgements
 
 This game would not be able to exist without this dependencies:
-- <a href="https://github.com/airbnb/paris">Airbnb - Paris</a> - Apply styles to Android views programmatically
-- <a href="https://github.com/google/dagger">Google - Dagger Hilt</a> - Dependency injector for Android and Java.
-- <a href="https://github.com/google/gson">Google - Gson</a> - Convert Java Objects into JSON and back
-- <a href="https://www.objecthunter.net/exp4j/">Objecthunter - exp4j</a> - Math parser libray
+- [ReactiveX - RxJava](https://github.com/ReactiveX/RxJava) - A library for composing asynchronous and event-based programs
+- [ReactiveX - RxAndroid](https://github.com/ReactiveX/RxAndroid) - RxJava bindings for Android
+- [Google - Dagger Hilt](https://github.com/google/dagger) - Dependency injector for Android and Java
+- [Android - Room](https://developer.android.com/jetpack/androidx/releases/room) - A robust SQLite database
+- [Objecthunter - exp4j](https://www.objecthunter.net/exp4j/) - Math parser libray
+- [Airbnb - Paris](https://github.com/airbnb/paris) - Apply styles to Android views programmatically
 
 Arithmathics used these sources for design:
-- Font - <a href="https://www.contractica.ge/">TBC Contractica</a>
-- Icons - <a href="https://fonts.google.com/icons">Google Material icons</a>
+- [TBC Contractica](https://www.contractica.ge/) - Font
+- [Google Material icons](https://fonts.google.com/icons) - Icons
