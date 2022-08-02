@@ -69,6 +69,16 @@ class DomainModule{
     fun provideSaveTimer(preferenceRepository: PreferenceRepository): SaveTimer {
         return SaveTimer(preferenceRepository)
     }
+
+    @Provides
+    fun provideGetPositive(preferenceRepository: PreferenceRepository): GetPositive {
+        return GetPositive(preferenceRepository)
+    }
+
+    @Provides
+    fun provideSavePositive(preferenceRepository: PreferenceRepository): SavePositive {
+        return SavePositive(preferenceRepository)
+    }
     // endregion
 
     // region questions
