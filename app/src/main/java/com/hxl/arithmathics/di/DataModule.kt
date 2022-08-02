@@ -1,6 +1,7 @@
 package com.hxl.arithmathics.di
 
 import android.content.Context
+import androidx.room.Room
 import com.hxl.data.repository.DifficultyRepositoryImpl
 import com.hxl.data.repository.GameHistoryRepositoryImpl
 import com.hxl.data.repository.PreferenceRepositoryImpl
@@ -44,7 +45,11 @@ class DataModule {
     @Provides
     @Singleton
     fun provideLocalDatabase(@ApplicationContext context: Context): LocalDatabase {
-        return LocalDatabase.getInstance(context)
+        return Room.databaseBuilder(
+            context.applicationContext,
+            LocalDatabase::class.java,
+            "arithmathics.db"
+        ).fallbackToDestructiveMigration().build()
     }
 
     @Provides
