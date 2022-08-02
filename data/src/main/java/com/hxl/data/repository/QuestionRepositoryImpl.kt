@@ -7,9 +7,16 @@ import kotlin.math.roundToInt
 
 class QuestionRepositoryImpl : QuestionRepository {
 
-    override fun generateQuestion(operations: Int, numberRange: IntRange, operators: String): Question {
+    private val negativeRange = -1000000.0..1000000.0
+    private val positiveRange = 0.0..1000000.0
+
+    override fun generateQuestion(operations: Int, numberRange: IntRange, operators: String, positives: Boolean): Question {
         var question = ""
         var expression: Double
+        val answerRange = when (positives){
+            true -> positiveRange
+            else -> negativeRange
+        }
         while (true){
             for (i in 0..operations){
                 question += "${numberRange.random()}"
@@ -19,7 +26,7 @@ class QuestionRepositoryImpl : QuestionRepository {
             }
 
             expression = ExpressionBuilder(question).build().evaluate()
-            if (expression in -1000000.0..1000000.0){
+            if (expression in answerRange){
                 break
             }
             question = ""

@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import com.hxl.arithmathics.presentation.fragment.game_history.GameResultFormatter
 import com.hxl.domain.usecase.database.difficulty.ReadDifficulty
 import com.hxl.domain.usecase.prefs.GetMode
+import com.hxl.domain.usecase.prefs.GetPositive
 import com.hxl.domain.usecase.prefs.GetTimer
 import com.hxl.domain.usecase.questions.GetQuestion
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -14,7 +15,8 @@ class GameFragmentViewModel @Inject constructor(
     val getQuestion: GetQuestion,
     val getMode: GetMode,
     val readDifficulty: ReadDifficulty,
-    val getTimer: GetTimer
+    val getTimer: GetTimer,
+    val getPositive: GetPositive
 ) : ViewModel() {
 
     fun getTimerText(time: Int): String {
