@@ -32,7 +32,6 @@
 <summary>Table of Contents</summary>
 
 - [About](#about)
-  - [Built With](#built-with)
 - [Roadmap](#roadmap)
 - [Support](#support)
 - [Project assistance](#project-assistance)
@@ -51,9 +50,9 @@ Arithmathics is a quiz game, where you solve
 randomly generated airthmetic tasks of different difficulty
 in order to improve your arithmetic skills
 
-<details>
+<!-- <details> -->
 <summary>Screenshots</summary>
-<br>
+<br />
 
 |                               Welcome Page                               |                               Menu Page                                   |
 | :-------------------------------------------------------------------: | :--------------------------------------------------------------------: |
@@ -70,12 +69,44 @@ in order to improve your arithmetic skills
 
 </details>
 
-### Built With
+<h3>Built With</h3>
+<strong>Clean Architecture</strong>
+<br>
+This app uses MVVM pattern for UI follows clean architecture concept brought up by <strong>Robert C. Martin</strong>, but how exactly is it realised in Arithmathics?
 
-Arithmathics is written in Kotlin language and
-is build by 
-[clean architecture](https://medium.com/android-dev-hacks/detailed-guide-on-android-clean-architecture-9eab262a9011)
-which contains MVVM pattern
+Arithmathics is divided into three layers:
+- **app** - *A layer that interacts with the UI, mainly Android Stuff. It would include both domain and data layers.*
+  - **Activities**
+  - **Fragments**
+  - **ViewModels**
+  - **Dependency Injection**
+  
+- **domain** - *Contains the business logic of the application. It is the individual and innermost module. It’s a complete java module.*
+  
+  - **Repository interface** - A place where functionality blueprint is kept, which will be implemented in data module*
+  - **UseCases** - Each individual functionality, like inserting or reading data from Database, they act as a mediator between our Repository and app module
+  - **Models** - Entities or a Value Object
+
+- **data** *- It includes the domain layer. It would implement the interface exposed by domain layer and dispenses data to app*
+  - **Repository implementation** - Data module keeps repository implementation and waits to be injected into use-cases
+  - **Database** - Repository implementations contain database functionality
+
+**Data Flow**
+  - If a user event is triggered in UI then we communicate it with ViewModel.
+  - ViewModel connects with the use case to get the result for the action.
+  - The use case then interacts with the repository class to get the solution from database or preference
+
+**MVVM**
+- [MVVM](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel) is a software architectural pattern that facilitates the separation of the development of the graphical user interface (the view) from the development of the business logic or back-end logic (the model) so that the view is not dependent on any specific model platform.
+
+**Components**
+- Database - [Room](https://developer.android.com/jetpack/androidx/releases/room)
+- Dependency Injection - [Dagger Hilt](https://github.com/google/dagger)
+- Asynchronous approach - [RxJava](https://github.com/ReactiveX/RxJava)
+
+**Credits**
+ - Clean Architecture - [Medium article](https://medium.com/android-dev-hacksdetailed-guide-on-android-clean-architecture-9eab262a9011)
+ - MVVM - [Wikipedia article](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel)
 <details>
 <summary>Draw.io diagram</summary>
 <img src="docs/images/Arithmath_diagram.png" title="Diagram" width="100%">
