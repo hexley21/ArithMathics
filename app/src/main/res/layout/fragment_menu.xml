@@ -1,141 +1,163 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.hxl.arithmathics.presentation.fragment.menu.MenuFragment">
-
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.appbar.AppBarLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/top_app_bar"
-                style="@style/ThemeOverlay.Material3.Toolbar"
-                app:navigationIcon="@drawable/ic_baseline_history_24"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:menu="@menu/main_menu" />
-
-        </com.google.android.material.appbar.AppBarLayout>
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/linearLayout"
+    xmlns:tools="http://schemas.android.com/tools">
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center_horizontal"
-        android:padding="30dp">
+        tools:context="com.hxl.arithmathics.presentation.fragment.menu.MenuFragment">
 
-        <TextView
-            android:id="@+id/tv_title"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:elegantTextHeight="true"
-            android:gravity="center"
-            android:maxLines="1"
-            android:text="@string/app_title"
-            android:textAlignment="center"
-            android:textColor="?attr/colorPrimary"
-            android:textSize="48sp"
-            app:autoSizeTextType="uniform"
-            app:layout_constraintBottom_toTopOf="@+id/tv_difficulty"
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/tv_difficulty"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:text="@string/select_difficulty"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/radioGroup"
-            app:layout_constraintEnd_toEndOf="@+id/radioGroup"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="@+id/radioGroup"
-            app:layout_constraintVertical_chainStyle="packed" />
-
-
-        <RadioGroup
-            android:id="@+id/radioGroup"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            app:layout_constraintBottom_toTopOf="@+id/sp_timer_mode"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
-
-            <RadioButton
-                android:id="@+id/rb_easy"
+            <com.google.android.material.appbar.AppBarLayout
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:padding="8dp"
-                android:text="@string/easy"
-                android:textSize="20sp" />
+                android:layout_height="wrap_content">
 
-            <RadioButton
-                android:id="@+id/rb_medium"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:padding="8dp"
-                android:text="@string/medium"
-                android:textSize="20sp" />
+                <com.google.android.material.appbar.MaterialToolbar
+                    android:id="@+id/top_app_bar"
+                    style="@style/ThemeOverlay.Material3.Toolbar"
+                    app:navigationIcon="@drawable/ic_baseline_history_24"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:menu="@menu/main_menu" />
 
-            <RadioButton
-                android:id="@+id/rb_hard"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:padding="8dp"
-                android:text="@string/hard"
-                android:textSize="20sp" />
+            </com.google.android.material.appbar.AppBarLayout>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-            <RadioButton
-                android:id="@+id/rb_custom"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:padding="8dp"
-                android:text="@string/custom"
-                android:textSize="20sp" />
-        </RadioGroup>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:padding="30dp">
 
-        <TextView
-            android:id="@+id/tv_timer_mode"
-            android:layout_width="wrap_content"
-            android:layout_height="22dp"
-            android:text="@string/timer_mode"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@+id/sp_timer_mode"
-            app:layout_constraintStart_toStartOf="@+id/radioGroup"
-            app:layout_constraintTop_toTopOf="@+id/sp_timer_mode" />
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:elegantTextHeight="true"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="@string/app_title"
+                android:textAlignment="center"
+                android:textColor="?attr/colorPrimary"
+                android:textSize="48sp"
+                app:autoSizeTextType="uniform"
+                app:layout_constraintBottom_toTopOf="@+id/tv_difficulty"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <Spinner
-            android:id="@+id/sp_timer_mode"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginBottom="70dp"
-            app:layout_constraintBottom_toTopOf="@+id/btn_start"
-            app:layout_constraintEnd_toEndOf="@+id/radioGroup"
-            app:layout_constraintStart_toEndOf="@+id/tv_timer_mode" />
+            <TextView
+                android:id="@+id/tv_difficulty"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="@string/select_difficulty"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@+id/radioGroup"
+                app:layout_constraintEnd_toEndOf="@+id/radioGroup"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/radioGroup"
+                app:layout_constraintVertical_chainStyle="packed" />
 
-        <Button
-            android:id="@+id/btn_start"
-            style="@style/Default_Button"
-            android:text="@string/start"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
-</FrameLayout>
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                app:layout_constraintBottom_toTopOf="@+id/sp_timer_mode"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <RadioButton
+                    android:id="@+id/rb_easy"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:padding="8dp"
+                    android:text="@string/easy"
+                    android:textSize="20sp" />
+
+                <RadioButton
+                    android:id="@+id/rb_medium"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:padding="8dp"
+                    android:text="@string/medium"
+                    android:textSize="20sp" />
+
+                <RadioButton
+                    android:id="@+id/rb_hard"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:padding="8dp"
+                    android:text="@string/hard"
+                    android:textSize="20sp" />
+
+                <RadioButton
+                    android:id="@+id/rb_custom"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:padding="8dp"
+                    android:text="@string/custom"
+                    android:textSize="20sp" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/tv_timer_mode"
+                android:layout_width="wrap_content"
+                android:layout_height="22dp"
+                android:text="@string/timer_mode"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/sp_timer_mode"
+                app:layout_constraintStart_toStartOf="@+id/radioGroup"
+                app:layout_constraintTop_toTopOf="@+id/sp_timer_mode" />
+
+            <Spinner
+                android:id="@+id/sp_timer_mode"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="10dp"
+                app:layout_constraintBottom_toTopOf="@+id/sp_positive_mode"
+                app:layout_constraintEnd_toEndOf="@+id/radioGroup"
+                app:layout_constraintStart_toEndOf="@+id/tv_timer_mode" />
+
+            <TextView
+                android:id="@+id/tv_positive_mode"
+                android:layout_width="wrap_content"
+                android:layout_height="22dp"
+                android:text="@string/positive_mode"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/sp_positive_mode"
+                app:layout_constraintStart_toStartOf="@+id/radioGroup"
+                app:layout_constraintTop_toTopOf="@+id/sp_positive_mode" />
+
+            <Spinner
+                android:id="@+id/sp_positive_mode"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="40dp"
+                app:layout_constraintBottom_toTopOf="@+id/btn_start"
+                app:layout_constraintEnd_toEndOf="@+id/radioGroup"
+                app:layout_constraintStart_toEndOf="@+id/tv_positive_mode" />
+
+            <Button
+                android:id="@+id/btn_start"
+                style="@style/Default_Button"
+                android:text="@string/start"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+</layout>

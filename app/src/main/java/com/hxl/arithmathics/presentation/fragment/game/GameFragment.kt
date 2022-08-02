@@ -1,6 +1,8 @@
 package com.hxl.arithmathics.presentation.fragment.game
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.text.Selection
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,8 +17,13 @@ import com.hxl.arithmathics.databinding.FragmentGameBinding
 import com.hxl.arithmathics.presentation.activity.MainActivity
 import com.hxl.arithmathics.presentation.fragment.results.ResultFragmentViewModel
 import com.hxl.arithmathics.presentation.fragment.results.ResultsFragment
+import com.hxl.data.model.DifficultyEnums
+import com.hxl.domain.models.Difficulty
 import com.hxl.domain.models.Question
 import dagger.hilt.android.AndroidEntryPoint
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.schedulers.Schedulers
 import java.util.*
 
 @AndroidEntryPoint
@@ -25,51 +32,84 @@ class GameFragment : Fragment() {
     private lateinit var binding: FragmentGameBinding
 
     private var time = 0
+    private lateinit var difEnum: Difficulty
+    private val disposable = CompositeDisposable()
     private lateinit var timerTask: TimerTask
     private lateinit var questionArray: Array<Question>
     private lateinit var answerArray: Array<String>
     private lateinit var gamePage: ViewPager2
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         binding = FragmentGameBinding.inflate(layoutInflater, container, false)
-        questionArray = vm.generateQuestions()
-        answerArray = Array(vm.levels) { "" }
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         gamePage = binding.gamePager
         binding.btnAnswer.style(R.style.Default_Button)
-        gamePage.adapter =
-            GamePagerAdapter(this, vm.levels, Array(vm.levels) { questionArray[it].question })
+        disposable.add(
+            vm.readDifficulty()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe { diff ->
+                    difEnum = when (vm.getMode()) {
+                        0 -> DifficultyEnums.EASY.difficulty
+                        1 -> DifficultyEnums.MEDIUM.difficulty
+                        2 -> DifficultyEnums.HARD.difficulty
+                        else -> diff
+                    }
+                    answerArray = Array(difEnum.levels) { "" }
+                    questionArray = Array(difEnum.levels) {
+                        vm.getQuestion(
+                            difEnum.operations,
+                            difEnum.numberRange,
+                            difEnum.operators,
+                            vm.getPositive()
+                        )
+                    }
+                    binding.levels = difEnum.levels
+                    gamePage.adapter = GamePagerAdapter(this,
+                        difEnum.levels,
+                        Array(difEnum.levels) { questionArray[it].question })
+                    startTimer()
+                    time = 0
+                    gamePage.registerOnPageChangeCallback(
+                        object : ViewPager2.OnPageChangeCallback() {
+                            @SuppressLint("SetTextI18n")
+                            override fun onPageScrolled(
+                                position: Int,
+                                positionOffset: Float,
+                                positionOffsetPixels: Int
+                            ) {
+                                super.onPageScrolled(position, positionOffset, positionOffsetPixels)
 
-        startTimer()
-        time = 0
+                                binding.tiAnswer.setText(answerArray[position])
+                                Selection.moveToRightEdge(binding.tiAnswer.text, binding.tiAnswer.layout)
+                                binding.level = gamePage.currentItem + 1
 
-        gamePage.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
-                super.onPageScrolled(position, positionOffset, positionOffsetPixels)
-
-                binding.tiAnswer.setText(answerArray[position])
-                binding.tvPosition.text = "${gamePage.currentItem + 1}/${vm.levels}"
-
-                if (gamePage.currentItem == answerArray.size - 1) {
-                    binding.btnAnswer.text = resources.getString(R.string.finish)
-                    binding.btnAnswer.style(R.style.Finish_Button)
-                } else {
-                    binding.btnAnswer.text = resources.getString(R.string.continue_)
+                                if (gamePage.currentItem == answerArray.size - 1) {
+                                    binding.btnAnswer.text = resources.getString(R.string.finish)
+                                    binding.btnAnswer.style(R.style.Finish_Button)
+                                } else {
+                                    binding.btnAnswer.text = resources.getString(R.string.continue_)
+                                }
+                            }
+                        }
+                    )
                 }
-            }
-        })
-
+        )
         binding.tiAnswer.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 nextQuestion()
                 true
+            } else {
+                false
             }
-            else { false }
         }
 
         binding.btnAnswer.setOnClickListener { nextQuestion() }
@@ -88,19 +128,21 @@ class GameFragment : Fragment() {
         val functions: MutableList<() -> Unit> = mutableListOf({ time++ })
         if (vm.getTimer()) {
             functions.add {
-                binding.tvTimer.text = vm.getTimerText(vm.time - time)
-                if (time == vm.time) {
+                binding.time = vm.getTimerText(difEnum.time - time)
+                if (time == difEnum.time) {
                     endGame()
                 }
             }
         } else {
-            functions.add { binding.tvTimer.text = vm.getTimerText(time) }
+            functions.add { binding.time = vm.getTimerText(time) }
         }
 
         timerTask = object : TimerTask() {
             override fun run() {
                 requireActivity().runOnUiThread {
-                    for (i in functions) { i() }
+                    for (i in functions) {
+                        i()
+                    }
                 }
             }
         }
@@ -115,6 +157,7 @@ class GameFragment : Fragment() {
         if (binding.tiAnswer.text.toString() != "") {
             answerArray[gamePage.currentItem] = binding.tiAnswer.text.toString()
         }
+        disposable.clear()
         (requireActivity() as MainActivity).replaceFragment(ResultsFragment())
     }
 

@@ -3,6 +3,7 @@
     <string name="app_name">Arithmathics</string>
     <string name="app_title" translatable="false">Arithmathics</string>
 
+    <string name="licenses">Licenses</string>
     <!-- Menu Fragment -->
     <string name="select_difficulty">Select difficulty</string>
     <string name="easy">Easy</string>
@@ -21,6 +22,13 @@
     <string-array name="timer_array">
         <item>Without timer</item>
         <item>With timer</item>
+    </string-array>
+
+    <!-- Positive answers -->
+    <string name="positive_mode">Answers</string>
+    <string-array name="positive_array">
+        <item>Positives &amp; Negatives</item>
+        <item>Only Positives</item>
     </string-array>
 
     <!-- Dialogs -->
@@ -76,11 +84,11 @@
     <!-- Result -->
     <string name="correct">Correct</string>
     <string name="wrong">Wrong</string>
-    <string name="time_spent">Time spent -</string>
+    <string name="time_spent">Time spent</string>
 
     <!-- Game History -->
     <string name="time">Time</string>
-    <string name="difficulty">Difficult</string>
+    <string name="difficulty">Difficulty</string>
     <string name="corrects">Corrects</string>
 
     <!-- Difficulties -->

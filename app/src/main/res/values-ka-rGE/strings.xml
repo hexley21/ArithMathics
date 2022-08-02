@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">Arithma Game</string>
 
+    <string name="licenses">ლიცენზიები</string>
     <!-- Menu Fragment -->
     <string name="select_difficulty">აირჩიე სირთულე</string>
     <string name="easy">ადვილი</string>
@@ -20,6 +21,13 @@
     <string-array name="timer_array">
         <item>ტაიმერის გარეშე</item>
         <item>ტაიმერით</item>
+    </string-array>
+
+    <!-- Positive answers -->
+    <string name="positive_mode">პასუხები</string>
+    <string-array name="positive_array">
+        <item>დადებითები &amp; უარყოფითები</item>
+        <item>მხოლოდ დადებითები</item>
     </string-array>
 
     <!-- Dialogs -->

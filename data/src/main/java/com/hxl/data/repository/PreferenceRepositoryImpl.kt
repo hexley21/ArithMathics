@@ -3,7 +3,10 @@ package com.hxl.data.repository
 import com.hxl.data.storage.PreferenceStorage
 import com.hxl.domain.repository.PreferenceRepository
 
-class PreferenceRepositoryImpl(private val prefStorage: PreferenceStorage) : PreferenceRepository{
+/**
+ * Repository implementation that handles Preference Storage fields.
+ */
+class PreferenceRepositoryImpl(private val prefStorage: PreferenceStorage) : PreferenceRepository {
     var theme: Int
         get() = getTheme()
         set(value) = saveTheme(value)
@@ -62,6 +65,14 @@ class PreferenceRepositoryImpl(private val prefStorage: PreferenceStorage) : Pre
 
     override fun saveTimer(value: Boolean) {
         prefStorage.save("timer", value)
+    }
+
+    override fun getPositive(default: Boolean): Boolean {
+        return prefStorage.get("positive", default)
+    }
+
+    override fun savePositive(value: Boolean) {
+        prefStorage.save("positive", value)
     }
 
 }

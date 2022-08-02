@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.ContextWrapper
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -21,13 +20,12 @@ import com.hxl.arithmathics.presentation.fragment.menu.MenuFragment
 import com.hxl.arithmathics.presentation.fragment.welcome.WelcomeFragment
 import com.hxl.data.repository.PreferenceRepositoryImpl
 import com.hxl.data.storage.sharedprefs.SharedPreferenceStorage
-import com.hxl.data.model.DifficultyEnums
 import dagger.hilt.android.AndroidEntryPoint
-import java.util.*
 
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
+
     private val vm: MainActivityViewModel by viewModels()
     private lateinit var binding: ActivityMainBinding
 
@@ -41,14 +39,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         installSplashScreen().apply { setKeepOnScreenCondition { false } }
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(R.layout.activity_main)
-
-        try { Log.e("DATA_TEST", vm.custom.levels.toString()) }
-        catch (e: Exception) { vm.custom = DifficultyEnums.CUSTOM.questionDifficulty }
-        try { Log.e("DATA_TEST", vm.gameHistory.size.toString()) }
-        catch (e: Exception) { vm.gameHistory = Stack() }
 
         when (vm.welcome) {
             false -> replaceFragment(MenuFragment())
@@ -60,7 +54,8 @@ class MainActivity : AppCompatActivity() {
         val backStateName = fragment.javaClass.name
         val manager: FragmentManager = supportFragmentManager
         val fragmentPopped: Boolean = manager.popBackStackImmediate(backStateName, 0)
-        if (!fragmentPopped && manager.findFragmentByTag(backStateName) == null) { //fragment not in back stack, create it.
+        if (!fragmentPopped && manager.findFragmentByTag(backStateName) == null) {
+            // create fragment, if not in backstack
             val ft: FragmentTransaction = manager.beginTransaction()
             ft.replace(R.id.main_container, fragment)
             ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)

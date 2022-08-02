@@ -14,4 +14,8 @@
         android:id="@+id/rate"
         android:title="@string/menu_rate"
         app:showAsAction="never"/>
+    <item
+        android:id="@+id/licenses"
+        android:title="@string/licenses"
+        app:showAsAction="never"/>
 </menu>

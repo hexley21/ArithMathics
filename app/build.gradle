@@ -3,6 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
+    id 'com.google.android.gms.oss-licenses-plugin'
 }
 
 android {
@@ -12,8 +13,8 @@ android {
         applicationId "com.hxl.arithmathics"
         minSdk 21
         targetSdk 32
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.0.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -32,49 +33,62 @@ android {
         jvmTarget = '1.8'
     }
     buildFeatures {
-        viewBinding true
+        dataBinding true
     }
 }
-
+apply plugin: 'kotlin-kapt'
 dependencies {
 
     // Android
     implementation 'androidx.core:core-ktx:1.9.0-alpha05'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
     implementation 'androidx.appcompat:appcompat:1.6.0-alpha05'
     implementation 'com.google.android.material:material:1.7.0-alpha03'
     implementation 'androidx.constraintlayout:constraintlayout:2.2.0-alpha03'
-    implementation 'androidx.core:core-splashscreen:1.0.0-rc01'
+    implementation 'androidx.core:core-splashscreen:1.0.0'
+
+    // Open-source notices
+    implementation 'com.google.android.gms:play-services-oss-licenses:17.0.0'
 
     // Airbnb
-    implementation 'com.airbnb.android:paris:2.0.0'
-    kapt 'com.airbnb.android:paris-processor:2.0.0'
+    implementation 'com.airbnb.android:paris:2.0.1'
+    kapt 'com.airbnb.android:paris-processor:2.0.1'
 
     // View-models
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.0-alpha01'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.6.0-alpha01'
-
 
     // Module implementation
     implementation project(path: ':domain')
     implementation project(path: ':data')
 
     // Hilt
-    implementation 'com.google.dagger:hilt-android:2.42'
-    kapt 'com.google.dagger:hilt-compiler:2.42'
-    implementation 'androidx.fragment:fragment-ktx:1.5.0'
+    implementation 'com.google.dagger:hilt-android:2.43.1'
+    kapt 'com.google.dagger:hilt-compiler:2.43.1'
+    implementation 'androidx.fragment:fragment-ktx:1.5.1'
 
+    // RxJava
+    implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
+    implementation 'io.reactivex.rxjava3:rxjava:3.1.5'
+
+    // Room
+    implementation 'androidx.room:room-runtime:2.4.3'
+    implementation "androidx.room:room-ktx:2.4.3"
+    kapt "androidx.room:room-compiler:2.4.3"
+    implementation "androidx.room:room-rxjava3:2.4.3"
+
+    // Espresso
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     // For instrumentation tests
-    androidTestImplementation  'com.google.dagger:hilt-android-testing:2.42'
-    kaptAndroidTest 'com.google.dagger:hilt-compiler:2.42'
+    androidTestImplementation 'com.google.dagger:hilt-android-testing:2.43.1'
+    kaptAndroidTest 'com.google.dagger:hilt-compiler:2.43.1'
 
     // For local unit tests
-    testImplementation 'com.google.dagger:hilt-android-testing:2.42'
-    kaptTest 'com.google.dagger:hilt-compiler:2.42'
+    testImplementation 'com.google.dagger:hilt-android-testing:2.43.1'
+    kaptTest 'com.google.dagger:hilt-compiler:2.43.1'
 }
 
 kapt {
