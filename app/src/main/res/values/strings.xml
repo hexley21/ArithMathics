@@ -88,7 +88,7 @@
 
     <!-- Game History -->
     <string name="time">Time</string>
-    <string name="difficulty">Difficult</string>
+    <string name="difficulty">Difficulty</string>
     <string name="corrects">Corrects</string>
 
     <!-- Difficulties -->

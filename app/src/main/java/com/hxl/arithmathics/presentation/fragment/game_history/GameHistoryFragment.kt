@@ -43,9 +43,7 @@ class GameHistoryFragment : Fragment() {
             }
         )
 
-        binding.topHistoryBar.setNavigationOnClickListener {
-            parentFragmentManager.popBackStack()
-        }
+        binding.topHistoryBar.setNavigationOnClickListener { parentFragmentManager.popBackStack() }
     }
 
     override fun onDestroy() {
