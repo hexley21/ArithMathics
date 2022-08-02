@@ -5,7 +5,7 @@ data class GameResult(
     val levels: Int,
     val corrects: Int,
     val time: Int
-    ){
+) {
     override fun toString(): String {
         return "GameResult($difficulty, $levels, $corrects, $time)"
     }
