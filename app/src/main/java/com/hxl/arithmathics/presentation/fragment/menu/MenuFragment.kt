@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Spinner
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
@@ -24,15 +25,22 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MenuFragment : Fragment() {
+
     private val vm: MenuFragmentViewModel by viewModels()
     private lateinit var binding: FragmentMenuBinding
     private val themeDialog = ThemeDialog()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentMenuBinding.inflate(layoutInflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         binding.topAppBar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
@@ -41,7 +49,10 @@ class MenuFragment : Fragment() {
                     true
                 }
                 R.id.language -> {
-                    (requireActivity() as MainActivity).showDialog(LanguageDialog(), "theme_dialog")
+                    (requireActivity() as MainActivity).showDialog(
+                        LanguageDialog(),
+                        "language_dialog"
+                    )
                     true
                 }
                 R.id.rate -> {
@@ -98,55 +109,45 @@ class MenuFragment : Fragment() {
             }
         }
 
-        ArrayAdapter.createFromResource(
-            requireContext(), R.array.timer_array, android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            binding.spTimerMode.adapter = adapter
-        }
-
-        when (vm.timer) {
-            true -> binding.spTimerMode.setSelection(1, false)
-            else -> binding.spTimerMode.setSelection(0, false)
-        }
-
+        createSpinner(R.array.timer_array, binding.spTimerMode, vm.timer)
         binding.spTimerMode.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                    when (p2) {
-                        1 -> vm.timer = true
-                        else -> vm.timer = false
+                    vm.timer = when (p2) {
+                        1 -> true
+                        else -> false
                     }
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {}
             }
 
-        ArrayAdapter.createFromResource(
-            requireContext(), R.array.positive_array, android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            binding.spPositiveMode.adapter = adapter
-        }
-
-        when (vm.positive) {
-            true -> binding.spPositiveMode.setSelection(1, false)
-            else -> binding.spPositiveMode.setSelection(0, false)
-        }
-
+        createSpinner(R.array.positive_array, binding.spPositiveMode, vm.positive)
         binding.spPositiveMode.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                    when (p2) {
-                        1 -> vm.positive = true
-                        else -> vm.positive = false
+                    vm.positive = when (p2) {
+                        1 -> true
+                        else -> false
                     }
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {}
             }
+    }
 
-        return binding.root
+    private fun createSpinner(array: Int, spinner: Spinner, state: Boolean) {
+        ArrayAdapter.createFromResource(
+            requireContext(), array, android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spinner.adapter = adapter
+        }
+
+        when (state) {
+            true -> spinner.setSelection(1, false)
+            else -> spinner.setSelection(0, false)
+        }
     }
 
     override fun onStop() {

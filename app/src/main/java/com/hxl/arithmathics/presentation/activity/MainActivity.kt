@@ -25,6 +25,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
+
     private val vm: MainActivityViewModel by viewModels()
     private lateinit var binding: ActivityMainBinding
 
@@ -38,11 +39,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         installSplashScreen().apply { setKeepOnScreenCondition { false } }
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(R.layout.activity_main)
-
-        vm.checkDifficulty()
 
         when (vm.welcome) {
             false -> replaceFragment(MenuFragment())
@@ -54,7 +54,8 @@ class MainActivity : AppCompatActivity() {
         val backStateName = fragment.javaClass.name
         val manager: FragmentManager = supportFragmentManager
         val fragmentPopped: Boolean = manager.popBackStackImmediate(backStateName, 0)
-        if (!fragmentPopped && manager.findFragmentByTag(backStateName) == null) { //fragment not in back stack, create it.
+        if (!fragmentPopped && manager.findFragmentByTag(backStateName) == null) {
+            // create fragment, if not in backstack
             val ft: FragmentTransaction = manager.beginTransaction()
             ft.replace(R.id.main_container, fragment)
             ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)

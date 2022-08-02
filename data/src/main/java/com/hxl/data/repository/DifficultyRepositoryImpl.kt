@@ -7,6 +7,9 @@ import com.hxl.domain.repository.DifficultyRepository
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Single
 
+/**
+ * Repository implementation that handles custom Difficulty object.
+ */
 class DifficultyRepositoryImpl(private val difficultyDao: DifficultyDao) : DifficultyRepository {
 
     override fun readDifficulty(): Single<Difficulty> {

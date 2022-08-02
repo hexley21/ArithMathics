@@ -5,7 +5,8 @@ data class Difficulty(
     val operations: Int,
     val numberRange: IntRange,
     val operators: String,
-    val time: Int) {
+    val time: Int
+) {
     override fun toString(): String {
         return "Difficulty($levels, $operations, $numberRange, $operators, $time)"
     }

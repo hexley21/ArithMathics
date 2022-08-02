@@ -6,4 +6,5 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class GameHistoryFragmentViewModel @Inject constructor(val readGameHistory: ReadGameHistory) : ViewModel()
+class GameHistoryFragmentViewModel @Inject constructor(val readGameHistory: ReadGameHistory) :
+    ViewModel()

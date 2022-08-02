@@ -3,7 +3,10 @@ package com.hxl.data.repository
 import com.hxl.data.storage.PreferenceStorage
 import com.hxl.domain.repository.PreferenceRepository
 
-class PreferenceRepositoryImpl(private val prefStorage: PreferenceStorage) : PreferenceRepository{
+/**
+ * Repository implementation that handles Preference Storage fields.
+ */
+class PreferenceRepositoryImpl(private val prefStorage: PreferenceStorage) : PreferenceRepository {
     var theme: Int
         get() = getTheme()
         set(value) = saveTheme(value)

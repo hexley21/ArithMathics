@@ -8,6 +8,9 @@ import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Single
 import java.util.*
 
+/**
+ * Repository implementation that handles Game-History objects.
+ */
 class GameHistoryRepositoryImpl(private val gameHistoryDao: GameHistoryDao) :
     GameHistoryRepository {
 

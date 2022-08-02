@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable name="level" type="int" />
+        <variable name="levels" type="int" />
+        <variable name="time" type="String" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -22,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:text="@string/time_clock"
+            android:text='@{time}'
             app:layout_constraintBottom_toTopOf="@+id/game_pager"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/btn_end" />
@@ -32,7 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:text="@string/position"
+            android:text='@{level + "/" + levels}'
             android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/game_pager"
             app:layout_constraintEnd_toEndOf="parent"

@@ -22,11 +22,13 @@ import kotlin.math.roundToInt
 
 @AndroidEntryPoint
 class CustomFragment : Fragment() {
+
     private val vm: CustomFragmentViewModel by viewModels()
     private lateinit var binding: FragmentCustomBinding
     private val disposable = CompositeDisposable()
     private var operators = ""
     private var percentageList = emptyList<Double>()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -39,41 +41,37 @@ class CustomFragment : Fragment() {
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val levelsSlider = binding.slLevels
-        val operationsSlider = binding.slOperations
-        val rangeSlider = binding.slRange
-        val timerSlider = binding.slTimer
 
         binding.timer = vm.getTimer()
-        levelsSlider.addOnChangeListener { _, value, _ -> binding.levels = value.toInt() }
-        operationsSlider.addOnChangeListener { _, value, _ -> binding.operations = value.toInt() }
-        rangeSlider.addOnChangeListener { slider, _, _ ->
+        binding.slLevels.addOnChangeListener { _, value, _ -> binding.levels = value.toInt() }
+        binding.slOperations.addOnChangeListener { _, value, _ ->
+            binding.operations = value.toInt()
+        }
+        binding.slRange.addOnChangeListener { slider, _, _ ->
             binding.range = slider.values[0].toInt()..slider.values[1].toInt()
         }
-        timerSlider.addOnChangeListener { slider, _, _ ->
+        binding.slTimer.addOnChangeListener { slider, _, _ ->
             binding.time = GameResultFormatter.getTimerText(slider.value.toInt())
         }
-        timerSlider.setLabelFormatter { value: Float -> GameResultFormatter.getTimerText(value.toInt()) }
+        binding.slTimer.setLabelFormatter { value: Float -> GameResultFormatter.getTimerText(value.toInt()) }
 
         disposable.add(vm.readDifficulty()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({ diff ->
-                binding.difficulty = diff
-                binding.levels = diff.levels
-                binding.operations = diff.operations
-                binding.time = GameResultFormatter.getTimerText(diff.time)
-                rangeSlider.setValues(
-                    diff.numberRange.first.toFloat(),
-                    diff.numberRange.last.toFloat()
-                )
-                operators = diff.operators
-                calculatePercentage()
-                disposable.clear()
-            },
-                {
-                    Log.e(LocalDatabase.TAG, "The record couldn't be read", it)
-                }
+            .subscribe(
+                { diff ->
+                    binding.difficulty = diff
+                    binding.levels = diff.levels
+                    binding.operations = diff.operations
+                    binding.time = GameResultFormatter.getTimerText(diff.time)
+                    binding.slRange.setValues(
+                        diff.numberRange.first.toFloat(),
+                        diff.numberRange.last.toFloat()
+                    )
+                    operators = diff.operators
+                    calculatePercentage()
+                },
+                { Log.e(LocalDatabase.TAG, "The record couldn't be read", it) }
             )
         )
         binding.btnPlusAdd.setOnClickListener { btnAdd('+') }
@@ -92,24 +90,18 @@ class CustomFragment : Fragment() {
 
             val newDifficulty =
                 Difficulty(
-                    levelsSlider.value.toInt(),
-                    operationsSlider.value.toInt(),
-                    rangeSlider.values[0].toInt()..rangeSlider.values[1].toInt(),
+                    binding.slLevels.value.toInt(),
+                    binding.slOperations.value.toInt(),
+                    binding.slRange.values[0].toInt()..binding.slRange.values[1].toInt(),
                     operators,
-                    timerSlider.value.toInt()
+                    binding.slTimer.value.toInt()
                 )
             disposable.add(vm.insertDifficulty(newDifficulty)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
-                    {
-                        Log.e(LocalDatabase.TAG, "$it record was inserted")
-                        disposable.clear()
-                    },
-                    {
-                        Log.e(LocalDatabase.TAG, "Couldn't insert new record", it)
-                        disposable.clear()
-                    }
+                    { Log.e(LocalDatabase.TAG, "$it record was inserted") },
+                    { Log.e(LocalDatabase.TAG, "Couldn't insert new record", it) }
                 )
             )
             (requireActivity() as MainActivity).replaceFragment(GameFragment(), true)
@@ -134,7 +126,9 @@ class CustomFragment : Fragment() {
 
     private fun calculatePercentage() {
         val counts = mutableListOf<Int>()
-        for (i in "+-*/") { counts.add(operators.count { it == i }) }
+        for (i in "+-*/") {
+            counts.add(operators.count { it == i })
+        }
         percentageList = List(counts.size) {
             (counts[it].toDouble() / operators.count().toDouble() * 1000.0).roundToInt() / 10.0
         }
@@ -142,5 +136,10 @@ class CustomFragment : Fragment() {
         binding.subPercent = "${counts[1]} - ${percentageList[1]} %"
         binding.mulPercent = "${counts[2]} - ${percentageList[2]} %"
         binding.divPercent = "${counts[3]} - ${percentageList[3]} %"
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        disposable.clear()
     }
 }

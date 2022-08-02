@@ -18,6 +18,7 @@ class GameHistoryFragment : Fragment() {
 
     private val vm: GameHistoryFragmentViewModel by viewModels()
     lateinit var binding: FragmentGameHistoryBinding
+    private val disposable = CompositeDisposable()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,21 +31,23 @@ class GameHistoryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val disposable = CompositeDisposable()
+
         val rvHistory = binding.rvHistory
         rvHistory.layoutManager = LinearLayoutManager(requireContext())
         disposable.add(vm.readGameHistory()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe{ history ->
+            .subscribe { history ->
                 rvHistory.adapter = GameHistoryRecyclerAdapter(history)
                 rvHistory.scrollToPosition(history.size - 1)
-                disposable.clear()
             }
         )
 
-        binding.topHistoryBar.setNavigationOnClickListener {
-            parentFragmentManager.popBackStack()
-        }
+        binding.topHistoryBar.setNavigationOnClickListener { parentFragmentManager.popBackStack() }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        disposable.clear()
     }
 }

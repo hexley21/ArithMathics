@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.hxl.arithmathics.R
 import com.hxl.arithmathics.databinding.FragmentResultBinding
 import com.hxl.arithmathics.presentation.activity.MainActivity
 import com.hxl.arithmathics.presentation.fragment.game_history.GameResultFormatter
@@ -21,9 +20,10 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 
 @AndroidEntryPoint
 class ResultsFragment : Fragment() {
+
     private val vm: ResultFragmentViewModel by activityViewModels()
-    private val disposable = CompositeDisposable()
     private lateinit var binding: FragmentResultBinding
+    private val disposable = CompositeDisposable()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentResultBinding.inflate(layoutInflater, container, false)
@@ -49,12 +49,16 @@ class ResultsFragment : Fragment() {
                     else -> diff
                 }
                 rvResults.adapter = ResultsRecyclerAdapter(vm.questions, vm.answers, vm.compareAnswers(gameMode))
-                binding.topResultsBar.title = "${vm.corrects}/${vm.answers.size}"
-                binding.tvResTime.text =
-                    "${resources.getString(R.string.time_spent)} ${GameResultFormatter.getTimerText(vm.time)}"
-                disposable.clear()
+                binding.corrects = vm.corrects
+                binding.questions = vm.answers.size
+                binding.timeSpent = GameResultFormatter.getTimerText(vm.time)
             }
         )
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        disposable.clear()
     }
 
 }

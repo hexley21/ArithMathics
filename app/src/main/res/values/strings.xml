@@ -84,11 +84,11 @@
     <!-- Result -->
     <string name="correct">Correct</string>
     <string name="wrong">Wrong</string>
-    <string name="time_spent">Time spent -</string>
+    <string name="time_spent">Time spent</string>
 
     <!-- Game History -->
     <string name="time">Time</string>
-    <string name="difficulty">Difficult</string>
+    <string name="difficulty">Difficulty</string>
     <string name="corrects">Corrects</string>
 
     <!-- Difficulties -->

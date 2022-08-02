@@ -16,16 +16,27 @@ class WelcomeFragment : Fragment() {
     private val vm: WelcomeFragmentViewModel by viewModels()
     private lateinit var binding: FragmentWelcomeBinding
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         binding = FragmentWelcomeBinding.inflate(layoutInflater, container, false)
+        return binding.root
+    }
 
-        when(vm.language){
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        vm.checkDifficulty()
+
+        when (vm.language) {
             "ka" -> binding.rbKa.isChecked = true
             else -> binding.rbEn.isChecked = true
         }
 
         binding.languageGroup.setOnCheckedChangeListener { _, i ->
-            when(i){
+            when (i) {
                 binding.rbKa.id -> vm.language = "ka"
                 binding.rbEn.id -> vm.language = "en"
             }
@@ -36,7 +47,6 @@ class WelcomeFragment : Fragment() {
             vm.saveWelcome(false)
             (requireActivity() as MainActivity).replaceFragment(MenuFragment())
         }
-        return binding.root
     }
 
 }
