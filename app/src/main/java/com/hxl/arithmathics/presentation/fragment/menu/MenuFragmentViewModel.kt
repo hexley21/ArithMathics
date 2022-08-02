@@ -1,10 +1,7 @@
 package com.hxl.arithmathics.presentation.fragment.menu
 
 import androidx.lifecycle.ViewModel
-import com.hxl.domain.usecase.prefs.GetMode
-import com.hxl.domain.usecase.prefs.GetTimer
-import com.hxl.domain.usecase.prefs.SaveMode
-import com.hxl.domain.usecase.prefs.SaveTimer
+import com.hxl.domain.usecase.prefs.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -13,13 +10,19 @@ class MenuFragmentViewModel @Inject constructor(
     private val getMode: GetMode,
     private val saveMode: SaveMode,
     private val getTimer: GetTimer,
-    private val saveTimer: SaveTimer
+    private val saveTimer: SaveTimer,
+    private val getPositive: GetPositive,
+    private val savePositive: SavePositive
 ) : ViewModel() {
-    var mode
+    var mode: Int
         get() = getMode()
         set(value) = saveMode(value)
 
-    var timer
+    var timer: Boolean
         get() = getTimer()
         set(value) = saveTimer(value)
+
+    var positive: Boolean
+        get() = getPositive()
+        set(value) = savePositive(value)
 }
