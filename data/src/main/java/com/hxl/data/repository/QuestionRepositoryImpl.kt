@@ -19,7 +19,7 @@ class QuestionRepositoryImpl : QuestionRepository {
             }
 
             expression = ExpressionBuilder(question).build().evaluate()
-            if (expression > -1000000.0 && expression < 1000000.0){
+            if (expression in -1000000.0..1000000.0){
                 break
             }
             question = ""
