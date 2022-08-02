@@ -50,7 +50,7 @@ Arithmathics is a quiz game, where you solve
 randomly generated airthmetic tasks of different difficulty
 in order to improve your arithmetic skills
 
-<!-- <details> -->
+<details>
 <summary>Screenshots</summary>
 <br />
 
@@ -109,7 +109,7 @@ Arithmathics is divided into three layers:
  - MVVM - [Wikipedia article](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel)
 <details>
 <summary>Draw.io diagram</summary>
-<img src="docs/images/Arithmath_diagram.png" title="Diagram" width="100%">
+<img src="docs/images/Arithmathics_diagram.png" title="Diagram" width="100%">
 </details>
 
 ## Roadmap
