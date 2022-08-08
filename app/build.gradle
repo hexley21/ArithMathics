@@ -68,14 +68,11 @@ dependencies {
     implementation 'androidx.fragment:fragment-ktx:1.5.1'
 
     // RxJava
-    implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
     implementation 'io.reactivex.rxjava3:rxjava:3.1.5'
+    implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
 
     // Room
-    implementation 'androidx.room:room-runtime:2.4.3'
-    implementation "androidx.room:room-ktx:2.4.3"
-    kapt "androidx.room:room-compiler:2.4.3"
-    implementation "androidx.room:room-rxjava3:2.4.3"
+    implementation 'androidx.room:room-ktx:2.4.3'
 
     // Espresso
     testImplementation 'junit:junit:4.13.2'
