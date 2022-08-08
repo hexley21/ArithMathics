@@ -76,7 +76,7 @@
     <!-- Result -->
     <string name="correct">სწორია</string>
     <string name="wrong">არასწორია</string>
-    <string name="time_spent">დახარჯული დრო -</string>
+    <string name="time_spent">დახარჯული დრო</string>
 
     <!-- Game History -->
     <string name="time">დრო</string>
