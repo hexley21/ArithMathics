@@ -20,6 +20,7 @@ import com.hxl.arithmathics.presentation.fragment.dialogs.language.LanguageDialo
 import com.hxl.arithmathics.presentation.fragment.dialogs.theme.ThemeDialog
 import com.hxl.arithmathics.presentation.fragment.game.GameFragment
 import com.hxl.arithmathics.presentation.fragment.game_history.GameHistoryFragment
+import com.hxl.arithmathics.presentation.fragment.info.InfoFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -72,8 +73,8 @@ class MenuFragment : Fragment() {
                     }
                     true
                 }
-                R.id.licenses -> {
-
+                R.id.info -> {
+                    (requireActivity() as MainActivity).replaceFragment(InfoFragment(), true)
                     true
                 }
                 else -> false

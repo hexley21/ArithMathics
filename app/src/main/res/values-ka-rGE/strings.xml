@@ -2,7 +2,6 @@
 <resources>
     <string name="app_name">Arithma Game</string>
 
-    <string name="licenses">ლიცენზიები</string>
     <!-- Menu Fragment -->
     <string name="select_difficulty">აირჩიე სირთულე</string>
     <string name="easy">ადვილი</string>
@@ -14,6 +13,7 @@
     <!-- Menu -->
     <string name="menu_theme">ფონი</string>
     <string name="menu_language">ენა</string>
+    <string name="menu_info">ინფორმაცია</string>
     <string name="menu_rate">შეფასება</string>
 
     <!-- Time mode -->
