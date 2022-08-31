@@ -98,6 +98,20 @@
     <string name="impossible">Impossible</string>
     <string name="calculator">Calculator</string>
 
+    <!-- Info -->
+    <string name="paragraph_project">About Project</string>
+    <string name="info_project">Arithmathics is an open-source software for mobile devices created by Hexley21 and maintained by Arithmathics\'s community</string>
+    <string name="paragraph_app">About Arithmathics</string>
+    <string name="info_description">Arithmathics is a mobile quiz game with randomly generated mathematical tasks of various difficulty.You can use it to train your arithmetical skills and improve your mental calculation time</string>
+    <string name="visit_github_page">Visit our GitHub page</string>
+    <string name="github_page" translatable="false">github.com/hexley21/ArithMathics</string>
+    <string name="contact_developer">Contact developer</string>
+    <string name="developer" translatable="false">a.kupreishvili.21@gmail.com</string>
+    <string name="privacy_policy" translatable="false">https://sites.google.com/view/hexley21-arithmathics</string>
+    <string name="info_privacy" translatable="false">PRIVACY POLICY</string>
+    <string name="info_credits" translatable="false">CREDITS</string>
+    <string name="info_rights" translatable="false">All Rights Reserved</string>
+
     <!-- Content Description -->
     <string name="app_logo">Application logo</string>
 </resources>
