@@ -12,7 +12,6 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 import com.hxl.arithmathics.R
 import com.hxl.arithmathics.databinding.FragmentMenuBinding
 import com.hxl.arithmathics.presentation.activity.MainActivity
@@ -74,7 +73,7 @@ class MenuFragment : Fragment() {
                     true
                 }
                 R.id.licenses -> {
-                    startActivity(Intent(requireContext(), OssLicensesMenuActivity::class.java))
+
                     true
                 }
                 else -> false
