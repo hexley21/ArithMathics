@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     android:padding="5dp">
-
     <data>
-
-        <variable
-            name="year"
-            type="String" />
+        <variable name="year" type="String" />
     </data>
 
     <ScrollView
@@ -46,7 +42,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="60dp"
                 android:elegantTextHeight="true"
                 android:text="@string/info_description"
                 android:textSize="16sp" />
@@ -54,6 +50,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
                 android:text="@string/visit_github_page"
                 android:textAlignment="center"
                 android:textColor="?attr/colorPrimary"
@@ -64,7 +61,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginBottom="15dp"
+                android:layout_marginBottom="25dp"
                 android:background="?attr/selectableItemBackground"
                 android:fontFamily="monospace"
                 android:padding="5dp"
@@ -78,6 +75,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
                 android:text="@string/contact_developer"
                 android:textAlignment="center"
                 android:textColor="?attr/colorPrimary"
@@ -88,7 +86,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginBottom="15dp"
+                android:layout_marginBottom="40dp"
                 android:background="?attr/selectableItemBackground"
                 android:fontFamily="monospace"
                 android:gravity="center"
@@ -105,7 +103,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginBottom="0dp"
+                android:layout_marginBottom="5dp"
                 android:background="?attr/selectableItemBackground"
                 android:padding="5dp"
                 android:text="@string/info_privacy"
@@ -114,6 +112,7 @@
                 android:textSize="16sp" />
 
             <TextView
+                android:id="@+id/tv_credits"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
