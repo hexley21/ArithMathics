@@ -3,7 +3,6 @@
     <string name="app_name">Arithmathics</string>
     <string name="app_title" translatable="false">Arithmathics</string>
 
-    <string name="licenses">Licenses</string>
     <!-- Menu Fragment -->
     <string name="select_difficulty">Select difficulty</string>
     <string name="easy">Easy</string>
@@ -15,6 +14,7 @@
     <!-- Menu -->
     <string name="menu_theme">Theme</string>
     <string name="menu_language">Language</string>
+    <string name="menu_info">Info</string>
     <string name="menu_rate">Rate</string>
 
     <!-- Time mode -->
@@ -98,6 +98,52 @@
     <string name="impossible">Impossible</string>
     <string name="calculator">Calculator</string>
 
+    <!-- Info -->
+    <string name="paragraph_project">About Project</string>
+    <string name="info_project">Arithmathics is an open-source software for mobile devices created by Hexley21 and maintained by Arithmathics\'s community</string>
+    <string name="paragraph_app">About Arithmathics</string>
+    <string name="info_description">Arithmathics is a mobile quiz game with randomly generated mathematical tasks of various difficulty.You can use it to train your arithmetical skills and improve your mental calculation time</string>
+    <string name="visit_github_page">Visit our GitHub page</string>
+    <string name="github_page" translatable="false">github.com/hexley21/ArithMathics</string>
+    <string name="contact_developer">Contact developer</string>
+    <string name="developer" translatable="false">a.kupreishvili.21@gmail.com</string>
+    <string name="privacy_policy" translatable="false">https://sites.google.com/view/hexley21-arithmathics</string>
+    <string name="info_privacy" translatable="false">PRIVACY POLICY</string>
+    <string name="info_credits" translatable="false">CREDITS</string>
+    <string name="info_rights" translatable="false">All Rights Reserved</string>
+
     <!-- Content Description -->
     <string name="app_logo">Application logo</string>
+
+    <!-- Credits -->
+    <string-array name="credits_title">
+        <item>ReactiveX - RxJava</item>
+        <item>ReactiveX - RxAndroid</item>
+        <item>Google - Dagger Hilt</item>
+        <item>Android - Room</item>
+        <item>Objecthunter - exp4j</item>
+        <item>Airbnb - Paris</item>
+        <item>TBC Contractica - Font</item>
+        <item>Google Material icons - Icons</item>
+    </string-array>
+    <string-array name="credits_desc">
+        <item>Reactive Extensions for the JVM – a library for composing asynchronous and event-based programs using observable sequences for the Java VM. (APACHE 2.0)</item>
+        <item>RxJava bindings for Android. (APACHE 2.0)</item>
+        <item>A fast dependency injector for Android and Java. (APACHE 2.0)</item>
+        <item>The Room persistence library provides an abstraction layer over SQLite to allow for more robust database access while harnessing the full power of SQLite.</item>
+        <item>A tiny math expression evaluator for the Java programming language. (APACHE 2.0)</item>
+        <item>Define and apply styles to Android views programmatically. (APACHE 2.0)</item>
+        <item>A unique font that made the text even easier to understand and remember.</item>
+        <item>Material Design Icons\' growing icon collection allows designers and developers targeting various platforms. (APACHE 2.0 / UBUNTU FONT LICENSE)</item>
+    </string-array>
+    <string-array name="credits_links">
+        <item>https://github.com/square/picasso/</item>
+        <item>https://github.com/ReactiveX/RxAndroid</item>
+        <item>https://github.com/google/dagger</item>
+        <item>https://developer.android.com/jetpack/androidx/releases/room</item>
+        <item>https://github.com/fasseg/exp4j</item>
+        <item>https://github.com/airbnb/paris</item>
+        <item>https://www.facebook.com/tbcinsurance/videos/375586237175889/</item>
+        <item>https://fonts.google.com/icons</item>
+    </string-array>
 </resources>
