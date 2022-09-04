@@ -13,8 +13,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject
-import kotlin.math.floor
-import kotlin.math.log
+import kotlin.math.roundToInt
 
 @HiltViewModel
 class ResultFragmentViewModel @Inject constructor(
@@ -37,12 +36,7 @@ class ResultFragmentViewModel @Inject constructor(
     }
 
     private fun saveGame(gameMode: Difficulty) {
-        val difficulty = calculateDifficulty(
-            gameMode.levels,
-            gameMode.numberRange,
-            gameMode.operators.count(),
-            gameMode.operations
-        )
+        val difficulty = calculateDifficulty(gameMode.operations)
         val newRecord = GameResult(difficulty, questions.size, corrects, time)
         disposable.add(insertGameHistory(newRecord)
             .subscribeOn(Schedulers.io())
@@ -53,12 +47,12 @@ class ResultFragmentViewModel @Inject constructor(
         )
     }
 
-    private fun calculateDifficulty(levels: Int, range: IntRange, operations: Int, operators: Int): Int {
-        return floor(
-            log(levels.toFloat(), 100f) *
-                    log((range.last - range.first).toFloat(), 2f) *
-                    (operators * operations) / 2
-        ).toInt()
+    private fun calculateDifficulty(operations: Int): Int {
+        var difficulty = 0.0
+        for (i in questions) {
+            difficulty += Question.getDifficulty(i, operations)
+        }
+        return difficulty.roundToInt()
     }
 
     override fun onCleared() {
