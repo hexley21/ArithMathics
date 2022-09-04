@@ -3,6 +3,7 @@ package com.hxl.data.repository
 import com.hxl.domain.models.Question
 import com.hxl.domain.repository.QuestionRepository
 import net.objecthunter.exp4j.ExpressionBuilder
+import java.text.DecimalFormat
 import kotlin.math.roundToInt
 
 /**
@@ -12,6 +13,11 @@ class QuestionRepositoryImpl : QuestionRepository {
 
     private val negativeRange = -1000000.0..1000000.0
     private val positiveRange = 0.0..1000000.0
+    private val df = DecimalFormat("#")
+
+    init {
+        df.maximumFractionDigits = 8
+    }
 
     override fun generateQuestion(
         operations: Int,
@@ -34,18 +40,18 @@ class QuestionRepositoryImpl : QuestionRepository {
             }
 
             expression = ExpressionBuilder(question).build().evaluate()
-            if (expression in answerRange) {
-                break
-            }
+            if (expression in answerRange) { break }
             question = ""
         }
 
-        var answer = ((expression * 10.0).roundToInt() / 10.0).toString()
-        if (answer.endsWith(".0")) {
-            answer = answer.dropLast(2)
-        }
-        question = question.replace("*", "×").replace("/", "÷")
-        return Question(question, answer)
+        return Question(
+            question.replace("*", "×").replace("/", "÷"),
+            df.format(roundToOne(expression)).toString()
+        )
+    }
+
+    private fun roundToOne(expr: Double): Double {
+        return (expr * 10.0).roundToInt() / 10.0
     }
 
 }
