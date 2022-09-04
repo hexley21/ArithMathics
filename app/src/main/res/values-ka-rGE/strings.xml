@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Arithma Game</string>
+    <string name="app_name">Arithmathics</string>
 
-    <string name="licenses">ლიცენზიები</string>
     <!-- Menu Fragment -->
     <string name="select_difficulty">აირჩიე სირთულე</string>
     <string name="easy">ადვილი</string>
@@ -14,6 +13,7 @@
     <!-- Menu -->
     <string name="menu_theme">ფონი</string>
     <string name="menu_language">ენა</string>
+    <string name="menu_info">ინფორმაცია</string>
     <string name="menu_rate">შეფასება</string>
 
     <!-- Time mode -->
@@ -89,6 +89,14 @@
     <string name="extreme">ექსტრემალური</string>
     <string name="impossible">შეუძლებელი</string>
     <string name="calculator">კალკულატორი</string>
+
+    <!-- Info -->
+    <string name="paragraph_project">პროექტის შესახებ</string>
+    <string name="info_project">Arithmathics არის ღია-წყარო პროგრამა მობილური მოწყობილობებისთვის შექმნილი Hexley21-მიერ და მხარდაჭერილი Arithmathics-ის სახოგადოებისგან.</string>
+    <string name="paragraph_app">Arithmathics შესახებ</string>
+    <string name="info_description">Arithmathics არის მობილური ქუიზ თამაში შემთხვევითად შექმნილი სხვადასხვა სირთულის მათემატიკური დავალებებით.თქვენ შეგიძთ გამოიყენოთ რათა გაავარჯიშოთ არითმეტიკული უნარები და გაუმჯობესოთ მენტალური გამოთვლის დრო.</string>
+    <string name="visit_github_page">ეწვიეთ ჩვენ GitHub გვერდს</string>
+    <string name="contact_developer">დაუკავშირდით დეველოპერს</string>
 
     <!-- Content Description -->
     <string name="app_logo">აპლიკაციის ლოგო</string>

@@ -10,22 +10,22 @@ class GameResultFormatter {
         fun getDifficultyColor(difficulty: Int, context: Context): Int {
             val typedValue = TypedValue()
             when (difficulty) {
-                in 23..149 -> context.theme.resolveAttribute(com.google.android.material.R.attr.colorPrimaryContainer, typedValue, true)
-                in 150..254 -> context.theme.resolveAttribute(com.google.android.material.R.attr.colorErrorContainer, typedValue, true)
-                else -> context.theme.resolveAttribute(com.google.android.material.R.attr.colorTertiaryContainer, typedValue, true)
+                in 0..200 -> context.theme.resolveAttribute(com.google.android.material.R.attr.colorTertiaryContainer, typedValue, true)
+                in 200..1000 -> context.theme.resolveAttribute(com.google.android.material.R.attr.colorPrimaryContainer, typedValue, true)
+                else -> context.theme.resolveAttribute(com.google.android.material.R.attr.colorErrorContainer, typedValue, true)
             }
             return typedValue.data
         }
 
         fun getDifficultyText(difficulty: Int, resources: Resources): String {
             return when (difficulty) {
-                in 0..2 -> resources.getString(R.string.beginner)
-                in 3..11 -> resources.getString(R.string.easy)
-                in 12..22 -> resources.getString(R.string.medium)
-                in 23..69 -> resources.getString(R.string.hard)
-                in 70..149 -> resources.getString(R.string.expert)
-                in 150..199 -> resources.getString(R.string.extreme)
-                in 200..252 -> resources.getString(R.string.impossible)
+                in 0..100 -> resources.getString(R.string.beginner)
+                in 100..200 -> resources.getString(R.string.easy)
+                in 200..350 -> resources.getString(R.string.medium)
+                in 350..1000 -> resources.getString(R.string.hard)
+                in 1000..3000 -> resources.getString(R.string.expert)
+                in 3000..7000 -> resources.getString(R.string.extreme)
+                in 7000..10000 -> resources.getString(R.string.impossible)
                 else -> resources.getString(R.string.calculator)
             }
         }
