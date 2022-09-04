@@ -11,11 +11,11 @@
         android:title="@string/menu_language"
         app:showAsAction="never"/>
     <item
-        android:id="@+id/rate"
-        android:title="@string/menu_rate"
+        android:id="@+id/info"
+        android:title="@string/menu_info"
         app:showAsAction="never"/>
     <item
-        android:id="@+id/licenses"
-        android:title="@string/licenses"
+        android:id="@+id/rate"
+        android:title="@string/menu_rate"
         app:showAsAction="never"/>
 </menu>

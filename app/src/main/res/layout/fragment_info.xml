@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="5dp">
+    <data>
+        <variable name="year" type="String" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/paragraph_project"
+                android:textColor="?attr/colorPrimary"
+                android:textSize="24sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:elegantTextHeight="true"
+                android:text="@string/info_project"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/paragraph_app"
+                android:textColor="?attr/colorPrimary"
+                android:textSize="24sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="60dp"
+                android:elegantTextHeight="true"
+                android:text="@string/info_description"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="@string/visit_github_page"
+                android:textAlignment="center"
+                android:textColor="?attr/colorPrimary"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_github"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="25dp"
+                android:background="?attr/selectableItemBackground"
+                android:fontFamily="monospace"
+                android:padding="5dp"
+                android:selectAllOnFocus="false"
+                android:text="@string/github_page"
+                android:textAlignment="center"
+                android:textColor="#EF6C00"
+                android:textIsSelectable="true"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="@string/contact_developer"
+                android:textAlignment="center"
+                android:textColor="?attr/colorPrimary"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="40dp"
+                android:background="?attr/selectableItemBackground"
+                android:fontFamily="monospace"
+                android:gravity="center"
+                android:padding="5dp"
+                android:selectAllOnFocus="false"
+                android:text="@string/developer"
+                android:textAlignment="center"
+                android:textColor="#EF6C00"
+                android:textIsSelectable="true"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_privacy_policy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="5dp"
+                android:background="?attr/selectableItemBackground"
+                android:padding="5dp"
+                android:text="@string/info_privacy"
+                android:textAlignment="center"
+                android:textColor="#EF6C00"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_credits"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="40dp"
+                android:background="?attr/selectableItemBackground"
+                android:padding="5dp"
+                android:text="@string/info_credits"
+                android:textAlignment="center"
+                android:textColor="#EF6C00"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text='@{"@" + year + " Arithmathics " + @string/info_rights}'
+                android:textAlignment="center"
+                android:textColor="?attr/colorPrimary" />
+        </LinearLayout>
+    </ScrollView>
+
+</layout>

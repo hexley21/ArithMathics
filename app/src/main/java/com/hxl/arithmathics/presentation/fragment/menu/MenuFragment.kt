@@ -12,7 +12,6 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 import com.hxl.arithmathics.R
 import com.hxl.arithmathics.databinding.FragmentMenuBinding
 import com.hxl.arithmathics.presentation.activity.MainActivity
@@ -21,6 +20,7 @@ import com.hxl.arithmathics.presentation.fragment.dialogs.language.LanguageDialo
 import com.hxl.arithmathics.presentation.fragment.dialogs.theme.ThemeDialog
 import com.hxl.arithmathics.presentation.fragment.game.GameFragment
 import com.hxl.arithmathics.presentation.fragment.game_history.GameHistoryFragment
+import com.hxl.arithmathics.presentation.fragment.info.InfoFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -73,8 +73,8 @@ class MenuFragment : Fragment() {
                     }
                     true
                 }
-                R.id.licenses -> {
-                    startActivity(Intent(requireContext(), OssLicensesMenuActivity::class.java))
+                R.id.info -> {
+                    (requireActivity() as MainActivity).replaceFragment(InfoFragment(), true)
                     true
                 }
                 else -> false
