@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="KeyboardButton" format="color" />
+    <attr name="KeyboardAnswer" format="color" />
+    <attr name="KeyboardText" format="color" />
+</resources>

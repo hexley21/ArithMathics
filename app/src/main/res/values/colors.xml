@@ -2,8 +2,6 @@
 <resources>
     <color name="md_theme_light_primary">#F8BD49</color>
     <color name="md_theme_light_onPrimary">#422D00</color>
-    <!--    <color name="md_theme_light_primary">#7C5800</color>-->
-    <!--    <color name="md_theme_light_onPrimary">#FFFFFF</color>-->
     <color name="md_theme_light_primaryContainer">#FFDEA8</color>
     <color name="md_theme_light_onPrimaryContainer">#271900</color>
     <color name="md_theme_light_secondary">#6D5C3F</color>
@@ -31,6 +29,7 @@
     <color name="md_theme_light_shadow">#000000</color>
     <color name="md_theme_light_surfaceTint">#7C5800</color>
     <color name="md_theme_light_surfaceTintColor">#7C5800</color>
+    <color name="light_answer">#2EA5E5</color>
 
     <color name="md_theme_dark_primary">#F8BD49</color>
     <color name="md_theme_dark_onPrimary">#422D00</color>
@@ -61,5 +60,9 @@
     <color name="md_theme_dark_shadow">#000000</color>
     <color name="md_theme_dark_surfaceTint">#F8BD49</color>
     <color name="md_theme_dark_surfaceTintColor">#F8BD49</color>
+    <color name="dark_keyboard">#5C5C5C</color>
+    <color name="darker_keyboard">#282828</color>
+    <color name="dark_answer">#003D5C</color>
+
     <color name="seed">#FFD180</color>
 </resources>
