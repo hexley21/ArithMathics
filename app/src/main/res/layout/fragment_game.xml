@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
+        <import type="android.view.View" />
+        <variable name="attention" type="boolean" />
         <variable name="level" type="int" />
         <variable name="levels" type="int" />
         <variable name="time" type="String" />
@@ -48,10 +51,28 @@
             android:id="@+id/game_pager"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/tf_answer"
+            android:layout_marginTop="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_decimal_attention"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_end" />
+
+        <TextView
+            android:id="@+id/tv_decimal_attention"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:maxLines="1"
+            android:text="@string/decimal_attention"
+            android:textAlignment="center"
+            android:visibility="@{attention == false ? View.GONE : View.VISIBLE}"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintBottom_toTopOf="@+id/tf_answer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/game_pager" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tf_answer"
