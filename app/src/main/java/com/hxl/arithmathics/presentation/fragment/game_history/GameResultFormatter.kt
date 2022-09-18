@@ -10,8 +10,8 @@ class GameResultFormatter {
         fun getDifficultyColor(difficulty: Int, context: Context): Int {
             val typedValue = TypedValue()
             when (difficulty) {
-                in 0..200 -> context.theme.resolveAttribute(com.google.android.material.R.attr.colorTertiaryContainer, typedValue, true)
-                in 200..1000 -> context.theme.resolveAttribute(com.google.android.material.R.attr.colorPrimaryContainer, typedValue, true)
+                in 0..50 -> context.theme.resolveAttribute(com.google.android.material.R.attr.colorTertiaryContainer, typedValue, true)
+                in 50..200 -> context.theme.resolveAttribute(com.google.android.material.R.attr.colorPrimaryContainer, typedValue, true)
                 else -> context.theme.resolveAttribute(com.google.android.material.R.attr.colorErrorContainer, typedValue, true)
             }
             return typedValue.data
@@ -19,13 +19,13 @@ class GameResultFormatter {
 
         fun getDifficultyText(difficulty: Int, resources: Resources): String {
             return when (difficulty) {
-                in 0..100 -> resources.getString(R.string.beginner)
-                in 100..200 -> resources.getString(R.string.easy)
-                in 200..350 -> resources.getString(R.string.medium)
-                in 350..1000 -> resources.getString(R.string.hard)
-                in 1000..3000 -> resources.getString(R.string.expert)
-                in 3000..7000 -> resources.getString(R.string.extreme)
-                in 7000..10000 -> resources.getString(R.string.impossible)
+                in 0..30 -> resources.getString(R.string.beginner)
+                in 30..50 -> resources.getString(R.string.easy)
+                in 50..100 -> resources.getString(R.string.medium)
+                in 100..200 -> resources.getString(R.string.hard)
+                in 200..400 -> resources.getString(R.string.expert)
+                in 400..500 -> resources.getString(R.string.extreme)
+                in 500..600 -> resources.getString(R.string.impossible)
                 else -> resources.getString(R.string.calculator)
             }
         }

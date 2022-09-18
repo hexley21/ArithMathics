@@ -90,16 +90,15 @@ class GameFragment : Fragment() {
                                 binding.tiAnswer.setText(answerArray[position])
                                 Selection.moveToRightEdge(binding.tiAnswer.text, binding.tiAnswer.layout)
                                 binding.level = gamePage.currentItem + 1
-
                             }
                         }
                     )
                     initKeyboard()
+                    binding.attention = '/' in difEnum.operators
                 }
         )
 
         binding.btnEnd.setOnClickListener { endGame() }
-
     }
     private fun initKeyboard() {
         val editText: EditText = binding.tiAnswer
@@ -118,6 +117,7 @@ class GameFragment : Fragment() {
             endGame()
         }
         gamePage.setCurrentItem(gamePage.currentItem + 1, true)
+        binding.attention = false
     }
 
     private fun startTimer() {

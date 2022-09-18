@@ -137,7 +137,7 @@
         <item>Material Design Icons\' growing icon collection allows designers and developers targeting various platforms. (APACHE 2.0 / UBUNTU FONT LICENSE)</item>
     </string-array>
     <string-array name="credits_links">
-        <item>https://github.com/square/picasso/</item>
+        <item>https://github.com/ReactiveX/RxJava</item>
         <item>https://github.com/ReactiveX/RxAndroid</item>
         <item>https://github.com/google/dagger</item>
         <item>https://developer.android.com/jetpack/androidx/releases/room</item>
@@ -160,4 +160,5 @@
     <string name="btn_zero" translatable="false">0</string>
     <string name="btn_dot" translatable="false">.</string>
     <string name="btn_negative" translatable="false">-</string>
+
 </resources>
