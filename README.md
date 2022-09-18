@@ -27,7 +27,11 @@
 [![Pull Requests welcome](https://img.shields.io/badge/PRs-welcome-f7bd49.svg?style=flat-square)](https://github.com/hexley21/ArithMath/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22)
 
 </div>
+<div align="center">
 
+[<img src="https://cdn.rawgit.com/steverichey/google-play-badge-svg/master/img/en_get.svg" width="250px">](https://play.google.com/store/apps/details?id=com.hxl.arithmathics)
+
+</div>
 <details open="open">
 <summary>Table of Contents</summary>
 
@@ -54,18 +58,18 @@ in order to improve your arithmetic skills
 <summary>Screenshots</summary>
 <br />
 
-|                               Welcome Page                               |                               Menu Page                                   |
-| :-------------------------------------------------------------------: | :--------------------------------------------------------------------: |
-| <img src="docs/images/screenshot_welcome.jpg" title="Menu" width="100%"> |<img src="docs/images/screenshot_menu.png" title="Welcome" width="100%"> |
+|                               Welcome Page                               |                                Menu Page                                 |
+|:------------------------------------------------------------------------:|:------------------------------------------------------------------------:|
+| <img src="docs/images/screenshot_welcome.png" title="Menu" width="100%"> | <img src="docs/images/screenshot_menu.png" title="Welcome" width="100%"> |
 
 
-|                               Custom Difficulty Page                               |                               Game History Page                                   |
-| :-------------------------------------------------------------------: | :--------------------------------------------------------------------: |
-| <img src="docs/images/screenshot_custom.png" title="Custom Difficulty" width="100%"> |<img src="docs/images/screenshot_history.png" title="Game History" width="100%"> |
+|                                Custom Difficulty Page                                |                                Game History Page                                 |
+|:------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------:|
+| <img src="docs/images/screenshot_custom.png" title="Custom Difficulty" width="100%"> | <img src="docs/images/screenshot_history.png" title="Game History" width="100%"> |
 
-|                               Gameplay                               |                               Dark Theme                                   |
-| :-------------------------------------------------------------------: | :--------------------------------------------------------------------: |
-| <img src="docs/images/gameplay.gif" title="Gameplay" width="100%"> |<img src="docs/images/screenshot_dark.png" title="Dark Theme" width="100%"> |
+|                              Gameplay                              |                                  Dark Theme                                  |
+|:------------------------------------------------------------------:|:----------------------------------------------------------------------------:|
+| <img src="docs/images/gameplay.gif" title="Gameplay" width="100%"> | <img src="docs/images/gameplay_dark.gif" title="Gameplay Dark" width="100%"> |
 
 </details>
 

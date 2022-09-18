@@ -33,6 +33,10 @@
         <item name="android:windowLightStatusBar" tools:targetApi="m" tools:ignore="NewApi">true</item>
         <item name="fontFamily">@font/contractica_book</item>
         <item name="materialAlertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog</item>
+
+        <item name="KeyboardAnswer">@color/dark_answer</item>
+        <item name="KeyboardButton">@color/dark_keyboard</item>
+        <item name="KeyboardText">#ffffff</item>
     </style>
 
     <style name="ThemeOverlay.MyTheme" parent="ThemeOverlay.AppCompat.Dark">

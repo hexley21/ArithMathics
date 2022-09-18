@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <merge>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/button_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="4:5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline2"
+            app:layout_optimizationLevel="ratio">
+
+            <LinearLayout
+                android:id="@+id/layer_0"
+                style="@style/KeyboardLayer"
+                android:layout_marginEnd="2dp"
+                app:layout_constraintBottom_toTopOf="@+id/layer_1"
+                app:layout_constraintEnd_toStartOf="@+id/btn_backspace"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed">
+
+                <Button
+                    android:id="@+id/btn_one"
+                    style="@style/TonalButton"
+                    android:layout_weight="1"
+                    android:text="@string/btn_one" />
+
+                <Button
+                    android:id="@+id/btn_two"
+                    style="@style/TonalButton"
+                    android:layout_weight="1"
+                    android:text="@string/btn_two" />
+
+                <Button
+                    android:id="@+id/btn_three"
+                    style="@style/TonalButton"
+                    android:layout_weight="1"
+                    android:text="@string/btn_three" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layer_1"
+                style="@style/KeyboardLayer"
+                android:layout_marginEnd="2dp"
+                app:layout_constraintBottom_toTopOf="@+id/layer_2"
+                app:layout_constraintEnd_toStartOf="@+id/btn_backspace"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layer_0">
+
+                <Button
+                    android:id="@+id/btn_four"
+                    style="@style/TonalButton"
+                    android:layout_weight="1"
+                    android:text="@string/btn_four" />
+
+                <Button
+                    android:id="@+id/btn_five"
+                    style="@style/TonalButton"
+                    android:layout_weight="1"
+                    android:text="@string/btn_five" />
+
+                <Button
+                    android:id="@+id/btn_six"
+                    style="@style/TonalButton"
+                    android:layout_weight="1"
+                    android:text="@string/btn_six" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layer_2"
+                style="@style/KeyboardLayer"
+                android:layout_marginEnd="2dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toTopOf="@+id/layer_3"
+                app:layout_constraintEnd_toStartOf="@+id/btn_answer"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layer_1">
+
+                <Button
+                    android:id="@+id/btn_seven"
+                    style="@style/TonalButton"
+                    android:layout_weight="1"
+                    android:text="@string/btn_seven" />
+
+                <Button
+                    android:id="@+id/btn_eight"
+                    style="@style/TonalButton"
+                    android:layout_weight="1"
+                    android:text="@string/btn_eight" />
+
+                <Button
+                    android:id="@+id/btn_nine"
+                    style="@style/TonalButton"
+                    android:layout_weight="1"
+                    android:text="@string/btn_nine" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layer_3"
+                style="@style/KeyboardLayer"
+                android:layout_marginEnd="2dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btn_answer"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layer_2">
+
+                <Button
+                    android:id="@+id/btn_dot"
+                    style="@style/TonalButton"
+                    android:layout_weight="1"
+                    android:text="@string/btn_dot" />
+
+                <Button
+                    android:id="@+id/btn_zero"
+                    style="@style/TonalButton"
+                    android:layout_weight="1"
+                    android:text="@string/btn_zero" />
+
+                <Button
+                    android:id="@+id/btn_negative"
+                    style="@style/TonalButton"
+                    android:layout_weight="1"
+                    android:text="@string/btn_negative" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_backspace"
+                style="@style/TonalButton"
+                android:layout_width="60dp"
+                android:layout_height="0dp"
+                android:backgroundTint="?attr/colorErrorContainer"
+                app:icon="@drawable/outline_backspace_24"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:iconSize="26dp"
+                app:layout_constraintBottom_toBottomOf="@+id/layer_1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/layer_0" />
+
+            <Button
+                android:id="@+id/btn_answer"
+                style="@style/TonalButton"
+                android:layout_width="60dp"
+                android:layout_height="0dp"
+                android:backgroundTint="?attr/KeyboardAnswer"
+                app:icon="@drawable/ic_baseline_check_24"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:iconSize="26dp"
+                app:layout_constraintBottom_toBottomOf="@+id/layer_3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layer_1" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </merge>
+
+</layout>
