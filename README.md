@@ -56,7 +56,7 @@ in order to improve your arithmetic skills
 
 |                               Welcome Page                               |                                Menu Page                                 |
 |:------------------------------------------------------------------------:|:------------------------------------------------------------------------:|
-| <img src="docs/images/screenshot_welcome.jpg" title="Menu" width="100%"> | <img src="docs/images/screenshot_menu.png" title="Welcome" width="100%"> |
+| <img src="docs/images/screenshot_welcome.png" title="Menu" width="100%"> | <img src="docs/images/screenshot_menu.png" title="Welcome" width="100%"> |
 
 
 |                                Custom Difficulty Page                                |                                Game History Page                                 |
