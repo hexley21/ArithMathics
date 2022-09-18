@@ -44,4 +44,36 @@
     <style name="Correct_card_text" parent="Default_Card_text">
         <item name="android:textColor">?attr/colorOnTertiaryContainer</item>
     </style>
+
+    <style name="KeyboardLayer">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:weightSum">3</item>
+    </style>
+
+    <style name="TonalButton" parent="Widget.Material3.Button.ElevatedButton">
+        <item name="android:backgroundTint">?attr/KeyboardButton</item>
+        <item name="android:textColor">?attr/KeyboardText</item>
+        <item name="iconTint">?attr/KeyboardText</item>
+        <item name="elevation">40dp</item>
+        <item name="android:elevation">20dp</item>
+        <item name="android:layout_margin">2dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="fontFamily">sans-serif-light</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:textSize">28sp</item>
+        <item name="shapeAppearanceOverlay">@style/ButtonShape</item>
+        <item name="cornerSize">0dp</item>
+    </style>
+
+    <style name="ButtonShape">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">10dp</item>
+    </style>
 </resources>

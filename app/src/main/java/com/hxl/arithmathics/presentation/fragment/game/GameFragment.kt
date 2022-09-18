@@ -2,17 +2,17 @@ package com.hxl.arithmathics.presentation.fragment.game
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.text.InputType
 import android.text.Selection
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
+import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.viewpager2.widget.ViewPager2
-import com.airbnb.paris.extensions.style
-import com.hxl.arithmathics.R
 import com.hxl.arithmathics.databinding.FragmentGameBinding
 import com.hxl.arithmathics.presentation.activity.MainActivity
 import com.hxl.arithmathics.presentation.fragment.results.ResultFragmentViewModel
@@ -51,7 +51,6 @@ class GameFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         gamePage = binding.gamePager
-        binding.btnAnswer.style(R.style.Default_Button)
         disposable.add(
             vm.readDifficulty()
                 .subscribeOn(Schedulers.io())
@@ -92,28 +91,25 @@ class GameFragment : Fragment() {
                                 Selection.moveToRightEdge(binding.tiAnswer.text, binding.tiAnswer.layout)
                                 binding.level = gamePage.currentItem + 1
 
-                                if (gamePage.currentItem == answerArray.size - 1) {
-                                    binding.btnAnswer.text = resources.getString(R.string.finish)
-                                    binding.btnAnswer.style(R.style.Finish_Button)
-                                } else {
-                                    binding.btnAnswer.text = resources.getString(R.string.continue_)
-                                }
                             }
                         }
                     )
+                    initKeyboard()
                 }
         )
-        binding.tiAnswer.setOnEditorActionListener { _, actionId, _ ->
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                nextQuestion()
-                true
-            } else {
-                false
-            }
-        }
 
-        binding.btnAnswer.setOnClickListener { nextQuestion() }
         binding.btnEnd.setOnClickListener { endGame() }
+
+    }
+    private fun initKeyboard() {
+        val editText: EditText = binding.tiAnswer
+        val keyboard: Keyboard = binding.keyboard
+
+        editText.setRawInputType(InputType.TYPE_CLASS_TEXT)
+        editText.setTextIsSelectable(true)
+        editText.showSoftInputOnFocus = false
+
+        keyboard.setConnection(editText.onCreateInputConnection(EditorInfo()), ::nextQuestion)
     }
 
     private fun nextQuestion() {
@@ -148,6 +144,8 @@ class GameFragment : Fragment() {
         }
         Timer().scheduleAtFixedRate(timerTask, 0, 1000)
     }
+
+
 
     private fun endGame() {
         val resultVm: ResultFragmentViewModel by activityViewModels()

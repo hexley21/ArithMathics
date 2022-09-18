@@ -146,4 +146,18 @@
         <item>https://www.facebook.com/tbcinsurance/videos/375586237175889/</item>
         <item>https://fonts.google.com/icons</item>
     </string-array>
+
+    <!-- Buttons -->
+    <string name="btn_one" translatable="false">1</string>
+    <string name="btn_two" translatable="false">2</string>
+    <string name="btn_three" translatable="false">3</string>
+    <string name="btn_four" translatable="false">4</string>
+    <string name="btn_five" translatable="false">5</string>
+    <string name="btn_six" translatable="false">6</string>
+    <string name="btn_seven" translatable="false">7</string>
+    <string name="btn_eight" translatable="false">8</string>
+    <string name="btn_nine" translatable="false">9</string>
+    <string name="btn_zero" translatable="false">0</string>
+    <string name="btn_dot" translatable="false">.</string>
+    <string name="btn_negative" translatable="false">-</string>
 </resources>

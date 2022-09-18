@@ -58,9 +58,9 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="30dp"
+            android:layout_margin="6dp"
             android:hint="@string/answer"
-            app:layout_constraintBottom_toTopOf="@+id/btn_answer"
+            app:layout_constraintBottom_toTopOf="@+id/keyboard"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
@@ -72,14 +72,16 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <Button
-            android:id="@+id/btn_answer"
-            android:text="@string/continue_"
-            android:layout_margin="30dp"
-            style="@style/Default_Button"
+        <com.hxl.arithmathics.presentation.fragment.game.Keyboard
+            android:id="@+id/keyboard"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent">
+
+        </com.hxl.arithmathics.presentation.fragment.game.Keyboard>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
