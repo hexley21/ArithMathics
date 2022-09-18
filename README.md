@@ -27,7 +27,11 @@
 [![Pull Requests welcome](https://img.shields.io/badge/PRs-welcome-f7bd49.svg?style=flat-square)](https://github.com/hexley21/ArithMath/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22)
 
 </div>
+<div align="center">
 
+[<img src="https://cdn.rawgit.com/steverichey/google-play-badge-svg/master/img/en_get.svg" width="250px">](https://play.google.com/store/apps/details?id=com.hxl.arithmathics)
+
+</div>
 <details open="open">
 <summary>Table of Contents</summary>
 
