@@ -63,9 +63,9 @@ in order to improve your arithmetic skills
 |:------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------:|
 | <img src="docs/images/screenshot_custom.png" title="Custom Difficulty" width="100%"> | <img src="docs/images/screenshot_history.png" title="Game History" width="100%"> |
 
-|                              Gameplay                              |                                 Dark Theme                                  |
-|:------------------------------------------------------------------:|:---------------------------------------------------------------------------:|
-| <img src="docs/images/gameplay.gif" title="Gameplay" width="100%"> | <img src="docs/images/screenshot_dark.png" title="Dark Theme" width="100%"> |
+|                              Gameplay                              |                                  Dark Theme                                  |
+|:------------------------------------------------------------------:|:----------------------------------------------------------------------------:|
+| <img src="docs/images/gameplay.gif" title="Gameplay" width="100%"> | <img src="docs/images/gameplay_dark.gif" title="Gameplay Dark" width="100%"> |
 
 </details>
 
